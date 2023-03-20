@@ -8,6 +8,8 @@
 
 config_version=4
 
+<<<<<<< HEAD
+=======
 _global_script_classes=[ {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
@@ -18,6 +20,7 @@ _global_script_class_icons={
 "GitAPI": ""
 }
 
+>>>>>>> af6bd224af0838eae16d53d4509411fbed66b757
 [application]
 
 config/name="Spieleentwicklung"
