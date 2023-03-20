@@ -8,23 +8,25 @@
 
 config_version=4
 
-<<<<<<< HEAD
-=======
-_global_script_classes=[ {
+<<<<<<<HEAD_global_script_classes=[ {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 } ]
-_global_script_class_icons={
-"GitAPI": ""
-}
 
->>>>>>> af6bd224af0838eae16d53d4509411fbed66b757
+[>>>>>>>af6bd224af0838eae16d53d4509411fbed66b757[application]config]
+
+name="Spieleentwicklung"
+
 [application]
 
 config/name="Spieleentwicklung"
 config/icon="res://icon.jpg"
+
+[config]
+
+icon="res://icon.jpg"
 
 [editor]
 

@@ -6,10 +6,11 @@ var path_node = 0
 var speed = 10
 
 onready var nav = get_parent()
-onready var player = $"/root/pathfinding/Navigation/Character"
+onready var player1 = $"/root/pathfinding/Navigation/Tile1"
+onready var player2 = $"/root/pathfinding/Navigation/Tile2"
 
-func _ready() -> void:
-	pass 
+func _ready():
+	InputDefault
 	
 func _physics_process(delta: float) -> void:
 	if path_node < path.size():
@@ -23,5 +24,8 @@ func move_to(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	path_node = 0
 
-func _on_Timer_timeout():
-	move_to(player.global_transform.origin)
+func _input(event):
+	if event.is_action_pressed("move_forward"):
+		move_to(player1.global_transform.origin)
+	if event.is_action_pressed("move_backward"):
+		move_to(player2.global_transform.origin)
