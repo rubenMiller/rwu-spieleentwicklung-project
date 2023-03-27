@@ -8,12 +8,11 @@
 albedo_color = Color( 0.807843, 0.462745, 0.462745, 1 )
 
 [node name="Tile" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 4 )
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 7, 2, 4 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]

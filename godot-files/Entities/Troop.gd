@@ -20,11 +20,15 @@ func _physics_process(delta: float) -> void:
 		if direction.length() < 1:
 			path_node += 1
 		else:
-			move_and_slide(direction.normalized() * speed, Vector3.UP)
+			move_and_slide(direction.normalized() * speed)
+		if path_node == path.size():
+			move_and_collide(direction.normalized())
 			
 func move_to(target_pos):
 	if move == true:
 		path = nav.get_simple_path(global_transform.origin, target_pos)
+		print(global_transform.origin)
+		print(target_pos)
 		path_node = 0
 
 func _input(event):
