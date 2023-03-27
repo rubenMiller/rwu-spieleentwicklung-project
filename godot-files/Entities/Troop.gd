@@ -6,13 +6,13 @@ var path_node = 0
 var speed = 10
 
 onready var nav = get_parent()
-onready var player1 = $"/root/pathfinding/Navigation/Tile1"
-onready var player2 = $"/root/pathfinding/Navigation/Tile2"
 onready var move = false
 onready var material = $MeshInstance.get_surface_material(0)
+onready var tile_handler = get_node("../tile_handler")
 
 func _ready():
-	pass
+	print(tile_handler)
+	tile_handler.connect("tile_selected", self, "move_to")
 	
 func _physics_process(delta: float) -> void:
 	if path_node < path.size():
@@ -31,18 +31,10 @@ func move_to(target_pos):
 		print(target_pos)
 		path_node = 0
 
-func _input(event):
-	if event.is_action_pressed("move_forward"):
-		move_to(player1.global_transform.origin)
-	if event.is_action_pressed("move_backward"):
-		move_to(player2.global_transform.origin)
-
-
-
 func _on_Area_input_event(camera, event, position, normal, shape_idx):
 	var material = self.get_node("MeshInstance").get_surface_material(0)
 	if event.is_action_pressed("mouse_left"):
-		print("Enemy pressed")
+		print("Troop pressed")
 		if move == true:
 			print("move to false")
 			print(material)
