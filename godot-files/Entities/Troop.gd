@@ -12,7 +12,7 @@ onready var tile_handler = get_node("../tile_handler")
 
 func _ready():
 	print(tile_handler)
-	tile_handler.connect("tile_selected", self, "move_to")
+	tile_handler.connect("tile_selected", self, "move")
 	
 func _physics_process(delta: float) -> void:
 	if path_node < path.size():
@@ -23,6 +23,12 @@ func _physics_process(delta: float) -> void:
 			move_and_slide(direction.normalized() * speed)
 		if path_node == path.size():
 			move_and_collide(direction.normalized())
+			
+func move(child):
+	if(child.filename == "res://Tiles/Tile.tscn"):
+		move_to(child.global_transform.origin)
+	if(child.filename == "res://win_tile/win_tile.tscn"):
+		print("WON!")
 			
 func move_to(target_pos):
 	if move == true:
