@@ -41,42 +41,42 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -15.819
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 navmesh = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+[node name="Floor" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance"]
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Floor"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Floor/StaticBody"]
 shape = SubResource( 4 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+[node name="Obstacle_1" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44412, 0 )
 mesh = SubResource( 5 )
 skeleton = NodePath("../../..")
 
-[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance2"]
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Obstacle_1"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance2/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Obstacle_1/StaticBody"]
 shape = SubResource( 6 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+[node name="Obstacle_2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36062, 3 )
 mesh = SubResource( 5 )
 skeleton = NodePath("../..")
 
-[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance3"]
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Obstacle_2"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance3/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Obstacle_2/StaticBody"]
 shape = SubResource( 6 )
 
-[node name="MeshInstance4" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+[node name="Obstacle_3" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27711, -2.77908 )
 mesh = SubResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance4"]
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Obstacle_3"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance4/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Obstacle_3/StaticBody"]
 shape = SubResource( 6 )
 
 [node name="tile_handler" parent="Navigation" instance=ExtResource( 3 )]
