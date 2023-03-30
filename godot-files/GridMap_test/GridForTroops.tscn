@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GridMap_test/GridForTroops.gd" type="Script" id=1]
+
+[node name="GridForTroops" type="GridMap"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Navigation" type="Navigation" parent="."]
