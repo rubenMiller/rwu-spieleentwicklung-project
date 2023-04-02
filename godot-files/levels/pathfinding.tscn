@@ -83,6 +83,9 @@ shape = SubResource( 6 )
 
 [node name="Tile1" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
 
+[node name="Tile5" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 7, 2, 0 )
+
 [node name="Tile2" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 7, 2, -4 )
 
@@ -97,3 +100,6 @@ transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -7, 2, 4 )
 
 [node name="Troop" parent="Navigation" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 0 )
+
+[node name="Troop2" parent="Navigation" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, -4 )

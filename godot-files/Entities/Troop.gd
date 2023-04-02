@@ -28,6 +28,7 @@ func move(child):
 	if(child.filename == "res://Tiles/Tile.tscn"):
 		move_to(child.global_transform.origin)
 	if(child.filename == "res://win_tile/win_tile.tscn"):
+		move_to(child.global_transform.origin)
 		print("WON!")
 			
 func move_to(target_pos):
