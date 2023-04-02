@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal Won
+
 var path = []
 var path_node = 0
 
@@ -30,6 +32,7 @@ func move(child):
 	if(child.filename == "res://win_tile/win_tile.tscn"):
 		move_to(child.global_transform.origin)
 		print("WON!")
+		emit_signal("Won")
 			
 func move_to(target_pos):
 	if move == true:
