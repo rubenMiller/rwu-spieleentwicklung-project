@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Troop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/Tile.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://win_tile/win_tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://levels/pathfinding.gd" type="Script" id=6]
+[ext_resource path="res://Art/Maps/Map_1.glb" type="PackedScene" id=7]
 
 [sub_resource type="NavigationMesh" id=1]
 vertices = PoolVector3Array( 0, 2.5, 14, 0, 2.5, 6, -2, 2.5, 5, -7, 2.5, 14, -7, 2.5, -14, -14, 2.5, -14, -14, 2.5, -7, -14, 2.5, 7, -14, 2.5, 14, -7, 2.5, 14, -14, 2.5, 7, -7, 2.5, 14, -2, 2.5, 5, -2, 2.5, -4, -14, 2.5, 0, -2, 2.5, -4, 1, 2.5, -5, 1, 2.5, -14, -2, 2.5, -4, 1, 2.5, -14, -7, 2.5, -14, -14, 2.5, -7, -14, 2.5, 0, 7, 2.5, 14, 14, 2.5, 14, 14, 2.5, 7, 14, 2.5, -7, 14, 2.5, -14, 7, 2.5, -14, 1, 2.5, -14, 1, 2.5, -5, 3, 2.5, -4, 14, 2.5, 0, 14, 2.5, -7, 7, 2.5, -14, 3, 2.5, 4, 0, 2.5, 6, 0, 2.5, 14, 7, 2.5, 14, 3, 2.5, 4, 7, 2.5, 14, 14, 2.5, 7, 14, 2.5, 0, 3, 2.5, -4 )
@@ -134,5 +135,8 @@ text = "You Won!
 
 Press Enter to restart"
 align = 1
+
+[node name="Map_1" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.28457, 0 )
 
 [connection signal="Won" from="Navigation/Troop" to="." method="_on_Troop_Won"]
