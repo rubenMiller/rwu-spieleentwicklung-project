@@ -14,6 +14,7 @@ onready var tile_handler = get_node("../tile_handler")
 onready var navigating_to_win_tile = false
 
 func _ready():
+	$Label3D.hide()
 	print(tile_handler)
 	tile_handler.connect("tile_selected", self, "move") # aufruf der move funktion
 	
@@ -44,18 +45,35 @@ func move_to(target_pos):
 		print(global_transform.origin)
 		print(target_pos)
 		path_node = 0
+	
 
 func _on_Area_input_event(camera, event, position, normal, shape_idx):
-	var material = get_node("MeshInstance").get_surface_material(0)
-	if event.is_action_pressed("mouse_left"):
-		print("I am Troop at: ", global_transform.origin)
-		if move == true:
-			print("move to false")
-			print(material.albedo_color)
-			material.albedo_color = Color(1, 1, 1)
-			move = false
-		elif move == false:
-			print(material.albedo_color)
-			print("move to true")
-			material.albedo_color = Color(1, 0, 0)
-			move = true
+	pass
+#	if event.is_action_pressed("mouse_left"):
+#		print("Troop pressed")
+#		if move == true:
+#			print("move to false")
+#			print(material)
+#			material.albedo_color = Color(1, 1, 1)
+#			move = false
+#		elif move == false:
+#			print(material)
+#			print("move to true")
+#			material.albedo_color = Color(1, 0, 0)
+#			move = true
+
+
+func _on_SelectionArea_selection_toggled(selection):
+	set_process_unhandled_input(selection)
+	var material = self.get_node("MeshInstance").get_surface_material(0)
+	if selection:
+		$Label3D.show()
+		print("selected")
+		#material.albedo_color = Color(1, 1, 1)
+		move = true
+	else:
+		$Label3D.hide()
+		print("not selected")
+		#material.albedo_color = Color(1, 0, 0)
+		move = false
+		
