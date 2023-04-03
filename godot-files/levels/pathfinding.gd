@@ -13,4 +13,3 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_Troop_Won():
 	$UserInterface.show()
 	
-	
