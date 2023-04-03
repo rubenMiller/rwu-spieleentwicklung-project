@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
+[ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.882353, 0.172549, 0.172549, 1 )
@@ -25,13 +26,21 @@ mesh = SubResource( 2 )
 skin = SubResource( 4 )
 material/0 = SubResource( 5 )
 
-[node name="Area" type="Area" parent="MeshInstance"]
+[node name="SelectionArea" type="Area" parent="MeshInstance"]
+script = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/SelectionArea"]
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[connection signal="input_event" from="MeshInstance/Area" to="." method="_on_Area_input_event"]
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32274, 0 )
+pixel_size = 0.1
+text = "Selected
+"
+
+[connection signal="input_event" from="MeshInstance/SelectionArea" to="." method="_on_Area_input_event"]
+[connection signal="selection_toggled" from="MeshInstance/SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
