@@ -9,12 +9,15 @@ var speed = 10
 
 onready var nav = get_parent()
 onready var move = false
-onready var material = $MeshInstance.get_surface_material(0)
 onready var tile_handler = get_node("../tile_handler")
 onready var navigating_to_win_tile = false
 
+var idleMaterial: Material =  load("res://Art/materials/troop_idle_Material.tres")
+var selectedMaterial: Material = load("res://Art/materials/troop_selected_Material.tres")
+
 func _ready():
 	$Label3D.hide()
+	$MeshInstance.material_override = idleMaterial
 	print(tile_handler)
 	tile_handler.connect("tile_selected", self, "move") # aufruf der move funktion
 	
@@ -65,15 +68,12 @@ func _on_Area_input_event(camera, event, position, normal, shape_idx):
 
 func _on_SelectionArea_selection_toggled(selection):
 	set_process_unhandled_input(selection)
-	var material = self.get_node("MeshInstance").get_surface_material(0)
 	if selection:
 		$Label3D.show()
-		print("selected")
-		#material.albedo_color = Color(1, 1, 1)
+		$MeshInstance.material_override = selectedMaterial
 		move = true
 	else:
 		$Label3D.hide()
-		print("not selected")
-		#material.albedo_color = Color(1, 0, 0)
+		$MeshInstance.material_override = idleMaterial
 		move = false
 		
