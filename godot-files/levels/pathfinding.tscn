@@ -43,16 +43,16 @@ skeleton = NodePath("../../..")
 
 [node name="tile_handler" parent="Navigation" instance=ExtResource( 3 )]
 
-[node name="Tile1" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
+[node name="Tile1" parent="Navigation/tile_handler" groups=["StartTile"] instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -8, 3, -14 )
 
 [node name="Tile7" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, 10 )
 
-[node name="Tile5" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
+[node name="Tile5" parent="Navigation/tile_handler" groups=["StartTile"] instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 3, -14 )
 
-[node name="Tile2" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
+[node name="Tile2" parent="Navigation/tile_handler" groups=["StartTile"] instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 3, -14 )
 
 [node name="Tile3" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
@@ -60,6 +60,9 @@ transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 2, 3, 10 )
 
 [node name="Tile4" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, -2 )
+
+[node name="Tile8" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -6, 3, -2 )
 
 [node name="Tile6" parent="Navigation/tile_handler" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 3, -2 )
@@ -97,5 +100,7 @@ text = "You Won!
 Press Enter to restart"
 align = 1
 
-[connection signal="Won" from="Navigation/Troop" to="." method="_on_Troop_Won"]
-[connection signal="Won" from="Navigation/Troop2" to="." method="_on_Troop_Won"]
+[node name="GridMap" type="GridMap" parent="."]
+__meta__ = {
+"_editor_clip_": 0
+}
