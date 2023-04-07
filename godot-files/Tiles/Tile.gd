@@ -1,4 +1,4 @@
-extends KinematicBody
+extends Position3D
 
 signal tile_selected(vector)
 
@@ -11,6 +11,7 @@ func _ready():
 func _on_Area_input_event(camera, event, position, normal, shape_idx):
 	if event.is_action_pressed("mouse_left"):
 		emit_signal("tile_selected", self)
+		print(self.position)
 		$MeshInstance.material_override = selectedMaterial
 		
 	if event.is_action_pressed("mouse_right"):

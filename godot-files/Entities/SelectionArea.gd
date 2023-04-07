@@ -24,6 +24,6 @@ func _make_exclusive():
 	
 	get_tree().call_group("selected", "set_selected", false)
 	
-func _input_event(camera: Object, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _input_event(_camera: Object, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed(selection_action):
 		set_selected(not selected)

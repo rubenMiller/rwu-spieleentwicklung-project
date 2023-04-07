@@ -46,7 +46,8 @@ text = "Selected
 "
 
 [node name="NavigationAgent" type="NavigationAgent" parent="."]
-target_desired_distance = 0.1
+path_desired_distance = 3.0
+target_desired_distance = 15.0
 
 [connection signal="input_event" from="MeshInstance/SelectionArea" to="." method="_on_Area_input_event"]
 [connection signal="selection_toggled" from="MeshInstance/SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]

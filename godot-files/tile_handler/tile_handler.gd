@@ -8,6 +8,6 @@ signal tile_selected(vector)
 func _ready():
 	for child in self.get_children():
 		child.connect("tile_selected", self, "test_function")
-
+		
 func test_function(child):
 	emit_signal("tile_selected", child)
