@@ -17,7 +17,6 @@ func set_selected(selection):
 	selected = selection
 	emit_signal("selection_toggled", selected)
 
-
 func _make_exclusive():
 	if not exclusive:
 		return

@@ -14,6 +14,21 @@ config_version=4
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 } ]
+_global_script_classes=[ {
+"base": "KinematicBody",
+"class": "Unit",
+"language": "GDScript",
+"path": "res://Entities/Troop.gd"
+}, {
+"base": "GridMap",
+"class": "WalkTiles",
+"language": "GDScript",
+"path": "res://levels/WalkTiles.gd"
+} ]
+_global_script_class_icons={
+"Unit": "",
+"WalkTiles": ""
+}
 
 [>>>>>>>af6bd224af0838eae16d53d4509411fbed66b757[application]
 

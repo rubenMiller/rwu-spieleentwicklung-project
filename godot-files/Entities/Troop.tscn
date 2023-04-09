@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
 [ext_resource path="res://Art/materials/troop_idle_Material.tres" type="Material" id=3]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=4]
+[ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="SpatialMaterial" id=6]
 
@@ -14,6 +15,10 @@ material = SubResource( 5 )
 mid_height = 3.0
 
 [sub_resource type="Skin" id=4]
+
+[sub_resource type="DynamicFont" id=7]
+size = 120
+font_data = ExtResource( 5 )
 
 [sub_resource type="CapsuleShape" id=3]
 height = 3.0
@@ -29,25 +34,22 @@ material_override = SubResource( 6 )
 mesh = SubResource( 2 )
 skin = SubResource( 4 )
 
-[node name="SelectionArea" type="Area" parent="MeshInstance"]
-script = ExtResource( 2 )
-
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/SelectionArea"]
-shape = SubResource( 3 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32274, 0 )
-pixel_size = 0.1
 text = "Selected
 "
+font = SubResource( 7 )
 
 [node name="NavigationAgent" type="NavigationAgent" parent="."]
-path_desired_distance = 3.0
-target_desired_distance = 15.0
+path_desired_distance = 0.1
+target_desired_distance = 10.0
+agent_height_offset = 1.0
 
-[connection signal="input_event" from="MeshInstance/SelectionArea" to="." method="_on_Area_input_event"]
-[connection signal="selection_toggled" from="MeshInstance/SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
+[node name="SelectionArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
+shape = SubResource( 3 )
+
+[connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
