@@ -1,3 +1,4 @@
+class_name Tile
 extends Position3D
 
 signal tile_selected(vector)

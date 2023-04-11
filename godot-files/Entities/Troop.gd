@@ -12,7 +12,9 @@ onready var target_position := current_position
 onready var isSelected = false 
 onready var _agent: NavigationAgent = $NavigationAgent
 
-onready var tile_handler = get_node("../tile_handler")
+#onready var tile_handler = get_node("../tile_handler")
+#onready var tile_handler: Node = $"../Navigation/tile_handler"
+onready var tile_handler: Node = $"../../tile_handler"
 
 func _ready():
 	_agent.set_target_location(current_position)
@@ -21,12 +23,12 @@ func _ready():
 	tile_handler.connect("tile_selected", self, "move") # aufruf der move funktion
 	
 func _process(_delta: float) -> void:
-	if _agent.is_navigation_finished(): 
+	if _agent.is_navigation_finished():
 		return
 		
 	var direction := global_transform.origin.direction_to(_agent.get_next_location())
 	_velocity = direction * MAX_SPEED
-	move_and_slide(_velocity)
+	_velocity = move_and_slide(_velocity)
 	
 func move(target_tile):
 	if isSelected:

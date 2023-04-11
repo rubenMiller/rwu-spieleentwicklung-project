@@ -15,6 +15,11 @@ config_version=4
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 } ]
 _global_script_classes=[ {
+"base": "Position3D",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://Tiles/Tile.gd"
+}, {
 "base": "KinematicBody",
 "class": "Unit",
 "language": "GDScript",
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 "path": "res://levels/WalkTiles.gd"
 } ]
 _global_script_class_icons={
+"Tile": "",
 "Unit": "",
 "WalkTiles": ""
 }
