@@ -30,12 +30,12 @@ script = ExtResource( 6 )
 
 [node name="Troop" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 3, -14 )
-draw = NodePath("../../Draw")
+im = NodePath("../../Draw")
 camera = NodePath("../../Camera")
 
 [node name="Troop2" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 3, -14 )
-draw = NodePath("../../Draw")
+im = NodePath("../../Draw")
 camera = NodePath("../../Camera")
 
 [node name="tile_handler" parent="." instance=ExtResource( 3 )]
