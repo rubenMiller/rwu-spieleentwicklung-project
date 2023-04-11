@@ -40,11 +40,6 @@ text = "Selected
 "
 font = SubResource( 7 )
 
-[node name="NavigationAgent" type="NavigationAgent" parent="."]
-path_desired_distance = 0.1
-target_desired_distance = 10.0
-agent_height_offset = 1.0
-
 [node name="SelectionArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 script = ExtResource( 2 )

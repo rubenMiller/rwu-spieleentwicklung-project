@@ -26,6 +26,55 @@ font_data = ExtResource( 5 )
 [node name="Main" type="Spatial"]
 script = ExtResource( 6 )
 
+[node name="Troops" type="Spatial" parent="."]
+
+[node name="Troop" parent="Troops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 3, -14 )
+draw = NodePath("../../Draw")
+camera = NodePath("../../Camera")
+
+[node name="Troop2" parent="Troops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 3, -14 )
+draw = NodePath("../../Draw")
+camera = NodePath("../../Camera")
+
+[node name="tile_handler" parent="." instance=ExtResource( 3 )]
+
+[node name="Tile1" parent="tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -8, 3, -14 )
+
+[node name="Tile7" parent="tile_handler" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, 10 )
+
+[node name="Tile5" parent="tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 3, -14 )
+
+[node name="Tile2" parent="tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 3, -14 )
+
+[node name="Tile3" parent="tile_handler" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 2, 3, 10 )
+
+[node name="Tile4" parent="tile_handler" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, -2 )
+
+[node name="Tile8" parent="tile_handler" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -6, 3, -2 )
+
+[node name="Tile6" parent="tile_handler" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 3, -2 )
+
+[node name="Tile" parent="tile_handler" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 14, 3, 10 )
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -2, 0 )
+mesh = ExtResource( 8 )
+skeleton = NodePath("../..")
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 7.96152e-08, -3.61134e-08, -2.01071e-08, 0.192556, 0.981286, 8.50791e-08, 0.981286, -0.192556, 1.62017, 26.5294, -8.80011 )
 fov = 76.0036
@@ -47,53 +96,6 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 idle_tile = ExtResource( 9 )
-
-[node name="Navigation" type="Navigation" parent="."]
-
-[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
-navmesh = SubResource( 1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -2, 0 )
-mesh = ExtResource( 8 )
-skeleton = NodePath("../../..")
-
-[node name="tile_handler" parent="Navigation" instance=ExtResource( 3 )]
-
-[node name="Tile1" parent="Navigation/tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -8, 3, -14 )
-
-[node name="Tile7" parent="Navigation/tile_handler" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, 10 )
-
-[node name="Tile5" parent="Navigation/tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 3, -14 )
-
-[node name="Tile2" parent="Navigation/tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 3, -14 )
-
-[node name="Tile3" parent="Navigation/tile_handler" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 2, 3, 10 )
-
-[node name="Tile4" parent="Navigation/tile_handler" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, -2 )
-
-[node name="Tile8" parent="Navigation/tile_handler" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -6, 3, -2 )
-
-[node name="Tile6" parent="Navigation/tile_handler" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 3, -2 )
-
-[node name="Tile" parent="Navigation/tile_handler" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 14, 3, 10 )
-
-[node name="Troops" type="Spatial" parent="Navigation"]
-
-[node name="Troop" parent="Navigation/Troops" instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 3, -14 )
-
-[node name="Troop2" parent="Navigation/Troops" instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 3, -14 )
 
 [node name="UserInterface" type="Control" parent="."]
 anchor_right = 1.0
@@ -118,3 +120,5 @@ text = "You Won!
 
 Press Enter to restart"
 align = 1
+
+[node name="Draw" type="ImmediateGeometry" parent="."]

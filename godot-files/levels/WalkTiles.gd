@@ -6,7 +6,7 @@ export (Resource) var idle_tile
 var cells: Array = []
 var _units := {}
 
-onready var _navigation = $Navigation
+#onready var _navigation = $Navigation
 
 func _ready() -> void:
 	#_reinitialize()
@@ -16,18 +16,19 @@ func _ready() -> void:
 	print(cell_size)
 	print(cells)
 	print("Units:",_units)
-	print(_navigation)
+	#print(_navigation)
 	
 	
 	
 func _reinitialize() -> void:
-	_units.clear()
-
-	for child in _navigation.get_children():
-		var unit := child as Unit
-		if not unit:
-			continue
-		_units[unit.current_position] = unit
+	pass
+#	_units.clear()
+#
+#	for child in _navigation.get_children():
+#		var unit := child as Unit
+#		if not unit:
+#			continue
+#		_units[unit.current_position] = unit
 	
 	
 func tiles_on_points(points: Array):
