@@ -49,7 +49,11 @@ func _process(delta: float) -> void:
 			look_at(look_at_point, Vector3.UP)
 			
 func move(tile):
-	pass
+	if isSelected:
+		path = NavigationServer.map_get_path(map,translation, tile.translation, true)
+
+		if show_path:
+			draw_path(path)
 
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
@@ -62,18 +66,18 @@ func display_selected_unit():
 	if isSelected: $MeshInstance.material_override = selectedMaterial
 	else: $MeshInstance.material_override = idleMaterial
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and isSelected:
-		var from = camera.project_ray_origin(event.position)
-		var to = from + camera.project_ray_normal(event.position) * 1000
-		var target_point = NavigationServer.map_get_closest_point_to_segment(map, from, to)
-		var optimize_path = true
-
-		# Set the path between the robots current location and our target.
-		path = NavigationServer.map_get_path(map,translation, target_point, optimize_path)
-
-		if show_path and isSelected:
-			draw_path(path)
+#func _unhandled_input(event):
+#	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and isSelected:
+#		var from = camera.project_ray_origin(event.position)
+#		var to = from + camera.project_ray_normal(event.position) * 1000
+#		var target_point = NavigationServer.map_get_closest_point_to_segment(map, from, to)
+#		var optimize_path = true
+#
+#		# Set the path between the robots current location and our target.
+#		path = NavigationServer.map_get_path(map,translation, target_point, optimize_path)
+#
+#		if show_path and isSelected:
+#			draw_path(path)
 
 func setup_navserver():
 	# create a new navigation map

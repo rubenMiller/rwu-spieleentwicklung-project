@@ -43,6 +43,9 @@ camera = NodePath("../../Camera")
 [node name="Tile1" parent="tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -8, 3, -14 )
 
+[node name="Tile9" parent="tile_handler" groups=["StartTile"] instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -4, 3, -14 )
+
 [node name="Tile7" parent="tile_handler" instance=ExtResource( 4 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -10, 3, 10 )
 
@@ -93,7 +96,7 @@ data = {
 script = ExtResource( 7 )
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, -2, 0 )
 }
 idle_tile = ExtResource( 9 )
 

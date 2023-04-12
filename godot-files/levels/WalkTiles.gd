@@ -13,9 +13,9 @@ func _ready() -> void:
 	#visible = false
 	cells = get_used_cells()
 	
-	print(cell_size)
+	#print(cell_size)
 	print(cells)
-	print("Units:",_units)
+	#print("Units:",_units)
 	#print(_navigation)
 	
 	
