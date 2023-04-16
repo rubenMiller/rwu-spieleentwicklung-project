@@ -47,8 +47,6 @@ func _process(delta: float) -> void:
 		if direction:
 			var look_at_point = translation + direction.normalized()
 			look_at(look_at_point, Vector3.UP)
-	
-	
 			
 			
 func get_path_to_target_tile():
