@@ -12,28 +12,28 @@ var m = SpatialMaterial.new()
 var map
 var path = []
 var _velocity := Vector3.ZERO
+var selected_tile := []
 
 onready var current_position := global_transform.origin
 onready var target_position := current_position
 onready var isSelected = false 
 onready var navigation_mesh_instance: NavigationMeshInstance = $"../../NavigationMeshInstance"
-onready var tile_handler: Node = $"../../tile_handler"
+onready var walk_tiles: GridMap = $"../../WalkTiles"
 
 func _ready():
 	im = get_node(im)
 	camera = get_node(camera)
 	display_selected_unit()
-	set_process_unhandled_input(isSelected)
-	m.flags_unshaded = true
-	m.flags_use_point_size = true
-	m.albedo_color = Color.white
+	configure_path_material()
 
 	call_deferred("setup_navserver")
-	tile_handler.connect("tile_selected", self, "move") # aufruf der move funktion
 	
 func _process(delta: float) -> void:
+	get_path_to_target_tile()
+	
 	var direction = Vector3()
 	var step_size = delta * MAX_SPEED
+	
 	if path.size() > 0:
 		var destination = path[0]
 		direction = destination - translation
@@ -47,37 +47,31 @@ func _process(delta: float) -> void:
 		if direction:
 			var look_at_point = translation + direction.normalized()
 			look_at(look_at_point, Vector3.UP)
+	
+	
 			
-func move(tile):
-	if isSelected:
-		path = NavigationServer.map_get_path(map,translation, tile.translation, true)
-
-		if show_path:
-			draw_path(path)
+			
+func get_path_to_target_tile():
+	selected_tile = get_tree().get_nodes_in_group("selected_tile")
+	if selected_tile != []:
+		
+		if isSelected:
+			var target_tile = selected_tile[0]
+			path = NavigationServer.map_get_path(map,translation, target_tile.translation, true)
+			selected_tile[0].remove_from_group("selected_tile")
+			
+			if show_path:
+				draw_path(path)
 
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
-	set_process_unhandled_input(isSelected)
 	im.clear()
 	
 func display_selected_unit():
 	$Label3D.visible = isSelected
 	if isSelected: $MeshInstance.material_override = selectedMaterial
 	else: $MeshInstance.material_override = idleMaterial
-
-#func _unhandled_input(event):
-#	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and isSelected:
-#		var from = camera.project_ray_origin(event.position)
-#		var to = from + camera.project_ray_normal(event.position) * 1000
-#		var target_point = NavigationServer.map_get_closest_point_to_segment(map, from, to)
-#		var optimize_path = true
-#
-#		# Set the path between the robots current location and our target.
-#		path = NavigationServer.map_get_path(map,translation, target_point, optimize_path)
-#
-#		if show_path and isSelected:
-#			draw_path(path)
 
 func setup_navserver():
 	# create a new navigation map
@@ -98,6 +92,11 @@ func setup_navserver():
 	# wait for NavigationServer sync to adapt to made changes
 	yield(get_tree(), "physics_frame")
 
+func configure_path_material():
+	m.flags_unshaded = true
+	m.flags_use_point_size = true
+	m.albedo_color = Color.white
+	
 func draw_path(path_array):
 	im.clear()
 	im.set_material_override(m)

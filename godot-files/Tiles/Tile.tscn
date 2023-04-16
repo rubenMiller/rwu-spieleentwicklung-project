@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tiles/Tile.gd" type="Script" id=1]
+[ext_resource path="res://Art/materials/tile_selected.tres" type="Material" id=2]
+[ext_resource path="res://Art/materials/tile_unselected.tres" type="Material" id=3]
 
 [sub_resource type="PlaneMesh" id=9]
 
@@ -13,6 +15,8 @@ albedo_color = Color( 0.807843, 0.462745, 0.462745, 0.12549 )
 [node name="Tile" type="Position3D"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 1 )
+selectedMaterial = ExtResource( 2 )
+unselectedMaterial = ExtResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 9 )

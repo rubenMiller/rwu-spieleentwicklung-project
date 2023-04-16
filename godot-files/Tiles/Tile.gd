@@ -1,18 +1,31 @@
-class_name Tile
 extends Position3D
+class_name Tile
 
-signal tile_selected(vector)
+var is_tile_selected = false
 
-export var selectedMaterial: Material 
-export var unselectedMaterial: Material 
+export (SpatialMaterial) var selectedMaterial
+export (SpatialMaterial) var unselectedMaterial
 
 func _ready():
 	$MeshInstance.material_override = unselectedMaterial
 
+func _process(_delta: float) -> void:
+	if is_tile_selected:
+		$MeshInstance.material_override = selectedMaterial
+	else:
+		$MeshInstance.material_override = unselectedMaterial
+	
 func _on_Area_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("mouse_left"):
-		emit_signal("tile_selected", self)
-		$MeshInstance.material_override = selectedMaterial
+		reset_all_tiles()
+		is_tile_selected = true
+		add_to_group("selected_tile")
+		print("tile selected at:", translation)
 		
-	if event.is_action_pressed("mouse_right"):
-		$MeshInstance.material_override = unselectedMaterial
+func reset_all_tiles():
+	var tiles = get_tree().get_nodes_in_group("selectable_tiles")
+	for tile in tiles:
+		tile.is_tile_selected = false
+		if tile.is_in_group("selected_tile"):
+			tile.remove_from_group("selected_tile")
+	

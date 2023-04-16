@@ -1,0 +1,15 @@
+[gd_resource type="MeshLibrary" load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=10]
+flags_transparent = true
+albedo_color = Color( 0.807843, 0.462745, 0.462745, 0.12549 )
+
+[sub_resource type="PointMesh" id=11]
+material = SubResource( 10 )
+
+[resource]
+item/0/name = "MeshInstance"
+item/0/mesh = SubResource( 11 )
+item/0/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+item/0/shapes = [  ]
+item/0/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
