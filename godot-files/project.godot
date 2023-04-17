@@ -46,6 +46,10 @@ config/name="Spieleentwicklung"
 run/main_scene="res://levels/pathfinding.tscn"
 config/icon="res://icon.jpg"
 
+[autoload]
+
+SignalBus="*res://Components/signal_bus.tscn"
+
 [config]
 
 icon="res://icon.jpg"
