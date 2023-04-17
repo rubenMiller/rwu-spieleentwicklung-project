@@ -13,7 +13,7 @@ albedo_color = Color( 0.807843, 0.462745, 0.462745, 0.12549 )
 
 [sub_resource type="BoxShape" id=11]
 
-[node name="Tile" type="Position3D"]
+[node name="Tile2" type="Position3D"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 1 )
 selectedMaterial = ExtResource( 2 )
