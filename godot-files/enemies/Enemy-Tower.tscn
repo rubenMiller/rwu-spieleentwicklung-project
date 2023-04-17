@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://enemies/SelectionArea.gd" type="Script" id=1]
+
+[sub_resource type="GradientTexture2D" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.184314, 0.172549, 0.184314, 1 )
+metallic = 1.0
+roughness_texture = SubResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.160784, 0.152941, 0.152941, 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+material = SubResource( 5 )
+top_radius = 2.0
+bottom_radius = 2.0
+height = 8.0
+
+[sub_resource type="Skin" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+
+[sub_resource type="CylinderShape" id=8]
+height = 8.0
+radius = 2.0
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+albedo_color = Color( 0.0705882, 0.0588235, 0.423529, 0.462745 )
+
+[sub_resource type="CylinderMesh" id=10]
+material = SubResource( 9 )
+top_radius = 12.0
+bottom_radius = 5.0
+height = 0.001
+
+[node name="KinematicBody" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_overlay = SubResource( 7 )
+mesh = SubResource( 4 )
+skin = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="SelectionArea" type="Area" parent="."]
+script = ExtResource( 1 )
+radiusPath = NodePath("../radius")
+
+[node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
+shape = SubResource( 8 )
+
+[node name="radius" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="radius"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+mesh = SubResource( 10 )
