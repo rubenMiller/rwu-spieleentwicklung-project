@@ -1,79 +1,109 @@
+class_name Unit
 extends KinematicBody
 
-signal Won
+export var idleMaterial: Material
+export var selectedMaterial: Material
+export var MAX_SPEED := 10.0
+export var show_path = true
+export (NodePath) var im
+export (NodePath) var camera 
 
+var m = SpatialMaterial.new()
+var map
 var path = []
-var path_node = 0
+var _velocity := Vector3.ZERO
+var selected_tile := []
 
-var speed = 10
-
-onready var nav = get_parent()
-onready var move = false
-onready var tile_handler = get_node("../tile_handler")
-onready var navigating_to_win_tile = false
-
-var idleMaterial: Material =  load("res://Art/materials/troop_idle_Material.tres")
-var selectedMaterial: Material = load("res://Art/materials/troop_selected_Material.tres")
+onready var current_position := global_transform.origin
+onready var target_position := current_position
+onready var isSelected = false 
+onready var navigation_mesh_instance: NavigationMeshInstance = $"../../NavigationMeshInstance"
+onready var walk_tiles: GridMap = $"../../WalkTiles"
 
 func _ready():
-	$Label3D.hide()
-	$MeshInstance.material_override = idleMaterial
-	print(tile_handler)
-	tile_handler.connect("tile_selected", self, "move") # aufruf der move funktion
-	
-func _physics_process(delta: float) -> void:
-	if path_node < path.size():
-		var direction = (path[path_node] - global_transform.origin)
-		if direction.length() < 1:
-			path_node += 1
-		else:
-			move_and_slide(direction.normalized() * speed)
-		if path_node == path.size():
-			move_and_collide(direction.normalized())
-			if navigating_to_win_tile == true:
-				emit_signal("Won")
-			
-func move(child):
-	
-	if(child.filename == "res://Tiles/Tile.tscn"):
-		navigating_to_win_tile = false
-	if(child.filename == "res://win_tile/win_tile.tscn"):
-		print("On the way to the win")
-		navigating_to_win_tile = true
-	move_to(child.global_transform.origin)
-			
-func move_to(target_pos):
-	if move == true:
-		path = nav.get_simple_path(global_transform.origin, target_pos)
-		print(global_transform.origin)
-		print(target_pos)
-		path_node = 0
-	
+	im = get_node(im)
+	camera = get_node(camera)
+	display_selected_unit()
+	configure_path_material()
 
-func _on_Area_input_event(camera, event, position, normal, shape_idx):
-	pass
-#	if event.is_action_pressed("mouse_left"):
-#		print("Troop pressed")
-#		if move == true:
-#			print("move to false")
-#			print(material)
-#			material.albedo_color = Color(1, 1, 1)
-#			move = false
-#		elif move == false:
-#			print(material)
-#			print("move to true")
-#			material.albedo_color = Color(1, 0, 0)
-#			move = true
+	call_deferred("setup_navserver")
+	
+func _process(delta: float) -> void:
+	get_path_to_target_tile()
+	
+	var direction = Vector3()
+	var step_size = delta * MAX_SPEED
+	
+	if path.size() > 0:
+		var destination = path[0]
+		direction = destination - translation
 
+		if step_size > direction.length():
+			step_size = direction.length()
+			path.remove(0)
+			
+		translation += direction.normalized() * step_size
+		direction.y = 0
+		if direction:
+			var look_at_point = translation + direction.normalized()
+			look_at(look_at_point, Vector3.UP)
+			
+			
+func get_path_to_target_tile():
+	selected_tile = get_tree().get_nodes_in_group("selected_tile")
+	if selected_tile != []:
+		
+		if isSelected:
+			var target_tile = selected_tile[0]
+			path = NavigationServer.map_get_path(map,translation, target_tile.translation, true)
+			selected_tile[0].remove_from_group("selected_tile")
+			
+			if show_path:
+				draw_path(path)
 
 func _on_SelectionArea_selection_toggled(selection):
-	set_process_unhandled_input(selection)
-	if selection:
-		$Label3D.show()
-		$MeshInstance.material_override = selectedMaterial
-		move = true
-	else:
-		$Label3D.hide()
-		$MeshInstance.material_override = idleMaterial
-		move = false
-		
+	isSelected = selection
+	display_selected_unit()
+	im.clear()
+	
+func display_selected_unit():
+	$Label3D.visible = isSelected
+	if isSelected: $MeshInstance.material_override = selectedMaterial
+	else: $MeshInstance.material_override = idleMaterial
+
+func setup_navserver():
+	# create a new navigation map
+	map = NavigationServer.map_create()
+	NavigationServer.map_set_up(map, Vector3.UP)
+	NavigationServer.map_set_active(map, true)
+	
+	# create a new navigation region and add it to the map
+	var region = NavigationServer.region_create()
+	NavigationServer.region_set_transform(region, Transform())
+	NavigationServer.region_set_map(region, map)
+	
+	# sets navigation mesh for the region
+	var navigation_mesh = NavigationMesh.new()
+	navigation_mesh = navigation_mesh_instance.navmesh
+	NavigationServer.region_set_navmesh(region, navigation_mesh)
+	
+	# wait for NavigationServer sync to adapt to made changes
+	yield(get_tree(), "physics_frame")
+
+func configure_path_material():
+	m.flags_unshaded = true
+	m.flags_use_point_size = true
+	m.albedo_color = Color.white
+	
+func draw_path(path_array):
+	im.clear()
+	im.set_material_override(m)
+	im.clear()
+	im.begin(Mesh.PRIMITIVE_POINTS, null)
+	im.add_vertex(path_array[0])
+	im.add_vertex(path_array[path_array.size() - 1])
+	im.end()
+	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
+	for x in path:
+		im.add_vertex(x)
+	im.end()

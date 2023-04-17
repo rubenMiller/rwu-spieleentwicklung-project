@@ -1,20 +1,31 @@
-extends KinematicBody
+extends Position3D
+class_name Tile
 
-signal tile_selected(vector)
+var is_tile_selected = false
 
-
-var selectedMaterial: Material = load("res://Art/materials/tile_selected.tres")
-var unselectedMaterial: Material = load("res://Art/materials/tile_unselected.tres")
+export (SpatialMaterial) var selectedMaterial
+export (SpatialMaterial) var unselectedMaterial
 
 func _ready():
 	$MeshInstance.material_override = unselectedMaterial
 
-
-func _on_Area_input_event(camera, event, position, normal, shape_idx):
-	if event.is_action_pressed("mouse_left"):
-		print("I am node at: ", global_transform.origin)
+func _process(_delta: float) -> void:
+	if is_tile_selected:
 		$MeshInstance.material_override = selectedMaterial
-		emit_signal("tile_selected", self)
-		print("signal emitted")
-	if event.is_action_pressed("mouse_right"):
+	else:
 		$MeshInstance.material_override = unselectedMaterial
+	
+func _on_Area_input_event(_camera, event, _position, _normal, _shape_idx):
+	if event.is_action_pressed("mouse_left"):
+		reset_all_tiles()
+		is_tile_selected = true
+		add_to_group("selected_tile")
+		print("tile selected at:", translation)
+		
+func reset_all_tiles():
+	var tiles = get_tree().get_nodes_in_group("selectable_tiles")
+	for tile in tiles:
+		tile.is_tile_selected = false
+		if tile.is_in_group("selected_tile"):
+			tile.remove_from_group("selected_tile")
+	
