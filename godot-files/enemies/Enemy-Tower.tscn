@@ -61,6 +61,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 shape = SubResource( 11 )
 
 [node name="SelectionArea" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 radiusPath = NodePath("../radius")
 
@@ -69,3 +71,5 @@ shape = SubResource( 12 )
 
 [connection signal="area_entered" from="radius" to="." method="_on_radius_area_entered"]
 [connection signal="area_exited" from="radius" to="." method="_on_radius_area_exited"]
+[connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
+[connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]

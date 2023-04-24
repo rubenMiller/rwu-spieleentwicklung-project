@@ -26,14 +26,24 @@ func _process(delta):
 	
 	if target_list.size() > 0 && ready_to_shoot:
 		# print("The node ", target_list[0], " will be shot at")
-		pass
+		shoot_first_target()
+		elapsed_time = 0
+		ready_to_shoot = false
+		
+func shoot_first_target():
+	print("Going to shoot: ", target_list[0])
+	# get_node(target_list[0]).is_queued_for_deletion()
+	print("target_list", target_list, "target_list")
+	target_list[0].queue_free()
+	print("Deleted node: ", target_list[0])
+	# target_list.erase[target_list[0]]
 
-func _on_radius_area_entered(area):
-	print(area, " entered the radius")
-	target_list.append(area)
 
-
-func _on_radius_area_exited(area):
-	print(area, " left the radius")
-	target_list.erase(area)
-	print(target_list)
+func _on_radius_body_entered(body):
+	print("Body entered: ", body)
+	target_list.append(body)
+	
+	
+func _on_radius_body_exited(body):
+	print("Body entered: ", body)
+	target_list.erase(body)
