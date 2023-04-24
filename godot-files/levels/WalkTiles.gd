@@ -12,8 +12,8 @@ func _ready() -> void:
 	
 	tile_container = get_node(tile_container)
 	create_tiles_on_points()
-	print(get_used_cells_by_item(0))
-	print(get_used_cells_by_item(1))
+	#print(get_used_cells_by_item(0))
+	#print(get_used_cells_by_item(1))
 	
 	selectable_tiles = get_tree().get_nodes_in_group("selectable_tiles")
 	
@@ -29,7 +29,7 @@ func create_tiles_on_points():
 	for cell in cells:
 		var cell_world = map_to_world(cell.x,cell.y,cell.z)
 		cell_world.y += 1
-		var tile = idle_tile.instance()
+		var tile :Tile= idle_tile.instance()
 		tile.translation = cell_world
 		tile.add_to_group("selectable_tiles")
 		if cell == get_used_cells_by_item(1)[0]:

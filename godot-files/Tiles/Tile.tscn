@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tiles/Tile.gd" type="Script" id=1]
 [ext_resource path="res://Art/materials/tile_selected.tres" type="Material" id=2]
 [ext_resource path="res://Art/materials/tile_unselected.tres" type="Material" id=3]
+[ext_resource path="res://Art/materials/tile_unselected_Win.tres" type="Material" id=4]
 
 [sub_resource type="CylinderMesh" id=12]
 height = 0.094
@@ -18,6 +19,7 @@ transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 1 )
 selectedMaterial = ExtResource( 2 )
 unselectedMaterial = ExtResource( 3 )
+win_unselected_material = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 12 )

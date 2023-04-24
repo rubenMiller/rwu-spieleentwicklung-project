@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Entities/Troop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Troop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/Idle_Win.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://tile_handler/tile_handler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tiles/Tile.tscn" type="PackedScene" id=4]

@@ -31,7 +31,6 @@ func _ready():
 func _process(delta: float) -> void:
 	if has_reached_win_tile():
 		SignalBus.emit_signal("won")
-		#emit_signal()
 	get_path_to_target_tile()
 	
 	var direction = Vector3()
