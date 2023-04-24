@@ -104,6 +104,10 @@ mouse_right={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Troop_select"
+
 [physics]
 
 common/enable_pause_aware_picking=true
