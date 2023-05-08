@@ -4,10 +4,6 @@ extends Spatial
 var recharge_time = 2 # is 2 seconds
 var elapsed_time = 0
 var ready_to_shoot: bool = false
-export (NodePath) var troop1Path
-onready var troop1Node = get_node(troop1Path)
-export (NodePath) var troop2Path
-onready var troop2Node = get_node(troop2Path)
 var target_list = []
 
 
@@ -34,8 +30,8 @@ func shoot_first_target():
 	print("Going to shoot: ", target_list[0])
 	# get_node(target_list[0]).is_queued_for_deletion()
 	print("target_list", target_list, "target_list")
-	target_list[0].queue_free()
-	print("Deleted node: ", target_list[0])
+	target_list[0].get_child(4).reduceHealth(1)
+	print("Reduced Health by on for: ", target_list[0])
 	# target_list.erase[target_list[0]]
 
 

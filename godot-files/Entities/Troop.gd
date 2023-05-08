@@ -114,3 +114,7 @@ func draw_path(path_array):
 	for x in path:
 		im.add_vertex(x)
 	im.end()
+
+
+func _on_HealtComponent_i_am_dead():
+	queue_free()

@@ -51,9 +51,12 @@ skin = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="radius" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="MeshInstance" type="MeshInstance" parent="radius"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+layers = 2
 mesh = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="radius"]
