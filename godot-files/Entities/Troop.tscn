@@ -57,7 +57,7 @@ priority = 1.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="HealtComponent" parent="." instance=ExtResource( 6 )]
 health = 2
