@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://enemies/SelectionArea.gd" type="Script" id=1]
 [ext_resource path="res://enemies/Enemy-Tower.gd" type="Script" id=2]
@@ -41,6 +41,14 @@ radius = 12.0
 height = 8.0
 radius = 2.0
 
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 0, 0, 0.537255 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 15 )
+width = 8
+
 [node name="TowerKinematicBody" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -71,7 +79,18 @@ radiusPath = NodePath("../radius")
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 12 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+pixel_size = 1.0
+billboard = 1
+texture = SubResource( 14 )
+
 [connection signal="area_entered" from="radius" to="." method="_on_radius_area_entered"]
 [connection signal="area_exited" from="radius" to="." method="_on_radius_area_exited"]
 [connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
 [connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -3,6 +3,8 @@ extends Spatial
 
 var recharge_time = 2 # is 2 seconds
 var elapsed_time = 0
+#onready var timer = get_node(Timer);
+onready var health_bar = $Sprite3D
 var ready_to_shoot: bool = false
 export (NodePath) var troop1Path
 onready var troop1Node = get_node(troop1Path)
@@ -20,6 +22,7 @@ func _ready():
 func _process(delta):
 	if ready_to_shoot == false:
 		elapsed_time += delta
+		health_bar.scale.x = (2 - elapsed_time) /2
 		if elapsed_time >= recharge_time:
 			print("Relad successfull!")
 			ready_to_shoot = true
