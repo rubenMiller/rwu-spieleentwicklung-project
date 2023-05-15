@@ -1,6 +1,55 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Components/AttackComponent.gd" type="Script" id=1]
 
-[node name="AttackComponent" type="Node"]
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 0, 0, 0.537255 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+width = 8
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+albedo_color = Color( 0.0705882, 0.0588235, 0.423529, 0.462745 )
+
+[sub_resource type="CylinderMesh" id=10]
+material = SubResource( 9 )
+top_radius = 12.0
+bottom_radius = 5.0
+height = 0.001
+
+[sub_resource type="CylinderShape" id=11]
+height = 0.001
+radius = 12.0
+
+[node name="AttackComponent" type="Spatial"]
 script = ExtResource( 1 )
+
+[node name="Reload_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Health_bar" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+pixel_size = 1.0
+billboard = 1
+texture = SubResource( 16 )
+
+[node name="radius" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="radius"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+layers = 2
+mesh = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="radius"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 11 )
+
+[connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
+[connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
