@@ -80,11 +80,12 @@ radiusPath = NodePath("../radius")
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 12 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Reload_timer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 autostart = true
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Health_bar" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 pixel_size = 1.0
 billboard = 1
@@ -94,4 +95,4 @@ texture = SubResource( 14 )
 [connection signal="area_exited" from="radius" to="." method="_on_radius_area_exited"]
 [connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
 [connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Reload_timer" to="." method="_on_Timer_timeout"]
