@@ -12,6 +12,5 @@ func _ready():
 
 func _input_event(_camera: Object, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed(selection_action):
-		print("pressed")
 		attack_component.change_radius_visibility()
 

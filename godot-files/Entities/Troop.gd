@@ -6,7 +6,6 @@ export var selectedMaterial: Material
 export var MAX_SPEED := 10.0
 export var show_path = true
 export (NodePath) var im
-export (NodePath) var camera 
 
 var m = SpatialMaterial.new()
 var map
@@ -20,13 +19,17 @@ onready var isSelected = false
 onready var navigation_mesh_instance: NavigationMeshInstance = $"../../NavigationMeshInstance"
 onready var walk_tiles: GridMap = $"../../WalkTiles"
 
+# TODO Extract navigation component
+
 func _ready():
 	im = get_node(im)
-	camera = get_node(camera)
 	display_selected_unit()
 	configure_path_material()
 
 	call_deferred("setup_navserver")
+	
+	
+	
 	
 func _process(delta: float) -> void:
 	if has_reached_win_tile():

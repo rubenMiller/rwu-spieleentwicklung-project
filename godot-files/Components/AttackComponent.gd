@@ -1,5 +1,6 @@
 extends Node
 
+export var target_group_name := " "
 onready var reload_timer = $Reload_timer
 onready var health_bar = $Health_bar
 onready var radius = $radius
@@ -7,6 +8,7 @@ onready var radius = $radius
 var target_list = []
 
 func _ready():
+	print(target_group_name)
 	pass 
 
 func _process(delta):
@@ -19,20 +21,24 @@ func _process(delta):
 		reload_timer.start()
 		
 func shoot_first_target():
-	print("Going to shoot: ", target_list[0])
-	print("target_list", target_list, "target_list")
+	#print("Going to shoot: ", target_list[0])
+	#print("target_list", target_list, "target_list")
 	target_list[0].get_child(4).reduceHealth(1)
-	print("Reduced Health by on for: ", target_list[0])
+	#print("Reduced Health by on for: ", target_list[0])
 
 func _on_radius_body_entered(body):
-	print("Body entered: ", body)
-	target_list.append(body)
+	#print("Body entered: ", body)
+	#print("something entered")
+	#print(body.get_groups())
+	print(get_tree().get_nodes_in_group("Troops"))
+	if body.is_in_group(target_group_name):
+		#print("entered" + target_group_name)
+		target_list.append(body)
 	
 func _on_radius_body_exited(body):
-	print("Body entered: ", body)
-	target_list.erase(body)
+	#print("Body entered: ", body)
+	if body.is_in_group(target_group_name):
+		target_list.erase(body)
 	
 func change_radius_visibility():
-	print("hi")
-	print(radius.visible)
 	radius.visible = not radius.visible

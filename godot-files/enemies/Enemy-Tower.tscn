@@ -3,6 +3,10 @@
 [ext_resource path="res://enemies/SelectionArea.gd" type="Script" id=1]
 [ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=2]
 
+[sub_resource type="CylinderShape" id=12]
+height = 8.0
+radius = 2.0
+
 [sub_resource type="GradientTexture2D" id=6]
 
 [sub_resource type="SpatialMaterial" id=7]
@@ -23,11 +27,10 @@ height = 8.0
 
 [sub_resource type="SpatialMaterial" id=3]
 
-[sub_resource type="CylinderShape" id=12]
-height = 8.0
-radius = 2.0
+[node name="TowerKinematicBody" type="KinematicBody" groups=["Towers"]]
 
-[node name="TowerKinematicBody" type="Spatial"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 material_overlay = SubResource( 7 )
@@ -45,3 +48,4 @@ attack_component_path = NodePath("../AttackComponent")
 shape = SubResource( 12 )
 
 [node name="AttackComponent" parent="." instance=ExtResource( 2 )]
+target_group_name = "Troops"
