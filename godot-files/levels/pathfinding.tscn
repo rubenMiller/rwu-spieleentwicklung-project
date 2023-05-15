@@ -28,6 +28,7 @@ script = ExtResource( 6 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5, -1 )
+visible = false
 
 [node name="Troops" type="Spatial" parent="."]
 
@@ -36,12 +37,11 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 3, -
 im = NodePath("../../Draw")
 
 [node name="Troop3" parent="Troops" instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 3, -14 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 7, -2 )
 im = NodePath("../../Draw")
 
 [node name="Troop2" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 3, -14 )
-visible = false
 im = NodePath("../../Draw")
 
 [node name="tile_container" parent="." instance=ExtResource( 3 )]

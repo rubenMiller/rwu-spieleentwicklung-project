@@ -29,6 +29,7 @@ input_ray_pickable = false
 script = ExtResource( 1 )
 idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
+attack_component_path = NodePath("AttackComponent")
 
 [node name="HealtComponent" parent="." instance=ExtResource( 6 )]
 health = 3

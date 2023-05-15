@@ -7,6 +7,9 @@ export var MAX_SPEED := 10.0
 export var show_path = true
 export (NodePath) var im
 
+export (NodePath) var attack_component_path
+onready var attack_component = get_node(attack_component_path)
+
 var m = SpatialMaterial.new()
 var map
 var path = []
@@ -69,6 +72,7 @@ func get_path_to_target_tile():
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
+	attack_component.change_radius_visibility()
 	im.clear()
 	
 func display_selected_unit():
@@ -121,3 +125,4 @@ func draw_path(path_array):
 
 func _on_HealtComponent_i_am_dead():
 	queue_free()
+	

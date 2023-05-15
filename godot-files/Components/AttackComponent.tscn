@@ -17,8 +17,8 @@ albedo_color = Color( 0.0705882, 0.0588235, 0.423529, 0.462745 )
 [sub_resource type="CylinderMesh" id=10]
 material = SubResource( 9 )
 top_radius = 12.0
-bottom_radius = 5.0
-height = 0.001
+bottom_radius = 12.0
+height = 14.68
 
 [sub_resource type="CylinderShape" id=11]
 height = 0.001
@@ -39,6 +39,7 @@ billboard = 1
 texture = SubResource( 16 )
 
 [node name="radius" type="Area" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
