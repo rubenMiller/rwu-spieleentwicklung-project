@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://enemies/SelectionArea.gd" type="Script" id=1]
+[ext_resource path="res://enemies/Enemy-Tower.gd" type="Script" id=2]
+
+[sub_resource type="GradientTexture2D" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.184314, 0.172549, 0.184314, 1 )
+metallic = 1.0
+roughness_texture = SubResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.160784, 0.152941, 0.152941, 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+material = SubResource( 5 )
+top_radius = 2.0
+bottom_radius = 2.0
+height = 8.0
+
+[sub_resource type="Skin" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+albedo_color = Color( 0.0705882, 0.0588235, 0.423529, 0.462745 )
+
+[sub_resource type="CylinderMesh" id=10]
+material = SubResource( 9 )
+top_radius = 12.0
+bottom_radius = 5.0
+height = 0.001
+
+[sub_resource type="CylinderShape" id=11]
+height = 0.001
+radius = 12.0
+
+[sub_resource type="CylinderShape" id=12]
+height = 8.0
+radius = 2.0
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 0, 0, 0.537255 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 15 )
+width = 8
+
+[node name="TowerKinematicBody" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_overlay = SubResource( 7 )
+mesh = SubResource( 4 )
+skin = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="radius" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="radius"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+layers = 2
+mesh = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="radius"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 11 )
+
+[node name="SelectionArea" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 1 )
+radiusPath = NodePath("../radius")
+
+[node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
+shape = SubResource( 12 )
+
+[node name="Reload_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Health_bar" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+pixel_size = 1.0
+billboard = 1
+texture = SubResource( 14 )
+
+[connection signal="area_entered" from="radius" to="." method="_on_radius_area_entered"]
+[connection signal="area_exited" from="radius" to="." method="_on_radius_area_exited"]
+[connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
+[connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
+[connection signal="timeout" from="Reload_timer" to="." method="_on_Timer_timeout"]

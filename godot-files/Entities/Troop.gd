@@ -29,6 +29,8 @@ func _ready():
 	call_deferred("setup_navserver")
 	
 func _process(delta: float) -> void:
+	if has_reached_win_tile():
+		SignalBus.emit_signal("won")
 	get_path_to_target_tile()
 	
 	var direction = Vector3()
@@ -70,6 +72,11 @@ func display_selected_unit():
 	$Label3D.visible = isSelected
 	if isSelected: $MeshInstance.material_override = selectedMaterial
 	else: $MeshInstance.material_override = idleMaterial
+	
+func has_reached_win_tile():
+	var win_tile = get_tree().get_nodes_in_group("win_tiles")
+	var tile_pos = win_tile[0].translation
+	return tile_pos.x == translation.x and tile_pos.z == translation.z
 
 func setup_navserver():
 	# create a new navigation map
@@ -107,3 +114,7 @@ func draw_path(path_array):
 	for x in path:
 		im.add_vertex(x)
 	im.end()
+
+
+func _on_HealtComponent_i_am_dead():
+	queue_free()

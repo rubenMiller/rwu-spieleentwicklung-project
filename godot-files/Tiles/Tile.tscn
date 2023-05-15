@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tiles/Tile.gd" type="Script" id=1]
 [ext_resource path="res://Art/materials/tile_selected.tres" type="Material" id=2]
 [ext_resource path="res://Art/materials/tile_unselected.tres" type="Material" id=3]
+[ext_resource path="res://Art/materials/tile_unselected_Win.tres" type="Material" id=4]
 
 [sub_resource type="CylinderMesh" id=12]
 height = 0.094
@@ -13,17 +14,22 @@ albedo_color = Color( 0.807843, 0.462745, 0.462745, 0.12549 )
 
 [sub_resource type="BoxShape" id=11]
 
-[node name="Tile" type="Position3D"]
+[node name="Tile2" type="Position3D"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 1 )
 selectedMaterial = ExtResource( 2 )
 unselectedMaterial = ExtResource( 3 )
+win_unselected_material = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 12 )
 material/0 = SubResource( 10 )
 
 [node name="Area" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 11 )
