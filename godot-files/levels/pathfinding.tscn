@@ -41,6 +41,7 @@ im = NodePath("../../Draw")
 
 [node name="Troop2" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 3, -14 )
+visible = false
 im = NodePath("../../Draw")
 
 [node name="tile_container" parent="." instance=ExtResource( 3 )]

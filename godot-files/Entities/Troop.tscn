@@ -30,6 +30,9 @@ script = ExtResource( 1 )
 idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
 
+[node name="HealtComponent" parent="." instance=ExtResource( 6 )]
+health = 3
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 9 )
@@ -39,12 +42,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
-text = "Selected
-"
-font = SubResource( 7 )
 
 [node name="SelectionArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -56,12 +53,15 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 9 )
 
-[node name="HealtComponent" parent="." instance=ExtResource( 6 )]
-health = 2
-
 [node name="AttackComponent" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.46655, 0 )
-target_group_name = " Towers"
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.63069, 0 )
+target_group_name = "Towers"
 
-[connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
+text = "Selected
+"
+font = SubResource( 7 )
+
 [connection signal="i_am_dead" from="HealtComponent" to="." method="_on_HealtComponent_i_am_dead"]
+[connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]

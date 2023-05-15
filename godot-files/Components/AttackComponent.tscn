@@ -41,6 +41,7 @@ texture = SubResource( 16 )
 [node name="radius" type="Area" parent="."]
 collision_layer = 2
 collision_mask = 2
+input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="radius"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
