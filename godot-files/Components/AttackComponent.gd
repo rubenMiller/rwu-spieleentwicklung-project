@@ -11,7 +11,7 @@ func _ready():
 	print(target_group_name)
 	pass 
 
-func _process(delta):
+func _process(_delta):
 	health_bar.scale.x = reload_timer.time_left / reload_timer.wait_time
 	if not reload_timer.is_stopped():
 		return

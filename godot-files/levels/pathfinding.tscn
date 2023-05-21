@@ -34,19 +34,16 @@ visible = false
 
 [node name="Troop" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 3, -14 )
-im = NodePath("../../Draw")
 
 [node name="Troop3" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 7, -2 )
-im = NodePath("../../Draw")
 
 [node name="Troop2" parent="Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 3, -14 )
-im = NodePath("../../Draw")
 
 [node name="tile_container" parent="." instance=ExtResource( 3 )]
 
-[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." groups=["navigation_mesh_instance"]]
 navmesh = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance"]
@@ -100,4 +97,4 @@ text = "You Won!
 Press Enter to restart"
 align = 1
 
-[node name="Draw" type="ImmediateGeometry" parent="."]
+[node name="Draw" type="ImmediateGeometry" parent="." groups=["draw"]]

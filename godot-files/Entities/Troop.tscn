@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/Navigation_component.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape" id=9]
 height = 3.0
@@ -29,7 +30,6 @@ input_ray_pickable = false
 script = ExtResource( 1 )
 idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
-attack_component_path = NodePath("AttackComponent")
 
 [node name="HealtComponent" parent="." instance=ExtResource( 6 )]
 health = 3
@@ -54,7 +54,7 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 9 )
 
-[node name="AttackComponent" parent="." instance=ExtResource( 7 )]
+[node name="Attack_component" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.63069, 0 )
 target_group_name = "Towers"
 
@@ -63,6 +63,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
 text = "Selected
 "
 font = SubResource( 7 )
+
+[node name="Navigation_component" parent="." instance=ExtResource( 8 )]
 
 [connection signal="i_am_dead" from="HealtComponent" to="." method="_on_HealtComponent_i_am_dead"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
