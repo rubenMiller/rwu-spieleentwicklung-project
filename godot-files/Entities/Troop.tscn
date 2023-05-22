@@ -23,7 +23,7 @@ mid_height = 3.0
 size = 120
 font_data = ExtResource( 5 )
 
-[node name="Troop" type="KinematicBody"]
+[node name="Troop" type="KinematicBody" groups=["troop"]]
 collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
@@ -56,6 +56,7 @@ shape = SubResource( 9 )
 
 [node name="Attack_component" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.63069, 0 )
+target_group_name = "tower"
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )

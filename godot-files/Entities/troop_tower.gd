@@ -4,17 +4,10 @@ export var idleMaterial: Material
 export var selectedMaterial: Material
 
 onready var attack_component: Spatial = $Attack_component
-#onready var nav_component: Spatial = $Navigation_component
 onready var isSelected = false
 
 func _ready():
 	display_selected_unit()
-	#nav_component.setup_navserver()
-	
-func _process(_delta: float) -> void:
-	if isSelected:
-		print("hi")
-		#nav_component.get_path_to_target_tile()
 
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection

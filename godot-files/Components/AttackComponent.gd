@@ -23,9 +23,10 @@ func shoot_first_target():
 	target_list[0].get_child(0).reduceHealth(1)
 
 func _on_radius_body_entered(body):
-	print("Want to attack: ", target_group_name, " body: ", body)
+	print("I ",get_parent() , " detected in my Radius: ", target_group_name, body)
+	#print(body, " wants to attack: ", target_group_name, " body: ", body)
 	if body.is_in_group(target_group_name):
-		print("Adding to list from group: ", target_group_name)
+		print("I ",get_parent() , " want to attack: ", target_group_name, body)
 		target_list.append(body)
 	
 func _on_radius_body_exited(body):
