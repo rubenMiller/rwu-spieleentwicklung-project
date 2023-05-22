@@ -5,7 +5,9 @@ export var selectedMaterial: Material
 
 onready var attack_component: Spatial = $Attack_component
 onready var nav_component: Spatial = $Navigation_component
+onready var radius_component: Area = $Radius_Component
 onready var isSelected = false
+
 
 func _ready():
 	display_selected_unit()
@@ -18,7 +20,7 @@ func _process(_delta: float) -> void:
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
-	attack_component.change_radius_visibility()
+	radius_component.visible = selection
 	
 func display_selected_unit():
 	$Label3D.visible = isSelected

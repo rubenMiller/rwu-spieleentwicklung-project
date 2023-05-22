@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/Navigation_component.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape" id=9]
 height = 3.0
@@ -66,5 +67,12 @@ font = SubResource( 7 )
 
 [node name="Navigation_component" parent="." instance=ExtResource( 8 )]
 
+[node name="Radius_Component" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+visible = false
+radius = 10.0
+
 [connection signal="i_am_dead" from="HealtComponent" to="." method="_on_HealtComponent_i_am_dead"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
+[connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
+[connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]
