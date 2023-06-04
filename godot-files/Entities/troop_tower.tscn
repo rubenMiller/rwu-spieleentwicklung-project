@@ -50,6 +50,7 @@ collision_mask = 0
 monitorable = false
 priority = 1.0
 script = ExtResource( 2 )
+selection_group_name = "tower_selection"
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 10 )
