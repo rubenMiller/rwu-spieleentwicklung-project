@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=1]
 [ext_resource path="res://Entities/troop_tower.gd" type="Script" id=2]
-[ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/AttackComponent_end_tower.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Entities/impact_area.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2, 4 )
@@ -49,9 +50,6 @@ selection_group_name = "tower_selection"
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 5 )
 
-[node name="Attack_component" parent="." instance=ExtResource( 3 )]
-target_group_name = "troop"
-
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
 text = "Selected
@@ -63,6 +61,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 visible = false
 radius = 300.0
 
+[node name="Attack_component_end_tower" parent="." instance=ExtResource( 3 )]
+target_group_name = "troop"
+impact_area = ExtResource( 6 )
+
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
-[connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
-[connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]
+[connection signal="body_entered" from="Radius_Component" to="Attack_component_end_tower" method="_on_Radius_Component_body_entered"]
+[connection signal="body_exited" from="Radius_Component" to="Attack_component_end_tower" method="_on_Radius_Component_body_exited"]
