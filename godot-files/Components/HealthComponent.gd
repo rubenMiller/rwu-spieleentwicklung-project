@@ -8,8 +8,10 @@ func _process(_delta):
 		emit_signal("i_am_dead")
 		
 
-func reduceHealth(health_delta):
+func reduce_health(health_delta):
 	if health_delta >= 0:
 		health = health - int(health_delta)
 	if health_delta < 0:
 		health = health + int(health_delta)
+	
+	$Label3D.text = str(health)

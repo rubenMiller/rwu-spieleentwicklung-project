@@ -21,7 +21,7 @@ func _process(_delta):
 		reload_timer.start()
 		
 func shoot_first_target():
-	target_list[0].get_child(0).reduceHealth(1)
+	#target_list[0].get_child(0).reduce_health(1)
 	#print("shoot")
 	#print(target_list[0].translation)
 	var area = impact_area.instance()
