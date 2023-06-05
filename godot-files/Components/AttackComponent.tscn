@@ -13,13 +13,14 @@ width = 8
 [node name="Attack_component" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="Reload_timer" type="Timer" parent="."]
+[node name="Load_timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="Health_bar" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 pixel_size = 1.0
 billboard = 1
 texture = SubResource( 16 )
+
+[connection signal="timeout" from="Load_timer" to="." method="_on_Load_timer_timeout"]
