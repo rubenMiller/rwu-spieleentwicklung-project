@@ -33,7 +33,7 @@ idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
 
 [node name="HealtComponent" parent="." instance=ExtResource( 6 )]
-health = 2
+health = 5000000000
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

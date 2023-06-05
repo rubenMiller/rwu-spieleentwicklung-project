@@ -4,7 +4,6 @@ export var idleMaterial: Material
 export var selectedMaterial: Material
 
 onready var attack_component: Spatial = $Attack_component
-#onready var radius_component: Area = $Radius_Component
 
 onready var isSelected = false
 
@@ -14,7 +13,6 @@ func _ready():
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
-	#radius_component.visible = selection
 	
 func display_selected_unit():
 	$Label3D.visible = isSelected

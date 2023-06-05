@@ -1,7 +1,6 @@
 extends Node
 
 export var target_group_name := ""
-export (NodePath) var radius
 onready var reload_timer = $Reload_timer
 onready var health_bar = $Health_bar
 
@@ -9,7 +8,6 @@ onready var health_bar = $Health_bar
 var target_list = []
 
 func _ready():
-	radius = get_node(radius)
 	pass 
 
 func _process(_delta):
