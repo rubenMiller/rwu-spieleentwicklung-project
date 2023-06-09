@@ -2,6 +2,8 @@ extends Node
 
 export var target_group_name := ""
 export (NodePath) var attack_pattern_path
+export var damage := 1.0
+export var fire_rate := 1.0
 
 onready var reload_timer = $Load_timer
 onready var health_bar = $Health_bar
@@ -12,6 +14,7 @@ var current_target = null
 
 func _ready():
 	attack_pattern = get_node(attack_pattern_path)
+	reload_timer.wait_time = fire_rate
 
 func _process(_delta):
 	health_bar.scale.x = reload_timer.time_left / reload_timer.wait_time
@@ -35,4 +38,5 @@ func _on_Radius_Component_body_exited(body: Node) -> void:
 		target_list.erase(body)
 
 func _on_Load_timer_timeout() -> void:
-	attack_pattern.attack(target_list[0], 1)
+	if target_list.size() > 0:
+		attack_pattern.attack(target_list[0], damage)
