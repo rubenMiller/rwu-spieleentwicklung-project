@@ -4,7 +4,7 @@ signal i_am_dead
 export var health = 1
 
 func _process(_delta):
-	if health == 0:
+	if health <= 0:
 		emit_signal("i_am_dead")
 		
 

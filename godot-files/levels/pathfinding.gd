@@ -19,4 +19,5 @@ func _on_won():
 	$UserInterface/Retry/Label_won.visible = true
 	$UserInterface/Retry/Label_lost.visible = false
 	$UserInterface.show()
+	set_process(false)
 	

@@ -1,14 +1,17 @@
 extends Node
 
 export var target_group_name := ""
+export (NodePath) var attack_pattern_path
+
 onready var reload_timer = $Load_timer
 onready var health_bar = $Health_bar
 
+var attack_pattern 
 var target_list := []
 var current_target = null
 
 func _ready():
-	pass 
+	attack_pattern = get_node(attack_pattern_path)
 
 func _process(_delta):
 	health_bar.scale.x = reload_timer.time_left / reload_timer.wait_time
@@ -20,9 +23,6 @@ func _process(_delta):
 	else: 
 		current_target = null
 		reload_timer.stop()
-		
-func shoot_first_target():
-	target_list[0].get_child(0).reduce_health(1)
 
 func _on_Radius_Component_body_entered(body: Node) -> void:
 	#print("I ",get_parent() , " detected in my Radius: ", target_group_name, body)
@@ -35,5 +35,4 @@ func _on_Radius_Component_body_exited(body: Node) -> void:
 		target_list.erase(body)
 
 func _on_Load_timer_timeout() -> void:
-	shoot_first_target()
-	reload_timer.start()
+	attack_pattern.attack(target_list[0], 1)

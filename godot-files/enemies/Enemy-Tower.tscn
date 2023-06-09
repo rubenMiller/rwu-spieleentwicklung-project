@@ -2,8 +2,9 @@
 
 [ext_resource path="res://_archive/SelectionArea.gd" type="Script" id=1]
 [ext_resource path="res://enemies/Enemy-Tower.gd" type="Script" id=2]
-[ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/Health_Component.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="CapsuleShape" id=13]
 height = 3.0

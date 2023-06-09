@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 			$MeshInstance.material_override = unselectedMaterial
 	
 func _on_Area_input_event(_camera, event, _position, _normal, _shape_idx):
-	if event.is_action_pressed("mouse_left"):
+	if event.is_action_pressed("mouse_right"):
 		reset_all_tiles()
 		is_tile_selected = true
 		add_to_group("selected_tile")

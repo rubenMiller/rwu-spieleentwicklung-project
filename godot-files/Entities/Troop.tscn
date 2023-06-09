@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
 [ext_resource path="res://Art/materials/troop_idle_Material.tres" type="Material" id=3]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=4]
 [ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/Health_Component.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/Navigation_component.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/Attack_Patterns/Attack_Pattern_Default.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape" id=9]
 height = 3.0
@@ -32,7 +33,7 @@ script = ExtResource( 1 )
 idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
 
-[node name="HealtComponent" parent="." instance=ExtResource( 6 )]
+[node name="Health_Component" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49614, 0 )
 health = 3
 
@@ -59,6 +60,11 @@ shape = SubResource( 9 )
 [node name="Attack_component" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.63069, 0 )
 target_group_name = "tower"
+attack_pattern_path = NodePath("Attack_pattern_default")
+
+[node name="Attack_pattern_default" type="Spatial" parent="Attack_component"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63069, 0 )
+script = ExtResource( 10 )
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
@@ -73,7 +79,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 visible = false
 radius = 10.0
 
-[connection signal="i_am_dead" from="HealtComponent" to="." method="_on_HealtComponent_i_am_dead"]
+[connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
 [connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
 [connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]

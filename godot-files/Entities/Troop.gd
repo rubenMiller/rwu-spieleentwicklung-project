@@ -6,8 +6,8 @@ export var selectedMaterial: Material
 onready var attack_component: Spatial = $Attack_component
 onready var nav_component: Spatial = $Navigation_component
 onready var radius_component: Area = $Radius_Component
+onready var health_component: Spatial = $HealtComponent
 onready var isSelected = false
-
 
 func _ready():
 	display_selected_unit()
@@ -29,3 +29,6 @@ func display_selected_unit():
 
 func _on_HealtComponent_i_am_dead():
 	queue_free()
+	
+func loose_health(amount):
+	health_component.reduce_health(amount)
