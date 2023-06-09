@@ -75,7 +75,7 @@ font = SubResource( 7 )
 [node name="Radius_Component" parent="." instance=ExtResource( 3 )]
 radius = 15.0
 
-[connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]
+[connection signal="i_am_dead" from="Health_Component" to="." method="_on_Health_Component_i_am_dead"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
 [connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
 [connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]

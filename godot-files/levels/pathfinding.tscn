@@ -33,7 +33,9 @@ script = ExtResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 7, 9 )
 
 [node name="End_tower" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 4, 10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 4, -14 )
+collision_layer = 2
+collision_mask = 2
 idleMaterial = ExtResource( 12 )
 selectedMaterial = ExtResource( 11 )
 

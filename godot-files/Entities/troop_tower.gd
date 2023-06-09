@@ -19,6 +19,5 @@ func display_selected_unit():
 	if isSelected: $MeshInstance.material_override = selectedMaterial
 	else: $MeshInstance.material_override = idleMaterial
 
-func _on_HealtComponent_i_am_dead():
+func _on_Health_Component_i_am_dead() -> void:
 	queue_free()
-

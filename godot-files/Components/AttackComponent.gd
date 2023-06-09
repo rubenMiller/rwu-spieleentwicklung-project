@@ -28,9 +28,9 @@ func _process(_delta):
 		reload_timer.stop()
 
 func _on_Radius_Component_body_entered(body: Node) -> void:
-	#print("I ",get_parent() , " detected in my Radius: ", target_group_name, body)
+	print("I ",get_parent() , " detected in my Radius: ", target_group_name, body)
 	if body.is_in_group(target_group_name):
-		#print("I ",get_parent() , " want to attack: ", target_group_name, body)
+		print("I ",get_parent() , " want to attack: ", target_group_name, body)
 		target_list.append(body)
 
 func _on_Radius_Component_body_exited(body: Node) -> void:
