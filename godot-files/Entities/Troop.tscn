@@ -17,7 +17,7 @@ height = 3.0
 [sub_resource type="SpatialMaterial" id=6]
 
 [sub_resource type="CapsuleMesh" id=8]
-mid_height = 3.0
+radius = 0.5
 
 [sub_resource type="Skin" id=4]
 
@@ -75,6 +75,7 @@ text = "Selected
 font = SubResource( 7 )
 
 [node name="Navigation_component" parent="." instance=ExtResource( 8 )]
+MAX_SPEED = 5.0
 
 [node name="Radius_Component" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )

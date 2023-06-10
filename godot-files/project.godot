@@ -54,6 +54,11 @@ SignalBus="*res://Components/signal_bus.tscn"
 
 icon="res://icon.jpg"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
 [editor]
 
 version_control_autoload_on_startup=true
