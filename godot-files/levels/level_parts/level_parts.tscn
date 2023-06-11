@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Art/Maps/base_ground.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Art/Maps/base_grass.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Art/Maps/slope_ground.obj" type="ArrayMesh" id=3]
+
+[node name="level_parts" type="Spatial"]
+
+[node name="slope_ground" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../base_ground")
+
+[node name="base_grass" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+skeleton = NodePath("../slope_ground")
+
+[node name="base_ground" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
