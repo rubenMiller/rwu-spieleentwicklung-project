@@ -43,7 +43,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Spieleentwicklung"
-run/main_scene="res://levels/pathfinding.tscn"
+run/main_scene="res://levels/level_1.tscn"
 config/icon="res://icon.jpg"
 
 [autoload]
@@ -58,6 +58,7 @@ icon="res://icon.jpg"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 
 [editor]
 

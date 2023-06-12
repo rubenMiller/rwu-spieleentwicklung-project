@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	if attack_component.current_target != null:
 		var target = attack_component.current_target
 		var v = target.global_translation - global_translation
-		body.global_rotation.y = lerp_angle(body.global_rotation.y, atan2(v.x,v.z), 0.5)
+		body.global_rotation.y = lerp_angle(body.global_rotation.y, atan2(v.x,v.z), 0.05)
 		$Radius_Component.global_rotation.y = lerp_angle($Radius_Component.global_rotation.y, atan2(v.x,v.z), 0.5)
 		
 func _on_SelectionArea_selection_toggled(selection):

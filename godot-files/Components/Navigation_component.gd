@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		if step_size > direction.length():
 			step_size = direction.length()
 			path.remove(0)
-			
+		
 		get_parent().translation += direction.normalized() * step_size
 		direction.y = 0
 		if direction:

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/slope_ground_1.obj-6e8fc3add012075d0a00a44b07bf2a36.mesh"
+
+[deps]
+
+files=[ "res://.import/slope_ground_1.obj-6e8fc3add012075d0a00a44b07bf2a36.mesh" ]
+
+source_file="res://Art/Maps/slope_ground_1.obj"
+dest_files=[ "res://.import/slope_ground_1.obj-6e8fc3add012075d0a00a44b07bf2a36.mesh", "res://.import/slope_ground_1.obj-6e8fc3add012075d0a00a44b07bf2a36.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

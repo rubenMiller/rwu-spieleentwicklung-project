@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 func create_tiles_on_points():
 	for cell in cells:
 		var cell_world = map_to_world(cell.x,cell.y,cell.z)
-		cell_world.y += 1
+		#cell_world.y += 2
 		var tile :Tile= idle_tile.instance()
 		tile.translation = cell_world
 		tile.add_to_group("selectable_tiles")

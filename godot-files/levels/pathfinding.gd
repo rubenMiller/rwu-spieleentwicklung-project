@@ -1,6 +1,9 @@
 extends Spatial
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+		
 	if $Troops.get_child_count() <= 0:
 		$UserInterface/Retry/Label_won.visible = false
 		$UserInterface/Retry/Label_lost.visible = true
