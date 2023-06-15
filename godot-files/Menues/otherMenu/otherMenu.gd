@@ -16,16 +16,8 @@ func _ready():
 #	pass
 
 
-func _on_Level1Button_pressed():
-	get_tree().change_scene("res://levels/level_1.tscn")
-
-
-func _on_Level2Button_pressed():
-	get_tree().change_scene("res://levels/level_2.tscn")
-
-
-func _on_Level3Button_pressed():
-	get_tree().change_scene("res://levels/level_3.tscn")
+func _on_StartButton_pressed():
+	get_tree().change_scene("res://Menues/levelMenu/levelMenu.tscn")
 
 
 func _on_ExitButton_pressed():
