@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/radius_30.obj-9c1c49648975f413e238e3dbad23ee17.mesh"
+
+[deps]
+
+files=[ "res://.import/radius_30.obj-9c1c49648975f413e238e3dbad23ee17.mesh" ]
+
+source_file="res://Art/Maps/radius/radius_30.obj"
+dest_files=[ "res://.import/radius_30.obj-9c1c49648975f413e238e3dbad23ee17.mesh", "res://.import/radius_30.obj-9c1c49648975f413e238e3dbad23ee17.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -48,7 +48,7 @@ font = SubResource( 6 )
 
 [node name="Radius_Component" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-radius = 12.0
+radius = 14.0
 
 [node name="Attack_component" parent="." instance=ExtResource( 1 )]
 target_group_name = "troop"
