@@ -10,7 +10,6 @@ onready var health_bar = $Health_bar
 
 var attack_pattern 
 var target_list := []
-var aimed_list := []
 var current_target = null
 
 var in_reach = false

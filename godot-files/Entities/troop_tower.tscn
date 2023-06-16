@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/troop_tower.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art/materials/troop_idle_Material.tres" type="Material" id=8]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=9]
 [ext_resource path="res://Components/View_component.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Art/Maps/radius/radius_15.obj" type="ArrayMesh" id=11]
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 1, 1, 2 )
@@ -85,8 +86,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 radius = 10.0
 
 [node name="View_component" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-radius = 10.0
+mesh_instance = ExtResource( 11 )
 
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_Health_Component_i_am_dead"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
