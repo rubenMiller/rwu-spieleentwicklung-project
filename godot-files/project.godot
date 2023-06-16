@@ -43,7 +43,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Spieleentwicklung"
-run/main_scene="res://levels/level_3.tscn"
+run/main_scene="res://Menues/otherMenu/otherMenu.tscn"
 config/icon="res://icon.jpg"
 
 [autoload]

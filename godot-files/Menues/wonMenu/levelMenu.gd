@@ -28,6 +28,5 @@ func _on_Level3Button_pressed():
 	get_tree().change_scene("res://levels/level_3.tscn")
 
 
-func _on_ExitButton_pressed():
-	get_tree().quit()
-
+func _on_exitButton_pressed():
+	get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")

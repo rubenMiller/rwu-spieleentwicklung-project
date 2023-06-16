@@ -2,12 +2,13 @@ extends Spatial
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
 		
 	if $Troops.get_child_count() <= 0:
 		$UserInterface/Retry/Label_won.visible = false
 		$UserInterface/Retry/Label_lost.visible = true
 		$UserInterface.show()
+		get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
 
 func _ready():
 	SignalBus.connect("won", self, "_on_won")
@@ -23,4 +24,5 @@ func _on_won():
 	$UserInterface/Retry/Label_lost.visible = false
 	$UserInterface.show()
 	set_process(false)
+	get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
 	
