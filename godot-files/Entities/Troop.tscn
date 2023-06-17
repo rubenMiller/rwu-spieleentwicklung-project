@@ -40,14 +40,37 @@ selectedMaterial = ExtResource( 4 )
 
 [node name="Health_Component" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49614, 0 )
-health = 1000
+health = 1000.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.37114e-08 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 4.37114e-08 )
+[node name="meshes" type="Spatial" parent="."]
+
+[node name="troop_1" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1.27677 )
+material_override = SubResource( 6 )
+mesh = SubResource( 8 )
+skin = SubResource( 4 )
+skeleton = NodePath("../..")
+
+[node name="troop_2" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0632516, 1, -0.880808 )
+material_override = SubResource( 6 )
+mesh = SubResource( 8 )
+skin = SubResource( 4 )
+skeleton = NodePath("../troop_4")
+
+[node name="troop_3" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.08091, 1, 0.0747002 )
+material_override = SubResource( 6 )
+mesh = SubResource( 8 )
+skin = SubResource( 4 )
+skeleton = NodePath("../troop_1")
+
+[node name="troop_4" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.20149, 1, 0.253272 )
 material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
@@ -82,7 +105,7 @@ text = "Selected
 font = SubResource( 7 )
 
 [node name="Navigation_component" parent="." instance=ExtResource( 8 )]
-MAX_SPEED = 5.0
+MAX_SPEED = 3.0
 
 [node name="Radius_Component" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
@@ -90,6 +113,7 @@ visible = false
 radius = 6.0
 
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]
+[connection signal="shot" from="Health_Component" to="." method="_on_Health_Component_shot"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
 [connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
 [connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]

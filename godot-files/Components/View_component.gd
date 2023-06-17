@@ -10,11 +10,11 @@ func _ready() -> void:
 	if mesh_instance != null:
 		mesh.mesh = mesh_instance
 		
-	mesh.global_translation.y = 2
+	mesh.global_translation.y = 1
 	mesh.scale.x = radius
 	mesh.scale.z = radius
 	
-	collision_shape.global_translation.y = 2.1
+	collision_shape.global_translation.y = 1.1
 	collision_shape.scale.x = radius
 	collision_shape.scale.z = radius
 	

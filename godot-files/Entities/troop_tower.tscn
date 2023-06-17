@@ -39,7 +39,7 @@ selectedMaterial = ExtResource( 9 )
 
 [node name="Health_Component" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
-health = 500
+health = 500.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -61,7 +61,6 @@ collision_mask = 0
 monitorable = false
 priority = 1.0
 script = ExtResource( 2 )
-selection_group_name = "tower_selection"
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 10 )
@@ -86,6 +85,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 radius = 10.0
 
 [node name="View_component" parent="." instance=ExtResource( 10 )]
+radius = 4.95
 mesh_instance = ExtResource( 11 )
 
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_Health_Component_i_am_dead"]

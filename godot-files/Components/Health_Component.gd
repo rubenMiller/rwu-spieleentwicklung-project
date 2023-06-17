@@ -1,20 +1,28 @@
 extends Spatial
 
 signal i_am_dead
-export var health = 1
+signal shot(base_health, rest_health)
+
+export var health := 1.0 
+var rest_health := health 
 
 func _ready():
-	$Label3D.text = str(health)
+	rest_health = health
+	$Label3D.text = str(rest_health)
+	
 	
 func _process(_delta):
-	if health <= 0:
+	if rest_health <= 0:
 		emit_signal("i_am_dead")
 		
 
 func reduce_health(health_delta):
 	if health_delta >= 0:
-		health = health - int(health_delta)
+		rest_health = rest_health - int(health_delta)
 	if health_delta < 0:
-		health = health + int(health_delta)
+		rest_health = rest_health + int(health_delta)
 	
-	$Label3D.text = str(health)
+	$Label3D.text = str(rest_health)
+	
+	emit_signal("shot", health, rest_health)
+
