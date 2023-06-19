@@ -29,7 +29,7 @@ edge_max_length = 13.51
 size = 22
 font_data = ExtResource( 5 )
 
-[node name="Main" type="Spatial"]
+[node name="level_2" type="Spatial"]
 script = ExtResource( 6 )
 
 [node name="Troop-tower" parent="." instance=ExtResource( 10 )]
