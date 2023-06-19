@@ -145,3 +145,5 @@ Press Enter to restart"
 align = 1
 
 [node name="Draw" type="ImmediateGeometry" parent="." groups=["draw"]]
+
+[connection signal="navigation_mesh_changed" from="NavigationMeshInstance" to="." method="_on_NavigationMeshInstance_navigation_mesh_changed"]
