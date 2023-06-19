@@ -13,7 +13,7 @@ func on_interaction(value):
 	enabled = value
 	
 	if enabled:
-		translation.y = -1
+		translation.y = -2
 		nav_mesh.bake_navigation_mesh(false)
 	if not enabled:
 		translation.y = 3

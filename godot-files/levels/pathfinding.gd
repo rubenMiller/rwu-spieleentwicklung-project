@@ -26,3 +26,10 @@ func _on_won():
 	set_process(false)
 	get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
 	
+
+
+func _on_Nav_mesh_navigation_mesh_changed() -> void:
+	var troops = get_tree().get_nodes_in_group("troop")
+	for troop in troops:
+		
+		troop.get_node("Navigation_component").setup_nav_server()

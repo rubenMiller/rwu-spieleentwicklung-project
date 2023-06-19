@@ -14,7 +14,7 @@ onready var current_state = States.IDLE
 
 func _ready():
 	display_selected_unit()
-	nav_component.setup_navserver()
+	nav_component.setup_nav_server()
 	
 func _process(_delta: float) -> void:
 	if isSelected:

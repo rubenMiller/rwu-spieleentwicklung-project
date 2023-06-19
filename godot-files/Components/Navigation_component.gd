@@ -45,7 +45,7 @@ func has_reached_win_tile():
 	var tile_pos = win_tile[0].translation
 	return tile_pos.x == get_parent().translation.x and tile_pos.z == get_parent().translation.z
 
-func setup_navserver():
+func setup_nav_server():
 	var nav_mesh_instance = get_tree().get_nodes_in_group("navigation_mesh_instance")[0]
 	# create a new navigation map
 	map = NavigationServer.map_create()
