@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/programming-or-googling.jpg-01626551c2f1b3de9fb5f3db8493a718.stex"
+path="res://.import/programming-or-googling.jpg-710b665d5f6bb85786856e7a142267b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/materials/programming-or-googling.jpg"
-dest_files=[ "res://.import/programming-or-googling.jpg-01626551c2f1b3de9fb5f3db8493a718.stex" ]
+source_file="res://Art/images/programming-or-googling.jpg"
+dest_files=[ "res://.import/programming-or-googling.jpg-710b665d5f6bb85786856e7a142267b1.stex" ]
 
 [params]
 
