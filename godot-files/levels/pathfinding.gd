@@ -1,5 +1,7 @@
 extends Spatial
 
+onready var nav_mesh = $nav_mesh
+
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		save_game("not_completed")
@@ -12,6 +14,7 @@ func _process(delta):
 func _ready():
 	SignalBus.connect("won", self, "_on_won")
 	$UserInterface.hide()
+	nav_mesh.setup_nav_server()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and $UserInterface.visible:
@@ -41,3 +44,5 @@ func _on_nav_mesh_navigation_mesh_changed() -> void:
 	for troop in troops:
 		
 		troop.get_node("Navigation_component").setup_nav_server()
+		
+

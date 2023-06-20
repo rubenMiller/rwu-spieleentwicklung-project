@@ -1,15 +1,19 @@
 extends Camera
 
 
-const ray_length = 10000
+const ray_length = 1000
+var map
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
-		
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		var from = project_ray_origin(event.position)
-		var to = from + project_ray_normal(event.position) * ray_length
-		var space_state = get_world().direct_space_state
-		var result = space_state.intersect_ray(from,to,[],1)
-		print("klicked",space_state)
-		if result:
-			print("clicked", result)
+		var to = from + project_ray_normal(event.position) * 1000
+		#map = get_tree().get_nodes_in_group("navigation_mesh_instance")[0].map
+		var target_point = NavigationServer.map_get_closest_point_to_segment(map, from, to)
+		
+		print(target_point)
+
+
+func _on_nav_mesh_nav_mesh_changed(map_) -> void:
+	print("signal")
+	map = map_

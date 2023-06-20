@@ -7,6 +7,8 @@ onready var attack_component: Spatial = $Attack_component
 onready var nav_component: Spatial = $Navigation_component
 onready var radius_component: Area = $Radius_Component
 onready var health_component: Spatial = $HealtComponent
+
+onready var nav_agent = $NavigationAgent
 onready var isSelected = false
 
 enum States  {IDLE, WALK, SHOOT}
@@ -14,11 +16,12 @@ onready var current_state = States.IDLE
 
 func _ready():
 	display_selected_unit()
-	nav_component.setup_nav_server()
+	#nav_component.setup_nav_server()
 	
 func _process(_delta: float) -> void:
 	if isSelected:
 		nav_component.get_path_to_target_tile()
+		nav_agent.get_next_location()
 	
 	if nav_component.path.size() > 0:
 		current_state = States.WALK
