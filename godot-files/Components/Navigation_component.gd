@@ -9,6 +9,7 @@ var m
 func _ready() -> void:
 	configure_path_material()
 	
+	
 func _process(delta: float) -> void:
 	if has_reached_win_tile():
 		SignalBus.emit_signal("won")
@@ -29,9 +30,12 @@ func _process(delta: float) -> void:
 			var look_at_point = get_parent().translation + direction.normalized()
 			get_parent().look_at(look_at_point, Vector3.UP)
 
-func get_path_to_target_tile():
-	var map = get_tree().mapsa
-	#path = NavigationServer.map_get_path(map,get_parent().translation, target_tile.translation, true)
+func get_path_to_target_tile(target_position):
+	path = NavigationServer.map_get_path(map,get_parent().translation, target_position, true)
+	if show_path:
+		draw_path(path)
+	#var map = get_tree().mapsa
+	
 #	var selected_tile = get_tree().get_nodes_in_group("selected_tile")
 #	if selected_tile != []:
 #		var target_tile = selected_tile[0]

@@ -113,6 +113,7 @@ visible = false
 radius = 6.0
 
 [node name="NavigationAgent" type="NavigationAgent" parent="."]
+navigation_layers = 2
 
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]
 [connection signal="shot" from="Health_Component" to="." method="_on_Health_Component_shot"]

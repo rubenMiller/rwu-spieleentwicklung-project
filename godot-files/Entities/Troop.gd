@@ -16,12 +16,17 @@ onready var current_state = States.IDLE
 
 func _ready():
 	display_selected_unit()
+	SignalBus.connect("walk_target",self,"on_set_target")
 	#nav_component.setup_nav_server()
 	
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	var world = World.new()
+	print(world.environment)
+	nav_agent.get_next_location()
 	if isSelected:
-		nav_component.get_path_to_target_tile()
-		nav_agent.get_next_location()
+		pass
+		#nav_component.get_path_to_target_tile()
+		
 	
 	if nav_component.path.size() > 0:
 		current_state = States.WALK
@@ -37,6 +42,10 @@ func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
 	radius_component.visible = selection
+
+func on_set_target(target_position):
+	print("target_position", target_position)
+	nav_agent.set_target_location(target_position)
 	
 func display_selected_unit():
 	$Label3D.visible = isSelected
