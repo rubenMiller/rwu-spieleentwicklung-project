@@ -3,14 +3,12 @@ extends Spatial
 export var MAX_SPEED := 10.0
 export var show_path = true
 
-
 var path = []
 var m 
 
 func _ready() -> void:
 	configure_path_material()
-	
-	
+
 func _physics_process(delta: float) -> void:
 	pass
 
@@ -34,12 +32,12 @@ func _physics_process(delta: float) -> void:
 #			var look_at_point = get_parent().translation + direction.normalized()
 #			get_parent().look_at(look_at_point, Vector3.UP)
 
-func get_path_to_target_tile(target_position):
-	#_agent.get_target_location(target_position)
-	var map = NavigationServer.get_maps()[1]
-	print("all maps: ", NavigationServer.get_maps())
-	print("map: ", map)
-	path = NavigationServer.map_get_path(map,get_parent().translation, target_position, true)
+#func get_path_to_target_tile(target_position):
+#	#_agent.get_target_location(target_position)
+#	var map = NavigationServer.get_maps()[1]
+#	print("all maps: ", NavigationServer.get_maps())
+#	print("map: ", map)
+#	path = NavigationServer.map_get_path(map,get_parent().translation, target_position, true)
 	#if show_path:
 		#draw_path(path)
 	#var map = get_tree().maps
