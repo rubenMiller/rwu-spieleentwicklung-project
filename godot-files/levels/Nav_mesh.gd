@@ -22,8 +22,8 @@ func setup_nav_server():
 	navigation_mesh = navmesh
 	NavigationServer.region_set_navmesh(region, navigation_mesh)
 	
-	emit_signal("nav_mesh_changed", map)
-	
 	# wait for NavigationServer sync to adapt to made changes
-	yield(get_tree(), "physics_frame")
-
+	yield(get_tree(), "idle_frame")
+	
+	emit_signal("nav_mesh_changed", map)
+	print("nav server updated")

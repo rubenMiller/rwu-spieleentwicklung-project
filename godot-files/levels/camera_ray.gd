@@ -5,7 +5,7 @@ const ray_length = 1000
 var map
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT and event.pressed:
 		var from = project_ray_origin(event.position)
 		var to = from + project_ray_normal(event.position) * 1000
 		#map = get_tree().get_nodes_in_group("navigation_mesh_instance")[0].map
@@ -15,5 +15,5 @@ func _input(event: InputEvent) -> void:
 		print(target_point)
 
 func _on_nav_mesh_nav_mesh_changed(map_) -> void:
-	#print("signal")
+	#print("changed map")
 	map = map_

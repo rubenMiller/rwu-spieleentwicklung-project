@@ -38,6 +38,8 @@ script = ExtResource( 1 )
 idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
 
+[node name="NavigationAgent" type="NavigationAgent" parent="."]
+
 [node name="Health_Component" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49614, 0 )
 health = 1000.0

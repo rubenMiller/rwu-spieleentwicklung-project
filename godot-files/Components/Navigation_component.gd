@@ -3,6 +3,7 @@ extends Spatial
 export var MAX_SPEED := 10.0
 export var show_path = true
 
+
 var path = []
 var m 
 
@@ -10,33 +11,38 @@ func _ready() -> void:
 	configure_path_material()
 	
 	
-func _process(delta: float) -> void:
-	if has_reached_win_tile():
-		SignalBus.emit_signal("won")
-	var direction = Vector3()
-	var step_size = delta * MAX_SPEED
-	
-	if path.size() > 0:
-		var destination = path[0]
-		direction = destination - get_parent().translation
+func _physics_process(delta: float) -> void:
+	pass
 
-		if step_size > direction.length():
-			step_size = direction.length()
-			path.remove(0)
-		
-		get_parent().translation += direction.normalized() * step_size
-		direction.y = 0
-		if direction:
-			var look_at_point = get_parent().translation + direction.normalized()
-			get_parent().look_at(look_at_point, Vector3.UP)
+	
+#	if has_reached_win_tile():
+#		SignalBus.emit_signal("won")
+#	#var direction = Vector3()
+#	var step_size = delta * MAX_SPEED
+#
+#	if path.size() > 0:
+#		var destination = path[0]
+#		#direction = destination - get_parent().translation
+#
+#		if step_size > direction.length():
+#			step_size = direction.length()
+#			path.remove(0)
+#
+#		get_parent().translation += direction.normalized() * step_size
+#		direction.y = 0
+#		if direction:
+#			var look_at_point = get_parent().translation + direction.normalized()
+#			get_parent().look_at(look_at_point, Vector3.UP)
 
 func get_path_to_target_tile(target_position):
+	#_agent.get_target_location(target_position)
 	var map = NavigationServer.get_maps()[1]
+	print("all maps: ", NavigationServer.get_maps())
 	print("map: ", map)
 	path = NavigationServer.map_get_path(map,get_parent().translation, target_position, true)
 	#if show_path:
 		#draw_path(path)
-	#var map = get_tree().mapsa
+	#var map = get_tree().maps
 	
 #	var selected_tile = get_tree().get_nodes_in_group("selected_tile")
 #	if selected_tile != []:
@@ -49,9 +55,10 @@ func get_path_to_target_tile(target_position):
 #			draw_path(path)
 
 func has_reached_win_tile():
-	var win_tile = get_tree().get_nodes_in_group("win_tiles")
-	var tile_pos = win_tile[0].translation
-	return tile_pos.x == get_parent().translation.x and tile_pos.z == get_parent().translation.z
+	pass
+	#var win_tile = get_tree().get_nodes_in_group("win_tiles")
+	#var tile_pos = win_tile[0].translation
+	#return tile_pos.x == get_parent().translation.x and tile_pos.z == get_parent().translation.z
 
 #func setup_nav_server():
 #	var nav_mesh_instance = get_tree().get_nodes_in_group("navigation_mesh_instance")[0]

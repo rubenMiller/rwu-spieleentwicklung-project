@@ -11,7 +11,7 @@ func _ready() -> void:
 	visible = false
 	
 	tile_container = get_node(tile_container)
-	create_tiles_on_points()
+	#create_tiles_on_points()
 	#print(get_used_cells_by_item(0))
 	#print(get_used_cells_by_item(1))
 	

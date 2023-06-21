@@ -1,20 +1,21 @@
 extends Spatial
 
-onready var nav_mesh = $nav_mesh
+#onready var nav_mesh = $nav_mesh
+onready var troops: Spatial = $Navigation/Troops
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		save_game("not_completed")
 		get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
 		
-	if $Troops.get_child_count() <= 0:
+	if troops.get_child_count() <= 0:
 		save_game("lost")
 		get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
 
 func _ready():
 	SignalBus.connect("won", self, "_on_won")
 	$UserInterface.hide()
-	nav_mesh.setup_nav_server()
+	#nav_mesh.setup_nav_server()
 	print(NavigationServer.get_maps())
 
 func _unhandled_input(event: InputEvent) -> void:
