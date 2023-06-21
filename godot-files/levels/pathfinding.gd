@@ -15,6 +15,7 @@ func _ready():
 	SignalBus.connect("won", self, "_on_won")
 	$UserInterface.hide()
 	nav_mesh.setup_nav_server()
+	print(NavigationServer.get_maps())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and $UserInterface.visible:
@@ -41,8 +42,7 @@ func save_game(change_state):
 
 func _on_nav_mesh_navigation_mesh_changed() -> void:
 	var troops = get_tree().get_nodes_in_group("troop")
-	for troop in troops:
-		
-		troop.get_node("Navigation_component").setup_nav_server()
+	#for troop in troops:
+		#troop.get_node("nav_mesh").setup_nav_server()
 		
 

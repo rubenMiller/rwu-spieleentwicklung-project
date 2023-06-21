@@ -8,7 +8,6 @@ onready var nav_component: Spatial = $Navigation_component
 onready var radius_component: Area = $Radius_Component
 onready var health_component: Spatial = $HealtComponent
 
-onready var nav_agent = $NavigationAgent
 onready var isSelected = false
 
 enum States  {IDLE, WALK, SHOOT}
@@ -20,14 +19,10 @@ func _ready():
 	#nav_component.setup_nav_server()
 	
 func _physics_process(_delta: float) -> void:
-	var world = World.new()
-	print(world.environment)
-	nav_agent.get_next_location()
 	if isSelected:
 		pass
 		#nav_component.get_path_to_target_tile()
 		
-	
 	if nav_component.path.size() > 0:
 		current_state = States.WALK
 	else: 
@@ -45,7 +40,8 @@ func _on_SelectionArea_selection_toggled(selection):
 
 func on_set_target(target_position):
 	print("target_position", target_position)
-	nav_agent.set_target_location(target_position)
+	if isSelected:
+		nav_component.get_path_to_target_tile(target_position)
 	
 func display_selected_unit():
 	$Label3D.visible = isSelected
