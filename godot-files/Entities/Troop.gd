@@ -28,6 +28,8 @@ func _physics_process(_delta: float) -> void:
 	_velocity = direction * 3.0
 	_velocity = move_and_slide(_velocity)
 	
+	global_rotation.y = atan2(direction.x,direction.z)
+	
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
