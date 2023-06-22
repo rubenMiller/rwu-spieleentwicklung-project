@@ -63,7 +63,7 @@ shape = SubResource( 10 )
 [node name="Attack_component" parent="." instance=ExtResource( 7 )]
 target_group_name = "troop"
 attack_pattern_path = NodePath("Attack_Pattern_Default")
-fire_rate = 4.0
+fire_rate = 2.0
 
 [node name="Attack_Pattern_Default" type="Spatial" parent="Attack_component"]
 script = ExtResource( 4 )

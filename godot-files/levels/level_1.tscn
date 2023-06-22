@@ -23,7 +23,7 @@ agent_max_climb = 1.0
 edge_max_length = 13.51
 polygon_verts_per_poly = 4.0
 
-[node name="level_3" type="Spatial"]
+[node name="level_1" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="Win_tile" parent="." groups=["interaction_10"] instance=ExtResource( 7 )]
