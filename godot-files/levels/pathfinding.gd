@@ -14,7 +14,6 @@ func _process(delta):
 
 func _ready():
 	SignalBus.connect("won", self, "_on_won")
-	$UserInterface.hide()
 	#nav_mesh.setup_nav_server()
 	print(NavigationServer.get_maps())
 
