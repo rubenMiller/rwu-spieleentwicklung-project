@@ -6,8 +6,11 @@ export var show_path = true
 var path = []
 var m 
 
+signal move_troop(direction, velocity)
+
 func _ready() -> void:
-	configure_path_material()
+	pass
+	#configure_path_material()
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -51,7 +54,9 @@ func _physics_process(delta: float) -> void:
 #
 #		if show_path:
 #			draw_path(path)
-
+func move_troop(velocity, direction):
+	pass
+	
 func has_reached_win_tile():
 	pass
 	#var win_tile = get_tree().get_nodes_in_group("win_tiles")
@@ -89,6 +94,7 @@ func draw_path(path_array):
 	im.clear()
 	im.set_material_override(m)
 	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-	for x in path:
+	for x in path_array:
 		im.add_vertex(x)
 	im.end()
+	print("line drawn")

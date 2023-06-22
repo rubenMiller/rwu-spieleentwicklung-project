@@ -11,7 +11,7 @@ func _input(event: InputEvent) -> void:
 		#map = get_tree().get_nodes_in_group("navigation_mesh_instance")[0].map
 		var target_point = NavigationServer.map_get_closest_point_to_segment(map, from, to)
 		
-		SignalBus.emit_signal("walk_target", target_point)	
+		SignalBus.emit_signal("set_walk_target", target_point)	
 		print(target_point)
 
 func _on_nav_mesh_nav_mesh_changed(map_) -> void:

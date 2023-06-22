@@ -1,4 +1,4 @@
 extends Node
 
 signal won
-signal walk_target(target)
+signal set_walk_target(target)

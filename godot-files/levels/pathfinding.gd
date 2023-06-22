@@ -42,8 +42,6 @@ func save_game(change_state):
 	output_file.close()
 
 func _on_nav_mesh_navigation_mesh_changed() -> void:
-	var troops = get_tree().get_nodes_in_group("troop")
-	#for troop in troops:
-		#troop.get_node("nav_mesh").setup_nav_server()
+	print("nav mesh changed")
 		
 
