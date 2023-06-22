@@ -37,9 +37,3 @@ func update_map():
 func update_mesh():
 	bake_navigation_mesh(false)
 	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")

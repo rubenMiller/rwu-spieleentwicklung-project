@@ -16,20 +16,20 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	if attack_component.current_target != null:
-		var target = attack_component.current_target
-		var v = target.global_translation - global_translation
-		body.global_rotation.y = lerp_angle(body.global_rotation.y, atan2(v.x,v.z), rotate_speed)
-		view_component.global_rotation.y = lerp_angle(view_component.global_rotation.y, atan2(v.x,v.z), rotate_speed)
+		rotate_tower()
 		
+func rotate_tower():
+	var target = attack_component.current_target
+	var v = target.global_translation - global_translation
+	body.global_rotation.y = lerp_angle(body.global_rotation.y, atan2(v.x,v.z), rotate_speed)
+	view_component.global_rotation.y = lerp_angle(view_component.global_rotation.y, atan2(v.x,v.z), rotate_speed)
+	
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
 	display_selected_unit()
 	
 func display_selected_unit():
-	$Label3D.visible = isSelected
-	print(body)
+	#$Label3D.visible = isSelected
+	#print(body)
 	if isSelected: body.material_override = selectedMaterial
 	else: body.material_override = idleMaterial
-
-func _on_Health_Component_i_am_dead() -> void:
-	queue_free()

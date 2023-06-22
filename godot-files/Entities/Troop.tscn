@@ -42,10 +42,11 @@ selectedMaterial = ExtResource( 4 )
 [node name="nav_agent" type="NavigationAgent" parent="."]
 target_desired_distance = 0.1
 script = ExtResource( 11 )
+MAX_SPEED = 20.0
 
 [node name="Health_Component" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49614, 0 )
-health = 1000.0
+health = 4.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.37114e-08 )
@@ -105,6 +106,7 @@ script = ExtResource( 10 )
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
+visible = false
 text = "Selected
 "
 font = SubResource( 7 )
