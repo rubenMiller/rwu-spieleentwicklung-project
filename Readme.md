@@ -50,3 +50,23 @@ zB Sharpshooter oder Flammenturm
 
 Mörser hat Radius und fängt erst an zu zielen, wenn in Radius.
 Wenn wieder aus dem Radius, ist der Fortschritt für das Zielen fertig
+
+
+## TODOs
+
+- Petruz:
+
+Türen: Color Code, Model, Animation
+Einheiten: Collision radius, Einheiten models, selection anders anzeigen
+Türme: sehen, wann sie schießen, Models, Radius besser
+Terrain: Texturiert + models
+
+- Rübchen:
+
+Reset der Speicherstände 
+"zwischenbildschirm für gewonnen + verloren (ins Menü und nächstes Level)
+Game exit + level exit bestätigen
+"tutorial fenster" vor ersten´m Level + in Menü erreichbar
+
+level design überlegen
+
