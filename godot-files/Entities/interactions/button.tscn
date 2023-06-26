@@ -4,12 +4,11 @@
 
 [sub_resource type="CylinderShape" id=1]
 height = 4.0
-radius = 1.5
 
 [sub_resource type="CylinderMesh" id=2]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 4.0
+top_radius = 1.5
+bottom_radius = 1.5
+height = 0.1
 
 [node name="button" type="Area"]
 collision_layer = 2
@@ -18,6 +17,7 @@ input_ray_pickable = false
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
