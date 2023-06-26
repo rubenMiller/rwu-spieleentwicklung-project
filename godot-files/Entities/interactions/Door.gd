@@ -1,31 +1,33 @@
 extends StaticBody
 
-onready var mesh_instance: MeshInstance = $MeshInstance
-export (Resource) var folder
-var enabled = false
-var nav_mesh
+export var channel := 0
+export (Resource) var green_signal_color
+export (Resource) var red_signal_color
+
 onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var collision_shape: CollisionShape = $CollisionShape
+onready var signal_light: MeshInstance = $signal_light
+onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer3D
+
+var nav_mesh 
 
 func _ready() -> void:
 	nav_mesh = get_tree().get_nodes_in_group("navigation_mesh_instance")[0]
-	#mesh_instance.material/0 = 
-	#print(nav_mesh)
-
-func on_interaction(value):
-	enabled = value
 	
+	var group_name = "interaction_" + str(channel)
+	add_to_group(group_name)
+	
+	for label in $labels.get_children():
+		label.text = str(channel)
+
+func on_interaction(enabled):
 	if enabled:
 		animation_player.play("Door_1_open")
-		#collision_shape.translation.y = -2
-		#nav_mesh.update_mesh()
-		print("door opened")
+		audio_stream_player.play(28.5)
+		signal_light.mesh.material = green_signal_color
 	if not enabled:
 		animation_player.play_backwards("Door_1_open")
-		#collision_shape.translation.y = 3
-		#nav_mesh.update_mesh()
-		print("door closed")
-
+		audio_stream_player.play(28.5)
+		signal_light.mesh.material = red_signal_color
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	print("animation finished")

@@ -30,7 +30,7 @@ func rotate_tower(delta):
 		relative_rotation -= 2 * PI
 	if relative_rotation < -PI:
 		relative_rotation += 2 * PI
-	print("y: ", body.global_rotation.y, " ,target rotation: ", target_rotation, " , realtive rotation: ", relative_rotation)
+	#print("y: ", body.global_rotation.y, " ,target rotation: ", target_rotation, " , realtive rotation: ", relative_rotation)
 	
 	if abs(target_rotation - body.global_rotation.y) < 0.05:
 		return

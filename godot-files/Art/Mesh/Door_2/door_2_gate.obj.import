@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/door_2_gate.obj-a264825004ba44840d636efed54fda4e.mesh"
+
+[deps]
+
+files=[ "res://.import/door_2_gate.obj-a264825004ba44840d636efed54fda4e.mesh" ]
+
+source_file="res://Art/Mesh/Door_2/door_2_gate.obj"
+dest_files=[ "res://.import/door_2_gate.obj-a264825004ba44840d636efed54fda4e.mesh", "res://.import/door_2_gate.obj-a264825004ba44840d636efed54fda4e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

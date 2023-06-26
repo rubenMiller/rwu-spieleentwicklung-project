@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/electric-door-32317.mp3-a5945305d54be8e240d6515a0472784e.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/electric-door-32317.mp3"
+dest_files=[ "res://.import/electric-door-32317.mp3-a5945305d54be8e240d6515a0472784e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
