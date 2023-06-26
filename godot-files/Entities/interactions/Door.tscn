@@ -1,7 +1,63 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/interactions/Door.gd" type="Script" id=1]
 [ext_resource path="res://Art/materials/interaction_object_colors/interaction_material_0.tres" type="Material" id=2]
+[ext_resource path="res://Art/Mesh/Door_1/door_1_door.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Art/Mesh/Door_1/door_1_frame.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Door_1_open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("door_left:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.75, -0.25, 0 ), Vector3( 2, -0.5, 1.50996e-07 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("door_right:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.75, -0.25, 0 ), Vector3( -2, -0.5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("door_left:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("door_right:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 4, 4, 0.5 )
@@ -12,9 +68,32 @@ data = PoolVector3Array( -2, 2, 0.25, 2, 2, 0.25, -2, -2, 0.25, 2, 2, 0.25, 2, -
 [node name="Door" type="StaticBody"]
 script = ExtResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Door_1_open = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 2 )
+
+[node name="door_left" type="MeshInstance" parent="."]
+transform = Transform( -2, 0, 3.01992e-07, 0, 2, 0, -3.01992e-07, 0, -2, 0, 0, 0 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../door_right")
+
+[node name="door_right" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = ExtResource( 3 )
+
+[node name="door_frame" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = ExtResource( 4 )
+skeleton = NodePath("../door_right")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
