@@ -61,27 +61,28 @@ __meta__ = {
 
 [node name="obstacles" type="Spatial" parent="Navigation/nav_mesh"]
 
-[node name="Door" parent="Navigation/nav_mesh/obstacles" groups=["interaction_1"] instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -6 )
+[node name="Door" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -6 )
 
-[node name="Door2" parent="Navigation/nav_mesh/obstacles" groups=["interaction_0"] instance=ExtResource( 17 )]
-transform = Transform( 7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -10, 3, 14 )
+[node name="Door2" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
+transform = Transform( 7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -10, 1, 14 )
+channel = 1
 
 [node name="interactions" type="Spatial" parent="."]
 
 [node name="button" parent="interactions" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -2 )
-idle_material = ExtResource( 12 )
-pressed_material = ExtResource( 11 )
-
-[node name="button2" parent="interactions" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, -18 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -2 )
 channel = 1
 idle_material = ExtResource( 12 )
 pressed_material = ExtResource( 11 )
 
+[node name="button2" parent="interactions" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -18 )
+idle_material = ExtResource( 12 )
+pressed_material = ExtResource( 11 )
+
 [node name="win_button" parent="interactions" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 14 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 14 )
 channel = 10
 idle_material = ExtResource( 12 )
 pressed_material = ExtResource( 11 )
