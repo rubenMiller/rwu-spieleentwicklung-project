@@ -1,28 +1,28 @@
 extends Spatial
 
 signal i_am_dead
-signal shot(base_health, rest_health)
 
-export var health := 1.0 
-var rest_health := health 
+onready var current_health = get_parent().health
 
 func _ready():
-	rest_health = health
+	pass
 	#$Label3D.text = str(rest_health)
 	
 	
 func _process(_delta):
-	if rest_health <= 0:
+	if current_health <= 0:
 		emit_signal("i_am_dead")
+	if current_health <= 3:
+		$"../meshes/troop_4".visible = false
+	if current_health <= 2:
+		$"../meshes/troop_3".visible = false
+	if current_health <= 1:
+		$"../meshes/troop_2".visible = false
 		
 
 func reduce_health(health_delta):
-	if health_delta >= 0:
-		rest_health = rest_health - int(health_delta)
-	if health_delta < 0:
-		rest_health = rest_health + int(health_delta)
+	current_health -= abs(int(health_delta))
+
 	
-	#$Label3D.text = str(rest_health)
-	
-	emit_signal("shot", health, rest_health)
+
 
