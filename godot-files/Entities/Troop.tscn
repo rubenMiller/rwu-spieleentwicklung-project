@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -15,6 +15,9 @@
 [sub_resource type="CylinderShape" id=10]
 height = 3.0
 radius = 2.0
+
+[sub_resource type="CapsuleShape" id=11]
+radius = 0.5
 
 [sub_resource type="SpatialMaterial" id=6]
 
@@ -50,32 +53,49 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49614, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.37114e-08 )
 shape = SubResource( 10 )
+disabled = true
+
+[node name="troop_1_coll" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1 )
+shape = SubResource( 11 )
+
+[node name="troop_2_coll" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -1 )
+shape = SubResource( 11 )
+
+[node name="troop_3_coll" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1, 0 )
+shape = SubResource( 11 )
+
+[node name="troop_4_coll" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1, 0 )
+shape = SubResource( 11 )
 
 [node name="meshes" type="Spatial" parent="."]
 
 [node name="troop_1" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1.27677 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1 )
 material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
 skeleton = NodePath("../..")
 
 [node name="troop_2" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0632516, 1, -0.880808 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -1 )
 material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
 skeleton = NodePath("../troop_4")
 
 [node name="troop_3" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.08091, 1, 0.0747002 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1, 0 )
 material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
 skeleton = NodePath("../troop_1")
 
 [node name="troop_4" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.20149, 1, 0.253272 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1, 0 )
 material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
