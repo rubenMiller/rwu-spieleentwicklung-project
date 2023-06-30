@@ -1,27 +1,142 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/interactions/button.gd" type="Script" id=1]
+[ext_resource path="res://Art/Mesh/Button/button_body.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Art/Mesh/Button/button_base.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Art/textures/Button/button_full_Material_B_BaseColor.png" type="Texture" id=4]
+[ext_resource path="res://Art/textures/Button/button_full_Material_A_Normal.png" type="Texture" id=5]
+[ext_resource path="res://Art/textures/Button/button_full_Material_B_Emissive.png" type="Texture" id=6]
+[ext_resource path="res://Art/textures/Button/button_full_Material_B_Normal.png" type="Texture" id=7]
+[ext_resource path="res://Art/textures/Button/button_full_Material_A_BaseColor.png" type="Texture" id=8]
+[ext_resource path="res://Art/textures/Button/button_full_Material_B_OcclusionRoughnessMetallic.png" type="Texture" id=9]
+[ext_resource path="res://Art/textures/Button/button_full_Material_A_OcclusionRoughnessMetallic.png" type="Texture" id=10]
+[ext_resource path="res://Art/fonts/MartianMono-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Art/materials/signal_red.tres" type="Material" id=12]
+[ext_resource path="res://Art/materials/signal_green.tres" type="Material" id=13]
 
 [sub_resource type="CylinderShape" id=1]
 height = 4.0
 
-[sub_resource type="CylinderMesh" id=2]
-top_radius = 1.5
-bottom_radius = 1.5
-height = 0.1
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 8 )
+metallic_texture = ExtResource( 10 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 10 )
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 4 )
+metallic_texture = ExtResource( 9 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 9 )
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 72
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Button_pressed"
+tracks/0/type = "value"
+tracks/0/path = NodePath("button_body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.366021, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.252127, 0 ), Vector3( 0, 0.0538675, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("button_body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.252127, 0 ) ]
+}
+
+[sub_resource type="CapsuleMesh" id=9]
+resource_local_to_scene = true
+material = ExtResource( 12 )
+radius = 0.1
+mid_height = 0.1
 
 [node name="button" type="Area"]
 collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource( 1 )
+green_signal_color = ExtResource( 13 )
+red_signal_color = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
+[node name="button_base" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170281, 0 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 3 )
+
+[node name="button_body" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252127, 0 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="Label3D" type="Label3D" parent="button_body"]
+transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.0102017, 0.114922, 0.00514555 )
+modulate = Color( 0.298039, 0.101961, 0.101961, 1 )
+text = "0
+"
+font = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Button_pressed = SubResource( 8 )
+anims/RESET = SubResource( 7 )
+
+[node name="signal_lights" type="Spatial" parent="."]
+
+[node name="signal_light" type="MeshInstance" parent="signal_lights"]
+transform = Transform( 0.707107, 4.21468e-08, 0.707107, 0, 1, -5.96046e-08, -0.707107, 4.21468e-08, 0.707107, 1.22591, 0.0347886, -1.24383 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="signal_light2" type="MeshInstance" parent="signal_lights"]
+transform = Transform( -0.707107, 4.21468e-08, 0.707107, 0, 1, -5.96046e-08, -0.707107, -4.21469e-08, -0.707107, -1.24524, 0.0347886, -1.25635 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="signal_light3" type="MeshInstance" parent="signal_lights"]
+transform = Transform( -0.707107, 4.21468e-08, 0.707107, 0, 1, -5.96046e-08, -0.707107, -4.21469e-08, -0.707107, 1.24169, 0.0347886, 1.25974 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="signal_light4" type="MeshInstance" parent="signal_lights"]
+transform = Transform( 0.707107, 4.21468e-08, 0.707107, 0, 1, -5.96046e-08, -0.707107, 4.21468e-08, 0.707107, -1.2535, 0.0347886, 1.25965 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
 
 [connection signal="body_entered" from="." to="." method="_on_button_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_button_body_exited"]

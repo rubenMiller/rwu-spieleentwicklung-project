@@ -36,11 +36,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 58 )
 
 [node name="Sam" parent="Navigation/Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.01054, 1.05421, -13.8878 )
-health = 2
 
 [node name="Frodo" parent="Navigation/Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10, 1, -14 )
-health = 2
 
 [node name="nav_mesh" type="NavigationMeshInstance" parent="Navigation" groups=["navigation_mesh_instance"]]
 navmesh = SubResource( 1 )
@@ -63,13 +61,15 @@ __meta__ = {
 
 [node name="obstacles" type="Spatial" parent="Navigation/nav_mesh"]
 
-[node name="Door_1" parent="Navigation/nav_mesh/obstacles" groups=["interaction_1"] instance=ExtResource( 17 )]
+[node name="Door_1" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -6 )
+channel = 1
 
-[node name="Door_2" parent="Navigation/nav_mesh/obstacles" groups=["interaction_2"] instance=ExtResource( 17 )]
+[node name="Door_2" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 22 )
+channel = 2
 
-[node name="Door_0" parent="Navigation/nav_mesh/obstacles" groups=["interaction_0"] instance=ExtResource( 17 )]
+[node name="Door_0" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 10, 1, 42 )
 
 [node name="interactions" type="Spatial" parent="."]
@@ -98,6 +98,7 @@ idle_material = ExtResource( 12 )
 pressed_material = ExtResource( 11 )
 
 [node name="towers" type="Spatial" parent="."]
+visible = false
 
 [node name="Troop-tower2" parent="towers" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10, 7, 14 )

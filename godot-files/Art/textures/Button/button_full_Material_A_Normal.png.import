@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/button_full_Material_A_Normal.png-37292a7c8f5321c9dde706de0a565961.s3tc.stex"
+path.etc2="res://.import/button_full_Material_A_Normal.png-37292a7c8f5321c9dde706de0a565961.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Art/textures/Button/button_full_Material_A_Normal.png"
+dest_files=[ "res://.import/button_full_Material_A_Normal.png-37292a7c8f5321c9dde706de0a565961.s3tc.stex", "res://.import/button_full_Material_A_Normal.png-37292a7c8f5321c9dde706de0a565961.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
