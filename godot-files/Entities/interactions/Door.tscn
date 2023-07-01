@@ -237,11 +237,13 @@ material/1 = SubResource( 7 )
 
 [node name="Label3D" type="Label3D" parent="labels"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.05, 2 )
+modulate = Color( 0.298039, 0.101961, 0.101961, 1 )
 text = "1"
 font = SubResource( 5 )
 
 [node name="Label3D2" type="Label3D" parent="labels"]
 transform = Transform( -1, -1.74846e-07, -8.74228e-08, -8.74228e-08, -1.31134e-07, 1, -1.74846e-07, 1, 1.31134e-07, 0, 0.05, -2 )
+modulate = Color( 0.298039, 0.101961, 0.101961, 1 )
 text = "1"
 font = SubResource( 5 )
 

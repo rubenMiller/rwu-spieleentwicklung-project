@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Art/Maps/radius/radius_8.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Components/View_component.gd" type="Script" id=2]
+[ext_resource path="res://Art/materials/default_material_gray.tres" type="Material" id=3]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -0.00798156, 0.0155216, 0.0214871, 0.144883, 0.0155216, 1.99667, 0.108194, 0.0155216, 2.00296, 0.13875, -0.015058, 1.8928, -0.142558, -0.015058, 1.99667, 0.00422964, -0.015058, -0.00305796, -0.142558, 0.0155216, 1.99667, 0.0103352, 0.0155216, 0.0582064, 0.144883, -0.015058, 1.99667, -0.0080097, -0.015058, 0.0214871, -0.142558, 0.0155216, 1.94778, -0.142558, -0.015058, 1.94778, 0.0225746, -0.015058, 0.229629, -0.10584, -0.015058, 2.00276, 0.13875, 0.0155216, 1.8928, 0.108194, -0.015058, 2.00296, -0.10584, 0.0155216, 2.00276, 0.00422964, 0.0155216, -0.00305796, -0.13029, 0.0155216, 1.77027, 0.0225746, 0.0155216, 0.229629, 0.0103352, -0.015058, 0.0582064, -0.13029, -0.015058, 1.77027, -0.00798156, -0.015058, 2.00296 )
@@ -15,6 +16,7 @@ script = ExtResource( 2 )
 [node name="radius_mesh_instance" type="MeshInstance" parent="."]
 transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0 )
 mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

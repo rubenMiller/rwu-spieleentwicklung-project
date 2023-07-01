@@ -8,11 +8,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var signal_light: MeshInstance = $signal_light
 onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer3D
 
-var nav_mesh 
-
 func _ready() -> void:
-	nav_mesh = get_tree().get_nodes_in_group("navigation_mesh_instance")[0]
-	
 	var group_name = "interaction_" + str(channel)
 	add_to_group(group_name)
 	
@@ -24,11 +20,11 @@ func on_interaction(enabled):
 		animation_player.play("Door_1_open")
 		audio_stream_player.play(28.5)
 		signal_light.mesh.material = green_signal_color
-	if not enabled:
+	else:
 		animation_player.play_backwards("Door_1_open")
 		audio_stream_player.play(28.5)
 		signal_light.mesh.material = red_signal_color
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	print("animation finished")
+	var nav_mesh = get_tree().get_nodes_in_group("navigation_mesh_instance")[0]
 	nav_mesh.update_mesh()

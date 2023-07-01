@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
-[ext_resource path="res://Art/materials/troop_idle_Material.tres" type="Material" id=3]
+[ext_resource path="res://Art/materials/default_material_gray.tres" type="Material" id=3]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=4]
 [ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Components/Health_Component.tscn" type="PackedScene" id=6]
@@ -80,6 +80,7 @@ material_override = SubResource( 6 )
 mesh = SubResource( 8 )
 skin = SubResource( 4 )
 skeleton = NodePath("../..")
+material/0 = ExtResource( 3 )
 
 [node name="troop_2" type="MeshInstance" parent="meshes"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -1 )
