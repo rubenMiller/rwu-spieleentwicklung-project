@@ -227,7 +227,7 @@ transform = Transform( 1, 0, 0, 0, 1.3, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 10 )
 
 [node name="door_frame" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1.3, 0, 0, 0, 1.207, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1.3, 0, 0, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 2 )
 skeleton = NodePath("../door_right")
 material/0 = SubResource( 6 )

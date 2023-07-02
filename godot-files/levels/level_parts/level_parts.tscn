@@ -1,19 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art/Maps/base_ground.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Art/Maps/base_grass.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Art/Maps/slope_ground.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://Art/Maps/slope_ground_1.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://Art/Maps/slope_ground_2.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://Art/Maps/bridge_ground.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Art/Mesh/terrain_2/terrain_cube_angle.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://Art/materials/ground_material.tres" type="Material" id=7]
 [ext_resource path="res://Art/materials/wall_material.tres" type="Material" id=8]
+[ext_resource path="res://Art/Mesh/terrain_2/terrain_cube_door.obj" type="ArrayMesh" id=9]
 
 [node name="level_parts" type="Spatial"]
 
 [node name="base_grass" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
-skeleton = NodePath("../slope_ground")
+skeleton = NodePath("")
 material/0 = ExtResource( 8 )
 material/1 = ExtResource( 7 )
 
@@ -21,23 +19,13 @@ material/1 = ExtResource( 7 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 8 )
 
-[node name="slope_ground" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
-visible = false
+[node name="base_door" type="MeshInstance" parent="."]
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 8 )
+material/1 = ExtResource( 7 )
+
+[node name="base_angled" type="MeshInstance" parent="."]
 mesh = ExtResource( 3 )
 skeleton = NodePath("../base_ground")
-
-[node name="slope_ground_1" type="MeshInstance" parent="."]
-visible = false
-mesh = ExtResource( 4 )
-skeleton = NodePath("../slope_ground_2")
-
-[node name="slope_ground_2" type="MeshInstance" parent="."]
-visible = false
-mesh = ExtResource( 5 )
-skeleton = NodePath("../base_ground")
-
-[node name="bridge_ground" type="MeshInstance" parent="."]
-visible = false
-mesh = ExtResource( 6 )
-skeleton = NodePath("../base_ground")
+material/0 = ExtResource( 8 )
+material/1 = ExtResource( 7 )

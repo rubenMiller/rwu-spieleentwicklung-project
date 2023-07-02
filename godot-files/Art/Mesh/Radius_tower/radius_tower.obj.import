@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/radius_tower.obj-4be092c5254ca1b78036fb4e4c53732e.mesh"
+
+[deps]
+
+files=[ "res://.import/radius_tower.obj-4be092c5254ca1b78036fb4e4c53732e.mesh" ]
+
+source_file="res://Art/Mesh/Radius_tower/radius_tower.obj"
+dest_files=[ "res://.import/radius_tower.obj-4be092c5254ca1b78036fb4e4c53732e.mesh", "res://.import/radius_tower.obj-4be092c5254ca1b78036fb4e4c53732e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
