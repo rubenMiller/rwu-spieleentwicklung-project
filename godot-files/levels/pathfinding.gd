@@ -5,26 +5,29 @@ onready var troops: Spatial = $Navigation/Troops
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		save_game("not_completed")
-		get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")
+		# pause
+		$overlay.visible = true
+		$overlay.state = "pause"
+
 		
 	if troops.get_child_count() <= 0:
-		save_game("lost")
-		get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")
+		# lost
+		$overlay.visible = true
+		$overlay.state = "lost"
 
 func _ready():
 	SignalBus.connect("won", self, "_on_won")
-	#nav_mesh.setup_nav_server()
-	print(NavigationServer.get_maps())
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and $UserInterface.visible:
-		# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+
+#func _unhandled_input(event: InputEvent) -> void:
+#	if event.is_action_pressed("ui_accept") and $UserInterface.visible:
+#		# warning-ignore:return_value_discarded
+#		get_tree().reload_current_scene()
 
 func _on_won():
 	save_game("won")
-	get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")
+	$overlay.visible = true
+	$overlay.state = "won"
 	
 func save_game(change_state):
 	print(name, "was comleted with: ", change_state)
