@@ -16,6 +16,11 @@ func _process(delta):
 		$overlay.state = "lost"
 
 func _ready():
+	$overlay.visible = false
+	if self.name == "level_1":
+		$overlay.visible = true
+		$overlay.state = "pause"
+		$overlay.state = "start"
 	SignalBus.connect("won", self, "_on_won")
 
 

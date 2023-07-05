@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Troop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/interactions/Win_tile.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art/materials/ground_material_proximity_fade.tres" type="Material" id=8]
 [ext_resource path="res://Art/world/world_post_processing.tres" type="Environment" id=9]
 [ext_resource path="res://Entities/troop_tower.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Menues/overlay.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/Game_camera.gd" type="Script" id=13]
 [ext_resource path="res://levels/level_parts/level_parts.tres" type="MeshLibrary" id=14]
 [ext_resource path="res://levels/camera_ray.gd" type="Script" id=15]
@@ -45,6 +46,8 @@ size = Vector2( 50, 200 )
 
 [node name="level_3" type="Spatial"]
 script = ExtResource( 6 )
+
+[node name="overlay" parent="." instance=ExtResource( 11 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 9 )
