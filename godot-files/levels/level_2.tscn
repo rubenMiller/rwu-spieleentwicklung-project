@@ -113,6 +113,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 5, -
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51882e-07, 18.9107, -21.812 )
 script = ExtResource( 13 )
+move_speed = 0.45
 boundary_left = 30.0
 boundary_right = -30.0
 boundary_forward = 30.0
