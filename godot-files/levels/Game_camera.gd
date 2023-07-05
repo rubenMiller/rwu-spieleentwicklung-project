@@ -13,7 +13,6 @@ export var boundary_down := 0.0
 var velocity = Vector3.ZERO
 
 func _physics_process(delta: float):
-	print(translation)
 	
 	if Input.is_action_pressed("move_right") and translation.x > boundary_right:
 		translation.x -= move_speed

@@ -1,16 +1,20 @@
 extends Control
 
-var state = "pause"
+var state = "running"
 
 var my_style = StyleBoxFlat.new()
 
 func _ready():
-	my_style.set_bg_color(Color(0.5,1,1,1))
 
 	# Set the "normal" style to be your newly created style.
 	set("custom_styles/normal", my_style)
 
 func _process(delta):
+	if state != "running":
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
+	print(state)
 	$MarginContainer/MainContainer/VBoxContainer/label_pausiert.visible = false
 	$MarginContainer/MainContainer/VBoxContainer/label_win.visible = false
 	$MarginContainer/MainContainer/VBoxContainer/label_lost.visible = false
@@ -35,11 +39,13 @@ func _process(delta):
 func _on_Button_button_down():
 	# unpause
 	self.visible = false
+	state = "running"
 
 
 func _on_Button2_button_down():
 	# retry
 	get_tree().reload_current_scene()
+	state = "running"
 
 
 func _on_Button3_button_down():
@@ -48,4 +54,5 @@ func _on_Button3_button_down():
 
 
 func _on_Button_start_button_down():
+	state = "running"
 	self.visible = false

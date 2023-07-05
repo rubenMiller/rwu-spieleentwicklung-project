@@ -8,6 +8,7 @@ func _ready():
 		#  ERR_FILE_NOT_FOUND 
 		print("The save file is not found")
 		create_save_file()
+		output_file.open("res://gamesave.save", File.READ)
 	
 	var data_dict = parse_json(output_file.get_line())
 	if data_dict["level_1"] == "won":
@@ -28,6 +29,7 @@ func create_save_file():
 	var output_file = File.new()
 	output_file.open("res://gamesave.save", File.WRITE)
 	output_file.store_string(JSON.print(data_dict))
+	output_file.close()
 
 
 

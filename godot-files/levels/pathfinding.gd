@@ -9,7 +9,6 @@ func _process(delta):
 		$overlay.visible = true
 		$overlay.state = "pause"
 
-		
 	if troops.get_child_count() <= 0:
 		# lost
 		$overlay.visible = true
@@ -19,7 +18,6 @@ func _ready():
 	$overlay.visible = false
 	if self.name == "level_1":
 		$overlay.visible = true
-		$overlay.state = "pause"
 		$overlay.state = "start"
 	SignalBus.connect("won", self, "_on_won")
 
@@ -48,7 +46,5 @@ func save_game(change_state):
 	output_file.store_line(to_json(data_dict))
 	output_file.close()
 
-func _on_nav_mesh_navigation_mesh_changed() -> void:
-	print("nav mesh changed")
 		
 

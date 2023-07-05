@@ -194,6 +194,3 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.142, 
 mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 8 )
-
-[connection signal="nav_mesh_changed" from="Navigation/nav_mesh" to="Position3D/Game_camera" method="_on_nav_mesh_nav_mesh_changed"]
-[connection signal="navigation_mesh_changed" from="Navigation/nav_mesh" to="." method="_on_nav_mesh_navigation_mesh_changed"]
