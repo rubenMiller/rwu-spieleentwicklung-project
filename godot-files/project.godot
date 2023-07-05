@@ -43,7 +43,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Spieleentwicklung"
-run/main_scene="res://Menues/otherMenu/otherMenu.tscn"
+run/main_scene="res://Menues/menu/menu.tscn"
 config/icon="res://icon.jpg"
 
 [autoload]

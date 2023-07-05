@@ -6,11 +6,11 @@ onready var troops: Spatial = $Navigation/Troops
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		save_game("not_completed")
-		get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
+		get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")
 		
 	if troops.get_child_count() <= 0:
 		save_game("lost")
-		get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
+		get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")
 
 func _ready():
 	SignalBus.connect("won", self, "_on_won")
@@ -24,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_won():
 	save_game("won")
-	get_tree().change_scene("res://Menues/otherMenu/otherMenu.tscn")
+	get_tree().change_scene("res://Menues/mainMenu/mainMenu.tscn")
 	
 func save_game(change_state):
 	print(name, "was comleted with: ", change_state)
