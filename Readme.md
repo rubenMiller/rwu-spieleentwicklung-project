@@ -22,51 +22,36 @@ Truppen bewegen per Pathfinding oder per user interaction (etwa 'vormalen')
 
     -> Truppen sollen sich so bewegen, wie in bad north
 
-## Verbesserungen Stand 05.06
-
-auswählen linksclikc
-
-bewegen rechts
-
-Mörser ist zu stark:
-
-Zu viel Stress, man kann nur eine Einheit auf einmal bewegen
-
-Idee: Save spaces for dem Mörser
--> dann wird es evtl Schleich-Spiel, von Deckung zu Deckung
-
-Wenn Mörser nie alleine ist, müssen wir nicht so viel Verändern
-
-Ideen:
-
--drehende TÜrme -> deren Radius verändert sich
-zB Sharpshooter oder Flammenturm
-
-- dynamisches Feld
-  Veränderung der Landschaft
-  zB manche Felder sind nur einmal Belaufbar
-
---> Mischung aus neuem und Alten:
-
-Mörser hat Radius und fängt erst an zu zielen, wenn in Radius.
-Wenn wieder aus dem Radius, ist der Fortschritt für das Zielen fertig
-
-
 ## TODOs
 
-- Petruz:
+### Petruz:
 
-Türen: Color Code, Model, Animation
+Priorität 1:
+
+- Ziel genauer (etwa Fahne)
+- Turm Textur + Model
+- Einheiten Mesh + Textur & schönere selection
+
+Nice to have:
+
+- Turm reload anzeige
+
 Einheiten: Collision radius, Einheiten models, selection anders anzeigen
 Türme: sehen, wann sie schießen, Models, Radius besser
 Terrain: Texturiert + models
 
-- Rübchen:
+### Rübchen:
 
-Reset der Speicherstände 
-"zwischenbildschirm für gewonnen + verloren (ins Menü und nächstes Level)
-Game exit + level exit bestätigen
-"tutorial fenster" vor ersten´m Level + in Menü erreichbar
+Priorität 1:
 
-level design überlegen
+- bugs entfernen -> muss teilweise auf Petr warten
+- evtl übernehmen: Einheiten automatisches ausrichten und Collision anpassen
 
+Priorität 2:
+
+- Einheiten mit etwas "Eigenleben" und eigene Rotation
+
+Nice to have:
+
+- debug Knopf: "Stand löschen"
+- viertes Level
