@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Troop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/interactions/Win_tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/Global_light.gd" type="Script" id=3]
+[ext_resource path="res://Art/world/world_post_processing.tres" type="Environment" id=4]
+[ext_resource path="res://Art/textures/rocks_ground_03/rocks_ground_03_rough_2k.png" type="Texture" id=5]
 [ext_resource path="res://levels/pathfinding.gd" type="Script" id=6]
+[ext_resource path="res://Art/textures/rocks_ground_03/rocks_ground_03_diff_2k.png" type="Texture" id=7]
+[ext_resource path="res://Art/textures/rocks_ground_03/rocks_ground_03_nor_gl_2k.png" type="Texture" id=8]
 [ext_resource path="res://Entities/troop_tower.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=11]
-[ext_resource path="res://Art/materials/troop_idle_Material.tres" type="Material" id=12]
 [ext_resource path="res://levels/Game_camera.gd" type="Script" id=13]
 [ext_resource path="res://levels/level_parts/level_parts.tres" type="MeshLibrary" id=14]
 [ext_resource path="res://levels/camera_ray.gd" type="Script" id=15]
@@ -23,6 +26,18 @@ agent_radius = 1.0
 agent_max_climb = 1.0
 edge_max_length = 13.51
 polygon_verts_per_poly = 4.0
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 50, 2, 60 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 7 )
+roughness_texture = ExtResource( 5 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 8 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
 
 [node name="level_2" type="Spatial"]
 script = ExtResource( 6 )
@@ -52,7 +67,7 @@ cell_scale = 2.0
 collision_layer = 2
 collision_mask = 2
 data = {
-"cells": PoolIntArray( 0, 0, 655361, 1, 0, 655361, 3, 0, 655361, 4, 0, 655361, 5, 0, 655361, 65531, 0, 655361, 65533, 0, 655361, 65534, 0, 1, 65535, 0, 655361, -65536, 0, 2, -65535, 0, 2, -65534, 0, 2, -65533, 0, 2, -65532, 0, 2, -65531, 0, 2, -5, 0, 2, -4, 0, 2, -3, 0, 2, -2, 0, 2, -1, 0, 2, 0, 1, 655361, 1, 1, 655361, 3, 1, 655361, 4, 1, 655361, 5, 1, 655361, 65531, 1, 655361, 65533, 1, 655361, 65534, 1, 1, 65535, 1, 655361, -65536, 1, 2, -65535, 1, 2, -65534, 1, 2, -65533, 1, 2, -65532, 1, 2, -65531, 1, 2, -5, 1, 2, -4, 1, 2, -3, 1, 2, -2, 1, 2, -1, 1, 2, 1, 2, 655361, 3, 2, 1, 4, 2, 1, 5, 2, 655361, 65531, 2, 655361, 65533, 2, 655361, -65536, 2, 2, -65535, 2, 2, -65534, 2, 2, -65533, 2, 2, -65532, 2, 2, -65531, 2, 2, -5, 2, 2, -4, 2, 2, -3, 2, 2, -2, 2, 2, -1, 2, 2, 1, 3, 655361, 2, 3, 1, 3, 3, 655361, 4, 3, 655361, 5, 3, 655361, 65531, 3, 655361, -65536, 3, 2, -65535, 3, 2, -65534, 3, 2, -65533, 3, 2, -65532, 3, 2, -65531, 3, 2, -5, 3, 2, -4, 3, 2, -3, 3, 2, -2, 3, 2, -1, 3, 2, 1, 4, 655361, 2, 4, 1, 3, 4, 655361, 4, 4, 1048577, 5, 4, 1048577, 65531, 4, 655361, 65532, 4, 1, 65533, 4, 1, -65536, 4, 2, -65535, 4, 2, -65534, 4, 2, -65533, 4, 2, -65532, 4, 2, -65531, 4, 2, -5, 4, 2, -4, 4, 2, -3, 4, 2, -2, 4, 2, -1, 4, 2, 0, 5, 1, 1, 5, 655361, 2, 5, 1, 3, 5, 1, 4, 5, 1048577, 5, 5, 1048577, 65531, 5, 655361, 65532, 5, 1, 65533, 5, 1, 65534, 5, 1, 65535, 5, 655361, -65536, 5, 2, -65535, 5, 2, -65534, 5, 2, -65533, 5, 2, -65532, 5, 2, -65531, 5, 2, -5, 5, 2, -4, 5, 2, -3, 5, 2, -2, 5, 2, -1, 5, 2, 0, 6, 1, 1, 6, 1, 2, 6, 1, 3, 6, 1, 4, 6, 1, 5, 6, 1, 65531, 6, 1, 65532, 6, 1, 65533, 6, 1, 65534, 6, 1, 65535, 6, 1, -65536, 6, 655362, -65535, 6, 655362, -65534, 6, 655362, -65533, 6, 655362, -65532, 6, 655362, -65531, 6, 655362, -5, 6, 655362, -4, 6, 655362, -3, 6, 655362, -2, 6, 655362, -1, 6, 655362, 0, 65530, 655361, 1, 65530, 655361, 2, 65530, 655361, 3, 65530, 655361, 4, 65530, 655361, 5, 65530, 655361, 65531, 65530, 655361, 65532, 65530, 655361, 65533, 65530, 655361, 65534, 65530, 655361, 65535, 65530, 655361, -65536, 65530, 2, -65535, 65530, 2, -65534, 65530, 2, -65533, 65530, 2, -65532, 65530, 2, -65531, 65530, 2, -5, 65530, 2, -4, 65530, 2, -3, 65530, 2, -2, 65530, 2, -1, 65530, 2, 5, 65531, 655361, 65531, 65531, 655361, -65536, 65531, 2, -65535, 65531, 2, -65534, 65531, 2, -65533, 65531, 2, -65532, 65531, 2, -65531, 65531, 2, -5, 65531, 2, -4, 65531, 2, -3, 65531, 2, -2, 65531, 2, -1, 65531, 2, 5, 65532, 655361, 65531, 65532, 655361, -65536, 65532, 2, -65535, 65532, 2, -65534, 65532, 2, -65533, 65532, 2, -65532, 65532, 2, -65531, 65532, 2, -5, 65532, 2, -4, 65532, 2, -3, 65532, 2, -2, 65532, 2, -1, 65532, 2, 5, 65533, 655361, 65531, 65533, 655361, -65536, 65533, 2, -65535, 65533, 2, -65534, 65533, 2, -65533, 65533, 2, -65532, 65533, 2, -65531, 65533, 2, -5, 65533, 2, -4, 65533, 2, -3, 65533, 2, -2, 65533, 2, -1, 65533, 2, 0, 65534, 655361, 1, 65534, 655361, 3, 65534, 655361, 4, 65534, 655361, 5, 65534, 655361, 65531, 65534, 655361, 65533, 65534, 655361, 65534, 65534, 655361, 65535, 65534, 655361, -65536, 65534, 2, -65535, 65534, 2, -65534, 65534, 2, -65533, 65534, 2, -65532, 65534, 2, -65531, 65534, 2, -5, 65534, 2, -4, 65534, 2, -3, 65534, 2, -2, 65534, 2, -1, 65534, 2, 0, 65535, 1, 3, 65535, 655361, 4, 65535, 655361, 5, 65535, 655361, 65531, 65535, 655361, 65533, 65535, 655361, 65534, 65535, 1, 65535, 65535, 1, -65536, 65535, 2, -65535, 65535, 2, -65534, 65535, 2, -65533, 65535, 2, -65532, 65535, 2, -65531, 65535, 2, -5, 65535, 2, -4, 65535, 2, -3, 65535, 2, -2, 65535, 2, -1, 65535, 2 )
+"cells": PoolIntArray( 0, 0, 655361, 1, 0, 655367, 3, 0, 655361, 4, 0, 655361, 5, 0, 655361, 65531, 0, 655361, 65533, 0, 655361, 65534, 0, 1, 65535, 0, 655361, 0, 1, 655361, 1, 1, 655361, 3, 1, 655361, 4, 1, 655361, 5, 1, 655361, 65531, 1, 655361, 65533, 1, 655361, 65534, 1, 1, 65535, 1, 655361, 0, 2, 7, 1, 2, 655361, 3, 2, 1, 4, 2, 1, 5, 2, 655361, 65531, 2, 655361, 65533, 2, 1048582, 1, 3, 655361, 2, 3, 1, 3, 3, 655361, 4, 3, 655361, 5, 3, 655361, 65531, 3, 655361, 0, 4, 1441799, 1, 4, 655361, 2, 4, 1, 3, 4, 655361, 4, 4, 1048577, 5, 4, 1048577, 65531, 4, 655361, 65532, 4, 655367, 65533, 4, 1441798, 0, 5, 1, 1, 5, 655361, 2, 5, 1, 3, 5, 1, 4, 5, 1048577, 5, 5, 1048577, 65531, 5, 655361, 65532, 5, 1, 65533, 5, 1, 65534, 5, 1, 65535, 5, 655361, 0, 6, 1, 1, 6, 1, 2, 6, 1, 3, 6, 1, 4, 6, 1, 5, 6, 1, 65531, 6, 1, 65532, 6, 1, 65533, 6, 1, 65534, 6, 1, 65535, 6, 1, 0, 65530, 655361, 1, 65530, 655361, 2, 65530, 655361, 3, 65530, 655361, 4, 65530, 655361, 5, 65530, 655361, 65531, 65530, 655361, 65532, 65530, 655361, 65533, 65530, 655361, 65534, 65530, 655361, 65535, 65530, 655361, 5, 65531, 655361, 65531, 65531, 655361, 5, 65532, 655361, 65531, 65532, 655361, 5, 65533, 655361, 65531, 65533, 655361, 0, 65534, 655361, 1, 65534, 655366, 3, 65534, 6, 4, 65534, 655361, 5, 65534, 655361, 65531, 65534, 655361, 65533, 65534, 1441799, 65534, 65534, 655361, 65535, 65534, 655361, 0, 65535, 1, 3, 65535, 1441799, 4, 65535, 655361, 5, 65535, 655361, 65531, 65535, 655361, 65533, 65535, 655361, 65534, 65535, 1, 65535, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -68,24 +83,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -6 )
 transform = Transform( 7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -10, 1, 14 )
 channel = 1
 
+[node name="ground" type="MeshInstance" parent="Navigation/nav_mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7271 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 3 )
+
 [node name="interactions" type="Spatial" parent="."]
 
 [node name="button" parent="interactions" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -2 )
 channel = 1
-idle_material = ExtResource( 12 )
-pressed_material = ExtResource( 11 )
 
 [node name="button2" parent="interactions" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -18 )
-idle_material = ExtResource( 12 )
-pressed_material = ExtResource( 11 )
 
 [node name="win_button" parent="interactions" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 14 )
 channel = 10
-idle_material = ExtResource( 12 )
-pressed_material = ExtResource( 11 )
 
 [node name="towers" type="Spatial" parent="."]
 
@@ -95,8 +110,12 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 7, -
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51882e-07, 18.9107, -21.812 )
 script = ExtResource( 13 )
-speed = 0.5
-scroll_multiplier = 2.0
+boundary_left = 30.0
+boundary_right = -30.0
+boundary_forward = 30.0
+boundary_backward = -20.0
+boundary_up = 30.0
+boundary_down = 10.0
 
 [node name="Game_camera" type="Camera" parent="Position3D"]
 transform = Transform( -1, 7.96152e-08, -3.61134e-08, 6.82117e-09, 0.482886, 0.875683, 8.71564e-08, 0.875683, -0.482886, 0, 0, 0 )
@@ -106,11 +125,25 @@ fov = 102.5
 far = 1000.0
 script = ExtResource( 15 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.429313, 0.903156, 0, -0.903156, 0.429313, -15.8196, 14.813, 10.8217 )
-
 [node name="Draw" type="ImmediateGeometry" parent="." groups=["draw"]]
 layers = 2
+
+[node name="Position3D2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.429313, 0.903156, 0, -0.903156, 0.429313, -15.8196, 20.4585, -1.0548 )
+script = ExtResource( 3 )
+is_time_changing = false
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Position3D2"]
+transform = Transform( 0.885896, 0.368103, -0.282292, -1.81359e-08, 0.60854, 0.793523, 0.463884, -0.702979, 0.539103, 0, 0, 0 )
+light_energy = 1.6
+light_bake_mode = 2
+shadow_enabled = true
+shadow_contact = 1.0
+directional_shadow_mode = 0
+directional_shadow_depth_range = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
 
 [connection signal="nav_mesh_changed" from="Navigation/nav_mesh" to="Position3D/Game_camera" method="_on_nav_mesh_nav_mesh_changed"]
 [connection signal="navigation_mesh_changed" from="Navigation/nav_mesh" to="." method="_on_nav_mesh_navigation_mesh_changed"]

@@ -9,7 +9,7 @@ onready var body: MeshInstance = $body
 
 onready var isSelected = false
 
-export var rotate_speed := 0.02
+export var rotate_speed := 0.2
 
 func _ready():
 	display_selected_unit()
@@ -37,11 +37,11 @@ func rotate_tower(delta):
 	#elif body.global_rotation.y - target_rotation > 0.1:
 	
 	if relative_rotation > 0:
-		body.global_rotation.y += rotate_speed
-		view_component.global_rotation.y += rotate_speed
+		body.global_rotation.y += rotate_speed * delta
+		view_component.global_rotation.y += rotate_speed *delta
 	else:
-		body.global_rotation.y -= rotate_speed
-		view_component.global_rotation.y -= rotate_speed
+		body.global_rotation.y -= rotate_speed * delta
+		view_component.global_rotation.y -= rotate_speed * delta
 
 	#body.global_rotation.y = lerp_angle(body.global_rotation.y, atan2(v.x,v.z), rotate_speed)
 	#view_component.global_rotation.y = lerp_angle(view_component.global_rotation.y, atan2(v.x,v.z), rotate_speed)

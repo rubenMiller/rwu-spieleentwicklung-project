@@ -36,7 +36,7 @@ input_ray_pickable = false
 script = ExtResource( 1 )
 idleMaterial = ExtResource( 11 )
 selectedMaterial = ExtResource( 9 )
-rotate_speed = 0.01
+rotate_speed = 0.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
