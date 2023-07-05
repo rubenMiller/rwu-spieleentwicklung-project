@@ -31,9 +31,3 @@ func _input_event(_camera: Object, event: InputEvent, _position: Vector3, _norma
 		set_selected(not selected)
 	if event.is_action_pressed(attack_selection_action) and not get_parent().is_in_group("troop"):
 		get_parent().add_to_group(attack_selection_group_name)
-		#var group = get_tree().get_nodes_in_group(attack_selection_group_name)
-		#print(group)
-		
-
-	
-	

@@ -1,33 +1,147 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Entities/troop_tower.gd" type="Script" id=1]
-[ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
+[ext_resource path="res://Art/materials/signal_red.tres" type="Material" id=2]
 [ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/Attack_Patterns/Attack_Pattern_Default.gd" type="Script" id=4]
-[ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Art/materials/turret_shoot_progress/progress_default_disabled.tres" type="Material" id=5]
 [ext_resource path="res://Art/Maps/radius/radius_30.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/Mesh/tower/base_1.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=9]
 [ext_resource path="res://Components/View_component.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Art/materials/default_material_gray.tres" type="Material" id=11]
+[ext_resource path="res://Art/Mesh/tower/turret_barrel.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://Art/Mesh/tower/turret_body.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://Art/materials/tower_turret_material_1.tres" type="Material" id=14]
+[ext_resource path="res://Art/textures/tower/turret/turret_Material_B_OcclusionRoughnessMetallic.png" type="Texture" id=15]
+[ext_resource path="res://Art/textures/tower/turret/turret_Material_B_BaseColor.png" type="Texture" id=16]
+[ext_resource path="res://Art/textures/tower/turret/turret_Material_B_Normal.png" type="Texture" id=17]
+[ext_resource path="res://Art/textures/tower/turret/turret_Material_B_Emissive.png" type="Texture" id=18]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_A.001_BaseColor.png" type="Texture" id=19]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_A.001_OcclusionRoughnessMetallic.png" type="Texture" id=20]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_B_BaseColor.png" type="Texture" id=21]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_B_Normal.png" type="Texture" id=22]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_A.001_Emissive.png" type="Texture" id=23]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_B_Emissive.png" type="Texture" id=24]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_A.001_Normal.png" type="Texture" id=25]
+[ext_resource path="res://Art/textures/tower/base/base_1_Material_B_OcclusionRoughnessMetallic.png" type="Texture" id=26]
+[ext_resource path="res://Entities/progress_lights.gd" type="Script" id=27]
+[ext_resource path="res://Art/materials/turret_shoot_progress/progress_default_enabled.tres" type="Material" id=28]
+[ext_resource path="res://Art/materials/turret_shoot_progress/progress_radius_highlighted.tres" type="Material" id=29]
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 1, 1, 2 )
+extents = Vector3( 1.74981, 1.88395, 3.12922 )
 
-[sub_resource type="CubeMesh" id=9]
-material = ExtResource( 11 )
-size = Vector3( 2, 2, 4 )
+[sub_resource type="StreamTexture" id=17]
+flags = 7
+load_path = "res://.import/turret_Material_B_OcclusionRoughnessMetallic.png-8c46f8726785bd690c91867c847e3100.s3tc.stex"
 
-[sub_resource type="Skin" id=4]
+[sub_resource type="SpatialMaterial" id=13]
+albedo_texture = ExtResource( 16 )
+metallic_texture = ExtResource( 15 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 15 )
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 18 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 17 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = SubResource( 17 )
+ao_on_uv2 = false
+ao_texture_channel = 0
 
-[sub_resource type="CubeMesh" id=11]
+[sub_resource type="CylinderMesh" id=12]
+height = 1.0
 
-[sub_resource type="BoxShape" id=10]
-extents = Vector3( 1, 1, 2 )
+[sub_resource type="CapsuleMesh" id=18]
+material = ExtResource( 2 )
+radius = 0.02
+mid_height = 0.05
 
-[sub_resource type="DynamicFont" id=7]
-size = 120
-font_data = ExtResource( 5 )
+[sub_resource type="CylinderMesh" id=19]
+resource_local_to_scene = true
+material = ExtResource( 5 )
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="CylinderMesh" id=20]
+resource_local_to_scene = true
+material = ExtResource( 28 )
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="CylinderMesh" id=21]
+resource_local_to_scene = true
+material = ExtResource( 5 )
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="CylinderMesh" id=22]
+resource_local_to_scene = true
+material = ExtResource( 5 )
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="CylinderMesh" id=23]
+resource_local_to_scene = true
+material = ExtResource( 5 )
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_texture = ExtResource( 19 )
+metallic_texture = ExtResource( 20 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 20 )
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 23 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 25 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 20 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_texture = ExtResource( 21 )
+metallic_texture = ExtResource( 26 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 26 )
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 24 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 22 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 26 )
+ao_on_uv2 = false
+ao_texture_channel = 0
 
 [node name="Troop-tower" type="KinematicBody" groups=["tower"]]
 collision_layer = 0
@@ -42,27 +156,66 @@ rotate_speed = 0.5
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 8 )
 
-[node name="body" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 9 )
-skin = SubResource( 4 )
-material/0 = ExtResource( 11 )
+[node name="turret" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+mesh = ExtResource( 13 )
+material/0 = ExtResource( 14 )
+material/1 = ExtResource( 14 )
+material/2 = ExtResource( 14 )
+material/3 = ExtResource( 14 )
+material/4 = ExtResource( 14 )
+material/5 = ExtResource( 14 )
 
-[node name="cannon" type="MeshInstance" parent="body"]
-transform = Transform( 0.3, 0, 0, 0, 1.082, 0, 0, 0, 0.318, 0, 0.730836, -1.86 )
-mesh = SubResource( 11 )
-material/0 = ExtResource( 11 )
+[node name="barrel" type="Position3D" parent="turret"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.278, 0 )
 
-[node name="SelectionArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-collision_layer = 2
-collision_mask = 0
-monitorable = false
-priority = 1.0
-script = ExtResource( 2 )
+[node name="barrel_mesh" type="MeshInstance" parent="turret/barrel"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.27816, 0 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
+material/1 = SubResource( 13 )
 
-[node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
-shape = SubResource( 10 )
+[node name="MeshInstance2" type="MeshInstance" parent="turret/barrel"]
+transform = Transform( -4.37114e-09, -1, 0, 0.1, -4.37114e-08, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 12 )
+
+[node name="view_light" type="MeshInstance" parent="turret/barrel"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00470567, 3.50743 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../../..")
+
+[node name="progress_lights" type="Spatial" parent="turret"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+script = ExtResource( 27 )
+progress_color_disabled = ExtResource( 5 )
+progress_color_enabled = ExtResource( 28 )
+radius_color_highlighted = ExtResource( 29 )
+
+[node name="light_1" type="MeshInstance" parent="turret/progress_lights"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.3928, 2.22357, 0.311201 )
+mesh = SubResource( 19 )
+
+[node name="light_2" type="MeshInstance" parent="turret/progress_lights"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.3928, 2.35838, 0.206684 )
+mesh = SubResource( 20 )
+
+[node name="light_3" type="MeshInstance" parent="turret/progress_lights"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.3928, 2.51163, 0.1164 )
+mesh = SubResource( 21 )
+
+[node name="light_4" type="MeshInstance" parent="turret/progress_lights"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.3928, 2.64745, 0.00618643 )
+mesh = SubResource( 22 )
+
+[node name="light_5" type="MeshInstance" parent="turret/progress_lights"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.3928, 2.7953, -0.120637 )
+mesh = SubResource( 23 )
+
+[node name="base" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+mesh = ExtResource( 8 )
+material/0 = SubResource( 14 )
+material/1 = SubResource( 15 )
 
 [node name="Attack_component" parent="." instance=ExtResource( 7 )]
 target_group_name = "troop"
@@ -72,13 +225,6 @@ fire_rate = 2.0
 [node name="Attack_Pattern_Default" type="Spatial" parent="Attack_component"]
 script = ExtResource( 4 )
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
-visible = false
-text = "Selected
-"
-font = SubResource( 7 )
-
 [node name="Radius_Component" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 radius = 10.0
@@ -87,7 +233,6 @@ radius = 10.0
 radius = 4.95
 mesh_instance = ExtResource( 6 )
 
-[connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
 [connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
 [connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]
 [connection signal="body_entered" from="View_component" to="Attack_component" method="_on_View_component_body_entered"]

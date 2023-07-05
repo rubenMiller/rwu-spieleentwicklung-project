@@ -1,14 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Components/Radius_Component.gd" type="Script" id=1]
-[ext_resource path="res://Art/materials/radius_material.tres" type="Material" id=2]
 [ext_resource path="res://Art/Mesh/Radius_tower/radius_tower.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://Art/materials/signal_red.tres" type="Material" id=4]
-
-[sub_resource type="CylinderMesh" id=10]
-resource_local_to_scene = true
-material = ExtResource( 2 )
-height = 0.01
 
 [sub_resource type="CylinderShape" id=11]
 resource_local_to_scene = true
@@ -22,12 +16,6 @@ input_ray_pickable = false
 script = ExtResource( 1 )
 rotation_speed = 0.25
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
-layers = 2
-mesh = SubResource( 10 )
-skeleton = NodePath("")
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 shape = SubResource( 11 )
@@ -38,9 +26,3 @@ layers = 2
 mesh = ExtResource( 3 )
 skeleton = NodePath("")
 material/0 = ExtResource( 4 )
-
-[node name="MeshInstance3" type="MeshInstance" parent="."]
-visible = false
-layers = 2
-mesh = SubResource( 10 )
-skeleton = NodePath("")

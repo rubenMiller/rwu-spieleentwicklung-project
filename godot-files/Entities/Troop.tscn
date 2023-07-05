@@ -1,15 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
 [ext_resource path="res://Art/materials/default_material_gray.tres" type="Material" id=3]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=4]
-[ext_resource path="res://Art/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Components/Health_Component.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Components/AttackComponent.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Components/Navigation_component.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Components/Attack_Patterns/Attack_Pattern_Default.gd" type="Script" id=10]
 [ext_resource path="res://Components/nav_agent.gd" type="Script" id=11]
 
 [sub_resource type="CylinderShape" id=10]
@@ -29,10 +25,6 @@ radius = 0.5
 [sub_resource type="CapsuleShape" id=9]
 radius = 1.49113
 height = 0.591573
-
-[sub_resource type="DynamicFont" id=7]
-size = 120
-font_data = ExtResource( 5 )
 
 [node name="Troop" type="KinematicBody" groups=["troop"]]
 collision_layer = 0
@@ -114,27 +106,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.70435 )
 visible = false
 shape = SubResource( 9 )
 
-[node name="Attack_component" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.63069, 0 )
-target_group_name = "tower"
-attack_pattern_path = NodePath("Attack_pattern_default")
-damage = 5.0
-fire_rate = 0.1
-
-[node name="Attack_pattern_default" type="Spatial" parent="Attack_component"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63069, 0 )
-script = ExtResource( 10 )
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0928533, 1.16272, 1.48533 )
-visible = false
-text = "Selected
-"
-font = SubResource( 7 )
-
-[node name="Navigation_component" parent="." instance=ExtResource( 8 )]
-MAX_SPEED = 3.0
-
 [node name="Radius_Component" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 visible = false
@@ -143,5 +114,3 @@ radius = 6.0
 [connection signal="selection_changed" from="." to="nav_agent" method="_on_Troop_selection_changed"]
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]
 [connection signal="selection_toggled" from="SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]
-[connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
-[connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]

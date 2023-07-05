@@ -14,7 +14,7 @@ func _process(delta):
 		get_tree().paused = true
 	else:
 		get_tree().paused = false
-	print(state)
+	#print(state)
 	$MarginContainer/MainContainer/VBoxContainer/label_pausiert.visible = false
 	$MarginContainer/MainContainer/VBoxContainer/label_win.visible = false
 	$MarginContainer/MainContainer/VBoxContainer/label_lost.visible = false

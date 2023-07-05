@@ -4,11 +4,6 @@ signal i_am_dead
 
 onready var current_health = get_parent().health
 
-func _ready():
-	pass
-	#$Label3D.text = str(rest_health)
-	
-	
 func _process(_delta):
 	if current_health <= 0:
 		emit_signal("i_am_dead")
@@ -22,10 +17,5 @@ func _process(_delta):
 		$"../meshes/troop_2".visible = false
 		$"../troop_2_coll".disabled = true
 		
-
 func reduce_health(health_delta):
 	current_health -= abs(int(health_delta))
-
-	
-
-
