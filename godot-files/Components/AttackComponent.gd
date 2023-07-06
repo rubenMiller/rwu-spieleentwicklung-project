@@ -6,8 +6,9 @@ export var damage := 1.0
 export var fire_rate := 1.0
 
 onready var reload_timer = $Load_timer
-onready var health_bar = $Health_bar
 onready var progress_lights: Spatial = $"../turret/progress_lights"
+onready var shoot_sound: AudioStreamPlayer = $"../shoot_sound"
+onready var anim_player: AnimationPlayer = $"../anim_player"
 
 var attack_pattern 
 var target_list := []
@@ -24,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	if get_in_reach():
 		var progress = float(reload_timer.time_left / reload_timer.wait_time)
 		progress_lights.update_progress(progress)
-	#health_bar.scale.x = reload_timer.time_left / reload_timer.wait_time
 	
 	if target_list.size() > 0:
 		if current_target != target_list[0]:
@@ -51,6 +51,8 @@ func _on_Radius_Component_body_exited(body: Node) -> void:
 
 func _on_Load_timer_timeout() -> void:
 	if target_list.size() > 0:
+		shoot_sound.play()
+		anim_player.play("gun_firing")
 		attack_pattern.attack(target_list[0], damage)
 
 func _on_View_component_body_entered(body: Node) -> void:

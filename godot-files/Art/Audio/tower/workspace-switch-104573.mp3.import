@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/workspace-switch-104573.mp3-a683cc53e2efb1d2bc9b8a41706a8f8d.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/tower/workspace-switch-104573.mp3"
+dest_files=[ "res://.import/workspace-switch-104573.mp3-a683cc53e2efb1d2bc9b8a41706a8f8d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

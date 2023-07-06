@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/electric-155027.mp3-042c9578ccc5d85b901911990a3fe7f8.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/tower/electric-155027.mp3"
+dest_files=[ "res://.import/electric-155027.mp3-042c9578ccc5d85b901911990a3fe7f8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

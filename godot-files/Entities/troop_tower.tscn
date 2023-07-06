@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Entities/troop_tower.gd" type="Script" id=1]
 [ext_resource path="res://Art/materials/signal_red.tres" type="Material" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://Entities/progress_lights.gd" type="Script" id=27]
 [ext_resource path="res://Art/materials/turret_shoot_progress/progress_default_enabled.tres" type="Material" id=28]
 [ext_resource path="res://Art/materials/turret_shoot_progress/progress_radius_highlighted.tres" type="Material" id=29]
+[ext_resource path="res://Art/Audio/tower/workspace-switch-104573 (mp3cut.net).mp3" type="AudioStream" id=30]
+[ext_resource path="res://Art/Audio/tower/sci-fi-energy-gun-39409.mp3" type="AudioStream" id=31]
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 1.74981, 1.88395, 3.12922 )
@@ -143,6 +145,37 @@ ao_texture = ExtResource( 26 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("turret/barrel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5.278, 0 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "gun_firing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("turret/barrel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 2.07053, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5.278, 0 ), Vector3( 0, 5.278, -0.233382 ), Vector3( 0, 5.278, 0 ) ]
+}
+
 [node name="Troop-tower" type="KinematicBody" groups=["tower"]]
 collision_layer = 0
 collision_mask = 2
@@ -232,6 +265,20 @@ radius = 10.0
 [node name="View_component" parent="." instance=ExtResource( 10 )]
 radius = 4.95
 mesh_instance = ExtResource( 6 )
+
+[node name="loading_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -10.0
+pitch_scale = 0.6
+
+[node name="shoot_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+volume_db = -5.0
+pitch_scale = 1.4
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 24 )
+anims/gun_firing = SubResource( 25 )
 
 [connection signal="body_entered" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_entered"]
 [connection signal="body_exited" from="Radius_Component" to="Attack_component" method="_on_Radius_Component_body_exited"]
