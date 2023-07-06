@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -8,28 +8,22 @@
 [ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/nav_agent.gd" type="Script" id=11]
 
+[sub_resource type="CapsuleShape" id=9]
+radius = 1.25
+
 [sub_resource type="CylinderShape" id=10]
 height = 3.0
-radius = 2.0
+radius = 1.25
 
-[sub_resource type="CapsuleShape" id=11]
-radius = 0.5
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.25, 1, 0.25 )
 
-[sub_resource type="SpatialMaterial" id=6]
-
-[sub_resource type="CapsuleMesh" id=8]
-radius = 0.5
-
-[sub_resource type="Skin" id=4]
-
-[sub_resource type="CapsuleShape" id=9]
-radius = 1.49113
-height = 0.591573
+[sub_resource type="CubeMesh" id=12]
+size = Vector3( 0.5, 2, 0.5 )
 
 [node name="Troop" type="KinematicBody" groups=["troop"]]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
-input_ray_pickable = false
 script = ExtResource( 1 )
 idleMaterial = ExtResource( 3 )
 selectedMaterial = ExtResource( 4 )
@@ -43,57 +37,6 @@ MAX_SPEED = 5.0
 [node name="Health_Component" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49614, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.37114e-08 )
-shape = SubResource( 10 )
-disabled = true
-
-[node name="troop_1_coll" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1 )
-shape = SubResource( 11 )
-
-[node name="troop_2_coll" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -1 )
-shape = SubResource( 11 )
-
-[node name="troop_3_coll" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1, 0 )
-shape = SubResource( 11 )
-
-[node name="troop_4_coll" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1, 0 )
-shape = SubResource( 11 )
-
-[node name="meshes" type="Spatial" parent="."]
-
-[node name="troop_1" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1 )
-material_override = SubResource( 6 )
-mesh = SubResource( 8 )
-skin = SubResource( 4 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 3 )
-
-[node name="troop_2" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -1 )
-material_override = SubResource( 6 )
-mesh = SubResource( 8 )
-skin = SubResource( 4 )
-skeleton = NodePath("../troop_4")
-
-[node name="troop_3" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1, 0 )
-material_override = SubResource( 6 )
-mesh = SubResource( 8 )
-skin = SubResource( 4 )
-skeleton = NodePath("../troop_1")
-
-[node name="troop_4" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1, 0 )
-material_override = SubResource( 6 )
-mesh = SubResource( 8 )
-skin = SubResource( 4 )
-
 [node name="SelectionArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 collision_mask = 0
@@ -102,14 +45,55 @@ priority = 1.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.70435 )
-visible = false
 shape = SubResource( 9 )
 
 [node name="Radius_Component" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 visible = false
 radius = 6.0
+
+[node name="KinematicBody" type="CollisionShape" parent="." groups=["troop"]]
+visible = false
+shape = SubResource( 10 )
+disabled = true
+
+[node name="CollisionShape1" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+shape = SubResource( 11 )
+
+[node name="meshes" type="Spatial" parent="."]
+
+[node name="TroopColor1" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+mesh = SubResource( 12 )
+skeleton = NodePath("../..")
+
+[node name="TroopColor2" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+mesh = SubResource( 12 )
+skeleton = NodePath("../..")
+
+[node name="TroopColor3" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+mesh = SubResource( 12 )
+skeleton = NodePath("../..")
+
+[node name="TroopColor4" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+mesh = SubResource( 12 )
+skeleton = NodePath("../..")
 
 [connection signal="selection_changed" from="." to="nav_agent" method="_on_Troop_selection_changed"]
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]

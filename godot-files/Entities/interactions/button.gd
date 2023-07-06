@@ -28,6 +28,7 @@ func _on_button_body_entered(body: Node) -> void:
 			o.on_interaction(true)
 		
 func _on_button_body_exited(body: Node) -> void:
+	print("button: ", body)
 	standing_list.erase(body)
 	if body.is_in_group("troop") and standing_list.size() == 0 and not stay_pressed:
 		animation_player.play_backwards("Button_pressed")

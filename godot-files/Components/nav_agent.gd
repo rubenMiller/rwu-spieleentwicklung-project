@@ -20,7 +20,9 @@ func _physics_process(delta: float) -> void:
 	_velocity = direction * MAX_SPEED
 	var rotation = atan2(direction.x,direction.z)
 	get_parent().move_and_slide(_velocity)
-	get_parent().global_rotation.y = rotation
+#	get_parent().global_rotation.y = rotation
+	for troop in $"../meshes".get_children():
+		troop.global_rotation.y = rotation
 
 func on_set_walk_target(target_position):
 	if is_troop_selected:
