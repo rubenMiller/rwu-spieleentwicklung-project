@@ -9,6 +9,7 @@ var _velocity := Vector3.ZERO
 var path := []
 
 func _ready() -> void:
+	set_radius(6)
 	configure_path_material()
 	SignalBus.connect("set_walk_target",self,"on_set_walk_target")
 	set_target_location(get_parent().global_translation)
