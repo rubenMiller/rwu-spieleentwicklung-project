@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/interactions/Win_tile.gd" type="Script" id=1]
 [ext_resource path="res://Art/Mesh/end_base/end_base_main/end_base_main.obj" type="ArrayMesh" id=2]
@@ -8,9 +8,106 @@
 [ext_resource path="res://Art/Mesh/end_base/end_base_antennas/end_base_antennas_2.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Art/Mesh/end_base/end_base_antennas/end_base_antennas_3.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Art/Mesh/end_base/end_base_antennas/end_base_antennas_1.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://Art/materials/end_base/signal_red_off.tres" type="Material" id=9]
+[ext_resource path="res://Art/materials/end_base/signal_green_enabled.tres" type="Material" id=10]
+[ext_resource path="res://Art/Mesh/end_base/arrow/arrow_2.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://Art/materials/signal_red.tres" type="Material" id=12]
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=5]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=6]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=7]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=8]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=9]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=10]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=11]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.1
+
+[sub_resource type="CapsuleMesh" id=15]
+radius = 0.03
+mid_height = 0.05
+
+[sub_resource type="SpatialMaterial" id=14]
+flags_transparent = true
+albedo_color = Color( 0.556863, 0.733333, 0.513726, 1 )
+emission_enabled = true
+emission = Color( 0.470588, 0.796078, 0.470588, 1 )
+emission_energy = 3.01
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 8.67604, -4 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "arrow_up_down"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 2.5, 0.6, 0.677129 ),
+"update": 0,
+"values": [ Vector3( 0, 9, -4 ), Vector3( 0, 7.39583, -4 ), Vector3( 0, 9, -4 ) ]
+}
 
 [node name="Win_tile" type="Spatial"]
 script = ExtResource( 1 )
+progress_color_disabled = ExtResource( 9 )
+progress_color_enabled = ExtResource( 10 )
+signal_color_red = ExtResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
@@ -21,7 +118,7 @@ material/1 = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true
 
 [node name="antennas" type="Spatial" parent="."]
@@ -67,4 +164,126 @@ mesh = ExtResource( 6 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 5 )
 
+[node name="round_lights" type="Spatial" parent="."]
+
+[node name="round_light_1" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5696, -1.33543 )
+mesh = SubResource( 3 )
+
+[node name="round_light_2" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.398702, 2.40097, -1.33543 )
+mesh = SubResource( 5 )
+
+[node name="round_light_3" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.569696, 2.00611, -1.33543 )
+mesh = SubResource( 6 )
+
+[node name="round_light_4" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.390673, 1.6007, -1.33543 )
+mesh = SubResource( 7 )
+
+[node name="round_light_5" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.42723, -1.33543 )
+mesh = SubResource( 8 )
+
+[node name="round_light_6" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.405189, 1.60203, -1.33543 )
+mesh = SubResource( 9 )
+
+[node name="round_light_7" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.567079, 1.99656, -1.33543 )
+mesh = SubResource( 10 )
+
+[node name="round_light_8" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.413329, 2.39971, -1.33543 )
+mesh = SubResource( 11 )
+
+[node name="round_light_9" type="MeshInstance" parent="round_lights"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00328809, 2.00302, -1.33732 )
+mesh = SubResource( 2 )
+
+[node name="other_lights" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="other_lights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39301, 6.44033, -5.04102 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="other_lights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39301, 6.44033, -3.60136 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="other_lights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.840548, 6.44033, -5.04102 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="other_lights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.840548, 6.44033, -3.60136 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.11276, 6.44033, -3.31977 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.11276, 6.44033, -3.87864 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.11276, 6.44033, -4.76643 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.11276, 6.44033, -5.32582 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40952, 3.99977, -0.593696 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.35522, 3.99977, -0.593696 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40952, 3.99977, -7.43544 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance12" type="MeshInstance" parent="other_lights"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.35522, 3.99977, -7.43544 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance13" type="MeshInstance" parent="other_lights"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.39666, 3.99977, -6.33691 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance14" type="MeshInstance" parent="other_lights"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.39666, 3.99977, -1.57216 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance15" type="MeshInstance" parent="other_lights"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.41126, 3.99977, -6.33691 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance16" type="MeshInstance" parent="other_lights"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.41126, 3.99977, -1.57216 )
+mesh = SubResource( 15 )
+
+[node name="MeshInstance17" type="MeshInstance" parent="other_lights"]
+transform = Transform( -0.710265, 0.45771, 0.534813, 0.000631236, 0.760163, -0.649733, -0.703934, -0.461145, -0.540206, -3.01293, 6.09992, -0.680543 )
+mesh = SubResource( 15 )
+
+[node name="arrow" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.67604, -4 )
+mesh = ExtResource( 11 )
+material/0 = SubResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 12 )
+anims/arrow_up_down = SubResource( 13 )
+
+[node name="win_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="win_timer" to="." method="_on_win_timer_timeout"]

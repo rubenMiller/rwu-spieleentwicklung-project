@@ -20,9 +20,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for n in get_child_count():
 		if 1.0 - progress > n/float(get_child_count()):
-			#while not audio_stream_player_3d.playing:
-				#audio_stream_player_3d.play(2)
-				#audio_stream_player_3d.seek(1.5)
 			get_child(n).mesh.material = progress_color_enabled
 		else: 
 			get_child(n).mesh.material = progress_color_disabled

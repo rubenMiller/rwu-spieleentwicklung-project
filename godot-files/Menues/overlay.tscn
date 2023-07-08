@@ -9,7 +9,7 @@ content_margin_left = 0.0
 content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
-bg_color = Color( 0.6, 0.6, 0.6, 0.376471 )
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.376471 )
 anti_aliasing = false
 
 [sub_resource type="DynamicFont" id=1]
