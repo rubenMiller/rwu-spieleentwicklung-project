@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/end_base_main.obj-f91b66c297fff59e5168f6621805fab5.mesh"
+
+[deps]
+
+files=[ "res://.import/end_base_main.obj-f91b66c297fff59e5168f6621805fab5.mesh" ]
+
+source_file="res://Art/Mesh/end_base/end_base_main/end_base_main.obj"
+dest_files=[ "res://.import/end_base_main.obj-f91b66c297fff59e5168f6621805fab5.mesh", "res://.import/end_base_main.obj-f91b66c297fff59e5168f6621805fab5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

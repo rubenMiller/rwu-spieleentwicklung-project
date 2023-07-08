@@ -53,7 +53,7 @@ script = ExtResource( 6 )
 environment = ExtResource( 9 )
 
 [node name="Win_tile" parent="." groups=["interaction_10"] instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 58 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.049, 0.884369, 57.9578 )
 
 [node name="Navigation" type="Navigation" parent="." groups=["navigation"]]
 
@@ -101,7 +101,7 @@ transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -10, 1, 22 )
 channel = 2
 
 [node name="Door_0" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
-transform = Transform( -1.25, 0, -1.88745e-07, 0, 1.25, 0, 1.88745e-07, 0, -1.25, 10, 1, 42 )
+transform = Transform( -1.25, 0, -1.88745e-07, 0, 1, 0, 1.88745e-07, 0, -1.25, 10, 1, 42 )
 
 [node name="interactions" type="Spatial" parent="."]
 

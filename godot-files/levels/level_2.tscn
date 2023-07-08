@@ -46,7 +46,7 @@ script = ExtResource( 6 )
 [node name="overlay" parent="." instance=ExtResource( 9 )]
 
 [node name="Win_tile" parent="." groups=["interaction_10"] instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 14 )
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -1, 0.938229, 15 )
 
 [node name="Navigation" type="Navigation" parent="." groups=["navigation"]]
 
@@ -80,7 +80,7 @@ __meta__ = {
 [node name="obstacles" type="Spatial" parent="Navigation/nav_mesh"]
 
 [node name="Door" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
-transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 10, 1, -6 )
+transform = Transform( 1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 10, 1, -6 )
 
 [node name="Door2" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
 transform = Transform( 9.43724e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, 9.43724e-08, -10, 1, 14 )
