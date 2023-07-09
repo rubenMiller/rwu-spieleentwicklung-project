@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/computer-processing-sound-effects-short-click-select-03-122132.mp3-df04dbb44ab93a5eaefe7ada1da81929.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/computer-processing-sound-effects-short-click-select-03-122132.mp3"
+dest_files=[ "res://.import/computer-processing-sound-effects-short-click-select-03-122132.mp3-df04dbb44ab93a5eaefe7ada1da81929.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

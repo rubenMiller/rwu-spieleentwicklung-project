@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Components/nav_agent.gd" type="Script" id=11]
 [ext_resource path="res://Art/Mesh/unit/unit.obj" type="ArrayMesh" id=12]
 [ext_resource path="res://Art/Audio/car-accelerate-stop-turn-off-door-open-and-close-76840 (mp3cut.net).mp3" type="AudioStream" id=13]
+[ext_resource path="res://Art/Audio/select_sound_cut.mp3" type="AudioStream" id=14]
 
 [sub_resource type="CapsuleShape" id=9]
 radius = 1.25
@@ -312,6 +313,11 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 9 )
+
+[node name="select_sound" type="AudioStreamPlayer" parent="SelectionArea"]
+stream = ExtResource( 14 )
+volume_db = -5.0
+pitch_scale = 0.9
 
 [node name="CollisionShape1" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )

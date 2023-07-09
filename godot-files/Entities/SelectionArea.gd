@@ -8,6 +8,7 @@ export var attack_selection_group_name = "attacked_tower"
 
 onready var selection_action = "mouse_left"
 onready var attack_selection_action = "mouse_right"
+onready var select_sound: AudioStreamPlayer = $select_sound
 
 var selected = false setget set_selected
 
@@ -15,6 +16,7 @@ func set_selected(selection):
 	if selection:
 		_make_exclusive()
 		add_to_group(selection_group_name)
+		select_sound.play()
 	else:
 		remove_from_group(selection_group_name)
 	

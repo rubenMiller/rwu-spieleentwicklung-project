@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/select_sound_cut.mp3-849242f4b4f423a65d72d83668c0c923.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/select_sound_cut.mp3"
+dest_files=[ "res://.import/select_sound_cut.mp3-849242f4b4f423a65d72d83668c0c923.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
