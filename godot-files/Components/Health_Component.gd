@@ -18,6 +18,7 @@ func _process(_delta):
 	if current_health <= 1:
 		$"../meshes/TroopColor2".visible = false
 		$"../CollisionShape2".disabled = true
+		setTranslationTo1mesh()
 		
 func reduce_health(health_delta):
 	current_health -= abs(int(health_delta))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
@@ -6,18 +6,19 @@
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=4]
 [ext_resource path="res://Art/materials/unit/Unit.tres" type="Material" id=5]
 [ext_resource path="res://Components/Health_Component.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Art/Mesh/Radius_tower/radius_tower.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://Art/materials/unit/unit_selected_material.tres" type="Material" id=8]
+[ext_resource path="res://Art/Mesh/end_base/arrow/arrow_2.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://Art/Audio/engine_vibrations_of_ferry_2wav-14595.mp3" type="AudioStream" id=10]
 [ext_resource path="res://Components/nav_agent.gd" type="Script" id=11]
 [ext_resource path="res://Art/Mesh/unit/unit.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://Art/Audio/car-accelerate-stop-turn-off-door-open-and-close-76840 (mp3cut.net).mp3" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape" id=9]
 radius = 1.25
 
 [sub_resource type="BoxShape" id=11]
 extents = Vector3( 0.25, 1, 0.25 )
-
-[sub_resource type="CapsuleMesh" id=12]
-radius = 0.1
-mid_height = 0.1
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -69,8 +70,170 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector3( -1, 0.6, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("selected_radius/marker:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "arrow_animation"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selected_radius/marker:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 2.5, 0.6, 0.67 ),
+"update": 0,
+"values": [ Vector3( 0, 2, 0 ), Vector3( 0, 1.50074, 0 ), Vector3( 0, 2, 0 ) ]
+}
 
 [sub_resource type="Animation" id=14]
+resource_name = "unit_idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("meshes/TroopColor1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 0.6 ),
+"update": 0,
+"values": [ Vector3( 1, 0.7, 0 ), Vector3( 1, 0.5372, 0 ), Vector3( 1, 0.7, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("meshes/TroopColor2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 0.6 ),
+"update": 0,
+"values": [ Vector3( 0, 0.7, 1 ), Vector3( 0, 0.537675, 1 ), Vector3( 0, 0.7, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("meshes/TroopColor4:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 0.6 ),
+"update": 0,
+"values": [ Vector3( 0, 0.7, -1 ), Vector3( 0, 0.537675, -1 ), Vector3( 0, 0.7, -1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("meshes/TroopColor3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.4, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 0.6 ),
+"update": 0,
+"values": [ Vector3( -1, 0.7, 0 ), Vector3( -1, 0.537675, 0 ), Vector3( -1, 0.7, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("meshes/TroopColor1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.599526, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("meshes/TroopColor2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.6, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("meshes/TroopColor4:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.6, -1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("meshes/TroopColor3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1, 0.6, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("selected_radius/marker:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "arrow_animation"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selected_radius/marker:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 2.5, 0.6, 0.67 ),
+"update": 0,
+"values": [ Vector3( 0, 2, 0 ), Vector3( 0, 1.50074, 0 ), Vector3( 0, 2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=18]
 resource_name = "unit_idle"
 length = 3.0
 loop = true
@@ -192,13 +355,38 @@ mesh = ExtResource( 12 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 5 )
 
-[node name="marker" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
-mesh = SubResource( 12 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 13 )
+anims/arrow_animation = SubResource( 15 )
 anims/unit_idle = SubResource( 14 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 16 )
+anims/arrow_animation = SubResource( 17 )
+anims/unit_idle = SubResource( 18 )
+
+[node name="selected_radius" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="selected_radius"]
+transform = Transform( 0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 8 )
+
+[node name="marker" type="MeshInstance" parent="selected_radius"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 5.32907e-15, 0, -5.32907e-15, 0.5, 0, 2, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="engine_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="engine_stop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -20.0
+pitch_scale = 0.8
 
 [connection signal="selection_changed" from="." to="nav_agent" method="_on_Troop_selection_changed"]
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]

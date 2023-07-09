@@ -85,7 +85,7 @@ __meta__ = {
 transform = Transform( 1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 10, 1, -6 )
 
 [node name="Door2" parent="Navigation/nav_mesh/obstacles" instance=ExtResource( 17 )]
-transform = Transform( 9.43724e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, 9.43724e-08, -10, 1, 14 )
+transform = Transform( 9.43724e-08, 0, -1.25, 0, 1, 0, 1.25, 0, 9.43724e-08, -10, 1, 14 )
 channel = 1
 
 [node name="ground" type="MeshInstance" parent="Navigation/nav_mesh"]

@@ -3,6 +3,8 @@ extends NavigationAgent
 export var MAX_SPEED := 3.0
 export var show_path := true
 onready var meshes: Spatial = $"../meshes"
+onready var engine_sound: AudioStreamPlayer = $"../engine_sound"
+onready var engine_stop: AudioStreamPlayer = $"../engine_stop"
 
 onready var is_troop_selected := false
 
@@ -17,6 +19,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_navigation_finished():
+		if engine_sound.playing:
+			engine_sound.stop()
+			engine_stop.play()
 		return
 	var direction = get_parent().global_translation.direction_to(get_next_location())
 	_velocity = direction * MAX_SPEED
@@ -24,14 +29,15 @@ func _physics_process(delta: float) -> void:
 	get_parent().move_and_slide(_velocity)
 #	get_parent().global_rotation.y = rotation
 	for troop in meshes.get_children():
-		#troop.global_rotation.y = lerp(troop.global_rotation.y,rotation + PI, 0.8)
-		troop.global_rotation.y = rotation + PI
+		troop.global_rotation.y = lerp_angle(troop.global_rotation.y,rotation + PI, 0.15)
+		#troop.global_rotation.y = rotation + PI
 		troop.scale.x = 2
 		troop.scale.y = 2
 		troop.scale.z = 2
 
 func on_set_walk_target(target_position):
 	if is_troop_selected:
+		engine_sound.play()
 		set_target_location(target_position)
 		var navigation = get_tree().get_nodes_in_group("navigation")[0]
 		path = navigation.get_simple_path(get_parent().global_translation, target_position, true)

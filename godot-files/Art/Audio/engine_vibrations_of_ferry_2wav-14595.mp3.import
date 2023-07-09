@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/engine_vibrations_of_ferry_2wav-14595.mp3-ea6c007c5574158ee3fc3f525fc6ef8b.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/engine_vibrations_of_ferry_2wav-14595.mp3"
+dest_files=[ "res://.import/engine_vibrations_of_ferry_2wav-14595.mp3-ea6c007c5574158ee3fc3f525fc6ef8b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

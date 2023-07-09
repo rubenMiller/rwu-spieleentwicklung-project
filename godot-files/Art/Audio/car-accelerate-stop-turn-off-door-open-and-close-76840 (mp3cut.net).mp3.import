@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/car-accelerate-stop-turn-off-door-open-and-close-76840 (mp3cut.net).mp3-21f010f98dd350e6df2c83be67a06da3.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/car-accelerate-stop-turn-off-door-open-and-close-76840 (mp3cut.net).mp3"
+dest_files=[ "res://.import/car-accelerate-stop-turn-off-door-open-and-close-76840 (mp3cut.net).mp3-21f010f98dd350e6df2c83be67a06da3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
