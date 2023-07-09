@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/energy-hum-29083.mp3-4c2360a8bcca95ee1e0ffd403a440ae7.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/energy-hum-29083.mp3"
+dest_files=[ "res://.import/energy-hum-29083.mp3-4c2360a8bcca95ee1e0ffd403a440ae7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

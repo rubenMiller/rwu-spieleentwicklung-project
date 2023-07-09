@@ -12,6 +12,8 @@ onready var round_lights: Spatial = $round_lights
 onready var other_lights: Spatial = $other_lights
 onready var progress := 1.0
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var enemy_detected: AudioStreamPlayer = $enemy_detected
+onready var shut_down: AudioStreamPlayer = $shut_down
 
 var enabled := false
 
@@ -44,12 +46,15 @@ func on_interaction(value):
 	
 	if enabled:
 		print("timer starts")
+		enemy_detected.play()
 		timer.start()
 	if not enabled:
 		timer.stop()
 
 func _on_Timer_timeout() -> void:
 	win_timer.start()
+	enemy_detected.stop()
+	shut_down.play()
 	
 func _on_win_timer_timeout() -> void:
 	SignalBus.emit_signal("won")	

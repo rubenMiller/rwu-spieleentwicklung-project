@@ -2,6 +2,7 @@ extends Spatial
 
 #onready var nav_mesh = $nav_mesh
 onready var troops: Spatial = $Navigation/Troops
+onready var ambient: AudioStreamPlayer = $ambient
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -15,6 +16,7 @@ func _process(delta):
 		$overlay.state = "lost"
 
 func _ready():
+	ambient.play()
 	$overlay.visible = false
 	if self.name == "level_1":
 		$overlay.visible = true

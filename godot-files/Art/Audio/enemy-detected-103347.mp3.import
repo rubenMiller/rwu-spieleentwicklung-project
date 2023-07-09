@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/enemy-detected-103347.mp3-ff4f7575d73248e905f33eed107f8231.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/enemy-detected-103347.mp3"
+dest_files=[ "res://.import/enemy-detected-103347.mp3-ff4f7575d73248e905f33eed107f8231.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

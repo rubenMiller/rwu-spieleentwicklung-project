@@ -48,7 +48,10 @@ func configure_path_material():
 	var m = SpatialMaterial.new()
 	m.flags_unshaded = true
 	m.flags_use_point_size = true
-	m.albedo_color = Color.white
+	#m.emission_energy = 0.1
+	var multiplier = 3.0
+	m.albedo_color = Color(0.875*multiplier,0.569*multiplier,0.075*multiplier, 1)
+	#m.albedo_color = Color.darkgoldenrod
 	return m
 	
 func draw_path(path_array):

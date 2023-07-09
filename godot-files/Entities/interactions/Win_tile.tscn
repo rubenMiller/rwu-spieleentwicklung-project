@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Entities/interactions/Win_tile.gd" type="Script" id=1]
 [ext_resource path="res://Art/Mesh/end_base/end_base_main/end_base_main.obj" type="ArrayMesh" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Art/materials/end_base/signal_green_enabled.tres" type="Material" id=10]
 [ext_resource path="res://Art/Mesh/end_base/arrow/arrow_2.obj" type="ArrayMesh" id=11]
 [ext_resource path="res://Art/materials/signal_red.tres" type="Material" id=12]
+[ext_resource path="res://Art/Audio/enemy-detected-103347 (mp3cut.net).mp3" type="AudioStream" id=13]
+[ext_resource path="res://Art/Audio/sucked-into-classroom-103774.mp3" type="AudioStream" id=14]
 
 [sub_resource type="CylinderMesh" id=3]
 top_radius = 0.15
@@ -118,7 +120,7 @@ material/1 = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 2.5
+wait_time = 3.0
 one_shot = true
 
 [node name="antennas" type="Spatial" parent="."]
@@ -282,8 +284,16 @@ anims/RESET = SubResource( 12 )
 anims/arrow_up_down = SubResource( 13 )
 
 [node name="win_timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
+
+[node name="enemy_detected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="shut_down" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 14 )
+volume_db = -5.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="win_timer" to="." method="_on_win_timer_timeout"]

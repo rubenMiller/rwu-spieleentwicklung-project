@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/88619_676765_676765__Norvik_-_Waterbed_-_Master_-_60_Bpm_-_010522_-_EXT_-_2444.mp3-a90360681ac87695c9130bb6b61614db.mp3str"
+
+[deps]
+
+source_file="res://Art/Audio/88619_676765_676765__Norvik_-_Waterbed_-_Master_-_60_Bpm_-_010522_-_EXT_-_2444.mp3"
+dest_files=[ "res://.import/88619_676765_676765__Norvik_-_Waterbed_-_Master_-_60_Bpm_-_010522_-_EXT_-_2444.mp3-a90360681ac87695c9130bb6b61614db.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
