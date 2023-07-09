@@ -2,6 +2,7 @@ extends NavigationAgent
 
 export var MAX_SPEED := 3.0
 export var show_path := true
+onready var meshes: Spatial = $"../meshes"
 
 onready var is_troop_selected := false
 
@@ -9,7 +10,7 @@ var _velocity := Vector3.ZERO
 var path := []
 
 func _ready() -> void:
-	set_radius(6)
+	#set_radius(6)
 	configure_path_material()
 	SignalBus.connect("set_walk_target",self,"on_set_walk_target")
 	set_target_location(get_parent().global_translation)
@@ -22,8 +23,11 @@ func _physics_process(delta: float) -> void:
 	var rotation = atan2(direction.x,direction.z)
 	get_parent().move_and_slide(_velocity)
 #	get_parent().global_rotation.y = rotation
-	for troop in $"../meshes".get_children():
-		troop.global_rotation.y = rotation
+	for troop in meshes.get_children():
+		troop.global_rotation.y = rotation + PI
+		troop.scale.x = 2
+		troop.scale.y = 2
+		troop.scale.z = 2
 
 func on_set_walk_target(target_position):
 	if is_troop_selected:

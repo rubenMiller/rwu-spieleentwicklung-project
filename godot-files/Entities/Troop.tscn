@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Troop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/SelectionArea.gd" type="Script" id=2]
 [ext_resource path="res://Art/materials/default_material_gray.tres" type="Material" id=3]
 [ext_resource path="res://Art/materials/troop_selected_Material.tres" type="Material" id=4]
+[ext_resource path="res://Art/materials/unit/Unit.tres" type="Material" id=5]
 [ext_resource path="res://Components/Health_Component.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Components/Radius_Component.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/nav_agent.gd" type="Script" id=11]
+[ext_resource path="res://Art/Mesh/unit/unit.obj" type="ArrayMesh" id=12]
 
 [sub_resource type="CapsuleShape" id=9]
 radius = 1.25
@@ -14,8 +15,113 @@ radius = 1.25
 [sub_resource type="BoxShape" id=11]
 extents = Vector3( 0.25, 1, 0.25 )
 
-[sub_resource type="CubeMesh" id=12]
-size = Vector3( 0.5, 2, 0.5 )
+[sub_resource type="CapsuleMesh" id=12]
+radius = 0.1
+mid_height = 0.1
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("meshes/TroopColor1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.599526, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("meshes/TroopColor2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.6, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("meshes/TroopColor4:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.6, -1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("meshes/TroopColor3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1, 0.6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "unit_idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("meshes/TroopColor1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 2 ),
+"update": 0,
+"values": [ Vector3( 1, 0.599526, 0 ), Vector3( 1, 0.5372, 0 ), Vector3( 1, 0.599526, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("meshes/TroopColor2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 2 ),
+"update": 0,
+"values": [ Vector3( 0, 0.6, 1 ), Vector3( 0, 0.537675, 1 ), Vector3( 0, 0.6, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("meshes/TroopColor4:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 2 ),
+"update": 0,
+"values": [ Vector3( 0, 0.6, -1 ), Vector3( 0, 0.537675, -1 ), Vector3( 0, 0.6, -1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("meshes/TroopColor3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.4, 3 ),
+"transitions": PoolRealArray( 2, 1.23114, 2 ),
+"update": 0,
+"values": [ Vector3( -1, 0.6, 0 ), Vector3( -1, 0.537675, 0 ), Vector3( -1, 0.6, 0 ) ]
+}
 
 [node name="Troop" type="KinematicBody" groups=["troop"]]
 collision_layer = 2
@@ -44,11 +150,6 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="SelectionArea"]
 shape = SubResource( 9 )
 
-[node name="Radius_Component" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-visible = false
-radius = 6.0
-
 [node name="CollisionShape1" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 shape = SubResource( 11 )
@@ -68,24 +169,36 @@ shape = SubResource( 11 )
 [node name="meshes" type="Spatial" parent="."]
 
 [node name="TroopColor1" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-mesh = SubResource( 12 )
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 1, 0.599526, 0 )
+mesh = ExtResource( 12 )
 skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
 
 [node name="TroopColor2" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
-mesh = SubResource( 12 )
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0.6, 1 )
+mesh = ExtResource( 12 )
 skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
 
 [node name="TroopColor3" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
-mesh = SubResource( 12 )
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -1, 0.6, 0 )
+mesh = ExtResource( 12 )
 skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
 
 [node name="TroopColor4" type="MeshInstance" parent="meshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
-mesh = SubResource( 12 )
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0.6, -1 )
+mesh = ExtResource( 12 )
 skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
+
+[node name="marker" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
+mesh = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 13 )
+anims/unit_idle = SubResource( 14 )
 
 [connection signal="selection_changed" from="." to="nav_agent" method="_on_Troop_selection_changed"]
 [connection signal="i_am_dead" from="Health_Component" to="." method="_on_HealtComponent_i_am_dead"]

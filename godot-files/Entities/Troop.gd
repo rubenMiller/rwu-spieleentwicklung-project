@@ -3,11 +3,15 @@ extends KinematicBody
 export var idleMaterial: Material
 export var selectedMaterial: Material
 export var health := 1
+onready var marker: MeshInstance = $marker
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal selection_changed(selection)
 
 onready var isSelected = false
 
+func _ready() -> void:
+	animation_player.play("unit_idle")
 	
 func _on_SelectionArea_selection_toggled(selection):
 	isSelected = selection
@@ -21,7 +25,9 @@ func _on_HealtComponent_i_am_dead():
 func _process(delta):
 	if isSelected:
 		for mesh in $meshes.get_children():
-			mesh.material_override = selectedMaterial
+			marker.visible = true;
+			#mesh.material_override = selectedMaterial
 	else: 
 		for mesh in $meshes.get_children():
-			mesh.material_override = idleMaterial
+			marker.visible = false;
+			#mesh.material_override = idleMaterial
