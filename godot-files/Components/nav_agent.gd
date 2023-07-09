@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	get_parent().move_and_slide(_velocity)
 #	get_parent().global_rotation.y = rotation
 	for troop in meshes.get_children():
+		#troop.global_rotation.y = lerp(troop.global_rotation.y,rotation + PI, 0.8)
 		troop.global_rotation.y = rotation + PI
 		troop.scale.x = 2
 		troop.scale.y = 2

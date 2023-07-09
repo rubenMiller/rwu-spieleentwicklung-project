@@ -54,9 +54,11 @@ transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107,
 
 [node name="Sam" parent="Navigation/Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.01054, 1.05421, -13.8878 )
+collision_layer = 4
 
 [node name="Frodo" parent="Navigation/Troops" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10, 1, -14 )
+collision_layer = 4
 
 [node name="nav_mesh" type="NavigationMeshInstance" parent="Navigation" groups=["navigation_mesh_instance"]]
 navmesh = SubResource( 1 )
