@@ -10,15 +10,19 @@ onready var is_troop_selected := false
 
 var _velocity := Vector3.ZERO
 var path := []
+var im
 
 func _ready() -> void:
 	#set_radius(6)
+	im = get_tree().get_nodes_in_group("draw")[0]
 	configure_path_material()
 	SignalBus.connect("set_walk_target",self,"on_set_walk_target")
 	set_target_location(get_parent().global_translation)
 
 func _physics_process(delta: float) -> void:
 	if is_navigation_finished():
+		if is_troop_selected:
+			im.clear()
 		if engine_sound.playing:
 			engine_sound.stop()
 			engine_stop.play()
@@ -55,7 +59,6 @@ func configure_path_material():
 	return m
 	
 func draw_path(path_array):
-	var im = get_tree().get_nodes_in_group("draw")[0]
 	im.clear()
 	var color = configure_path_material()
 	im.set_material_override(color)
@@ -64,6 +67,7 @@ func draw_path(path_array):
 		im.add_vertex(x)
 	im.end()
 	print("line drawn")
+	
 
 func _on_Troop_selection_changed(selection) -> void:
 	is_troop_selected = selection
